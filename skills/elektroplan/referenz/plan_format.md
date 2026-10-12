@@ -4,7 +4,7 @@ Eine Plandatei beschreibt **einen** Plan. Gemeinsame Felder:
 
 ```json
 {
-  "plan": "verteilerplan | stromlaufplan | installationsplan",
+  "plan": "verteilerplan | stromlaufplan | installationsplan | kuechenplan (= wandansicht)",
   "format": "A3 quer | A4 quer | A4 hoch",
   "dateiname": "2026-10-08 Verteilerplan UV Wohnung",
   "titel": "Verteilerplan UV Wohnung 1. OG",
@@ -20,7 +20,7 @@ Eine Plandatei beschreibt **einen** Plan. Gemeinsame Felder:
 }
 ```
 
-Standardformate: Verteilerplan A3 quer, Stromlaufplan A4 quer, Installationsplan A3 quer.
+Standardformate: Verteilerplan A3 quer, Stromlaufplan A4 quer, Installationsplan A3 quer, Wandansicht A3 quer.
 Im PDF gilt immer 1 px = 0,25 mm. Der Maßstab im Installationsplan stimmt deshalb, wenn das PDF in Originalgröße gedruckt wird.
 Textfelder dürfen Umlaute und `×`, `²`, `Δ` enthalten.
 
@@ -170,10 +170,12 @@ Koordinaten in **Metern**, Ursprung oben links, x nach rechts, y nach unten.
 - Räume sind Rechtecke mit **Innenmaßen** (`x`, `y` = innere linke obere Ecke, `b` Breite, `t` Tiefe). Nebeneinanderliegende Räume liegen eine Wanddicke auseinander (z. B. 3,5 + 0,115 = 3,615).
   L-förmige Räume aus zwei Rechtecken bilden, die sich berühren. An der gemeinsamen Kante beide Seiten mit `"offen": ["o"]` bzw. `["w"]` öffnen; das zweite Rechteck ohne `name`, die Gesamtfläche mit `"flaeche": 23.4` vorgeben (`false` blendet sie aus).
 - `wand`: eine Zahl für alle Seiten oder je Seite `n`, `o`, `s`, `w` (Außenwand z. B. 0,30).
-- `nutzung` (optional): Raumtyp für die Ausstattungsprüfung nach DIN 18015-2, falls der Name ihn nicht verrät (`wohnen`, `kueche`, `kochnische`, `bad`, `wc`, `flur`, `hausarbeitsraum`, `abstellraum`, `freisitz`, `keller`).
+- `nutzung` (optional): Raumtyp für die Ausstattungsprüfung nach DIN 18015-2, falls der Name ihn nicht verrät (`kueche`, `essen`, `wohnen`, `schlafen`, `arbeiten`, `bad`, `wc`, `flur`, `freisitz`, `hausarbeitsraum`, `hobby`, `abstellraum`, `keller`, `garage`). Zusammengefasste Nutzungsbereiche als Liste, z. B. `["kueche", "essen", "wohnen"]` (allgemeine Steckdosen je Bereich −1).
+- `arbeitsflaeche_m` (optional, Küche/HWR): Länge der Arbeitsfläche für „2 Steckdosen je 1,20 m“.
+- Oben im Plan (optional): `"ausstattungswert": 1 | 2 | 3` (DIN 18015-2 bzw. RAL-RG 678 ★★/★★★), `"zaehlweise": "auslass" | "einsatz"` (Mehrfachsteckdose = 1 oder je Steckdose), `"barrierefrei": true` (Schalterhöhe 0,85 m und 50 cm Seitenabstand nach DIN 18040-2).
 - `grundriss.deckenhoehe` (Standard 2,50 m) für die obere Installationszone.
 - `grundriss.sanitaer`: `[{"raum": "Bad", "art": "dusche" | "wanne", "x", "y", "b", "t"}]` (Meter, relativ zur Rauminnenecke) – wird gestrichelt gezeichnet und für die Bereiche 1/2 nach VDE 0100-701 geprüft.
-- Türen/Fenster: `seite` des Raums (n, o, s, w), `pos` = Abstand von der linken bzw. oberen Raumecke, `breite`.
+- Türen/Fenster: `seite` des Raums (n, o, s, w), `pos` = Abstand von der linken bzw. oberen Raumecke, `breite` (Rohbaumaß). Bei Türen `anschlag` (`anfang` = Band an der linken/oberen Kante, `ende` = rechts/unten) – daraus ergibt sich die Schlossseite für die Schalterzone; `fluegel: 2` für zweiflügelige Türen.
 - `massstab` optional; sonst wird der größte passende aus 1:20 … 1:250 gewählt.
 
 ### b) Grundriss als Bild/PDF (Architektenplan)
@@ -222,3 +224,80 @@ Koordinaten in **Metern**, Ursprung oben links, x nach rechts, y nach unten.
 
 Felder je Gerät: `x`, `y` (Meter; mit `raum` relativ zur Rauminnenecke), `raum`, `wand` (n/o/s/w; ohne Angabe wird die nächste Wand des Raums gewählt; `"frei"` = keine Automatik), `stromkreis` (Beschriftung, z. B. F3), `hoehe` (Montagehöhe in m), `bemerkung`.
 Wandgeräte werden auf die Wandinnenseite gesetzt und zeigen in den Raum. Die Legende rechts zählt alle Geräte.
+
+---
+
+## 4. Wandansicht / Küchenplan (Frontansicht mit Höhen)
+
+`"plan": "kuechenplan"` (oder `"wandansicht"` für andere Räume, z. B. Bad). Je Wand eine Frontansicht: Blick auf die
+Wand, **x ab linker Wandecke** (fertige Wand), **h über OKFF**, beides in Metern. Gezeichnet werden Wand mit Boden und
+Decke, Fenster/Türen, Möbel, die Dosen maßstäblich (Ø 68 mm, Kombination im 71-mm-Raster), Positionsnummern mit
+Kurzzeichen, steigende Bemaßung für x (unten) und h (links), Höhenkoten der Möbel (rechts) und die Installationszonen
+nach DIN 18015-3 (blau). Rechts die Punkteliste mit Symbol nach DIN EN 60617-11. Maßstab automatisch 1:20 (sonst
+1:25/1:50, oder `"massstab"`), passen mehrere Wände nicht auf ein Blatt, folgen weitere Blätter.
+
+```json
+{
+  "plan": "kuechenplan",
+  "raum": "Küche",
+  "deckenhoehe": 2.50,
+  "kueche": {"arbeitsplatte": 0.91, "plattenstaerke": 0.04, "sockel": 0.10,
+             "oberschrank_uk": 1.45, "oberschrank_ok": 2.17, "hochschrank_ok": 2.17, "dunstabzug_abstand": 0.65},
+  "zonen": true, "hilfslinien": true, "ausstattungswert": 1, "zaehlweise": "auslass", "barrierefrei": false,
+  "waende": [
+    {"name": "Wand A", "bezeichnung": "Spülenzeile", "breite": 3.40,
+     "oeffnungen": [{"art": "fenster", "x": 1.30, "breite": 1.00, "bruestung": 1.05, "hoehe": 1.20},
+                    {"art": "tuer", "x": 0.25, "breite": 0.885, "hoehe": 2.01, "anschlag": "links"}],
+     "moebel": [{"art": "unterschrank", "breite": 0.60}, {"art": "geschirrspueler", "breite": 0.60},
+                {"art": "spuele", "breite": 0.80}, {"art": "oberschrank", "x": 0, "breite": 1.20},
+                {"art": "dunstabzug", "x": 1.80, "breite": 0.80}],
+     "linien": [{"art": "led", "x": 0.05, "breite": 1.10, "h": 1.43, "text": "LED"}],
+     "punkte": [{"symbol": "steckdose", "anzahl": 2, "x": 0.40, "h": 1.15, "stromkreis": "F3", "text": "Arbeitsplatte"},
+                {"symbol": "geraet", "text": "GS", "x": 0.30, "h": 0.30, "stromkreis": "F6", "bemerkung": "im Nachbarschrank"}]}
+  ]
+}
+```
+
+**`kueche`** (alle optional, Standard wie oben): Höhe OK Arbeitsplatte, Plattenstärke, Sockel, Oberschrank UK/OK,
+Hochschrank OK, Abstand Kochfeld → UK Dunstabzug. Maße aus der Küchenplanung übernehmen.
+
+**`oeffnungen`**: `art` `fenster` (`bruestung`, `hoehe`) oder `tuer` (`hoehe`, `anschlag` `links`/`rechts` = Bandseite in
+der Ansicht, `fluegel`), `x` = linke Rohbaukante, `breite`, optional `text`.
+
+**`moebel`**: `art`, `breite`, `x` (fehlt `x`, wird hinter dem vorigen Möbel derselben Ebene angereiht – Unterschränke
+und Hochschränke zusammen, Oberschränke für sich), optional `text`, `uk`, `ok`, `gestrichelt`.
+
+| `art` | Ebene | gezeichnet |
+|---|---|---|
+| `unterschrank`, `eckschrank`, `auszug`, `blende` | unten (Sockel bis UK Arbeitsplatte) | Korpus + Sockel, Text „US 60“ |
+| `geschirrspueler` | unten | mit Bedienblende, „GSP“ |
+| `spuele` | unten | Becken gestrichelt, Armatur |
+| `kochfeld` (oder `"kochfeld": true` an einem Unterschrank) | unten | Kochfeld auf der Arbeitsplatte |
+| `herd` / `backofen_unterbau` | unten | Backofentür + Kochfeld |
+| `waschmaschine`, `trockner` | unten | Bullauge |
+| `hochschrank`, `kuehlschrank`, `backofen_hoch`, `geraeteschrank` | Boden bis OK Hochschrank | `nischen: [{"uk", "ok", "text"}]` für Gerätenischen |
+| `oberschrank`, `regal` | UK–OK Oberschrank | Korpus, „OS 60“ |
+| `dunstabzug` | UK = Arbeitsplatte + Abstand | `form` `wand` (Haube + Kamin bis Decke, Standard) oder `flach` |
+| `arbeitsplatte` | – | nur nötig für abweichende Platten; sonst automatisch über zusammenhängenden Unterschränken |
+| sonst (`rechteck` …) | frei: `uk`, `ok`/`hoehe` | Rechteck mit Text |
+
+**`linien`**: `{"art": "led" | "kanal", "x", "breite", "h", "text"}` – LED-Band unter Oberschränken, Kanal.
+
+**`punkte`**: `symbol`, `x`, `h` (Dosenmitte), `anzahl` (Kombination), `richtung` (`waagerecht` Standard: x = Mitte,
+h = Dosenmitte; `senkrecht`: h = **oberste** Dose wie DIN 18015-3), `stromkreis`, `text`, `bemerkung`, optional `nr`.
+
+| `symbol` | Kurzzeichen | Farbe |
+|---|---|---|
+| `steckdose` (`text` z. B. Arbeitsplatte, Kühlschrank, Dunstabzug) | SD / 2×SD | schwarz |
+| `schalter` (`art` aus, wechsel, kreuz, serie, taster, dimmer …), `taster`, `dimmer` | S, W, K, SR, T, D | blau |
+| `geraet` (`text` = Code: H, KF, HD, BO, GS, KS, KG, DA, MW, DG, WM, T, DLE, WW, KL, KM, WX) | Code | rot |
+| `auslass` / `unterbauleuchte` / `leuchte` (`art` wand, unterbau, sockel) | L | orange |
+| `daten`, `telefon`, `tv` | LAN, TEL, TV | grün |
+| `dose`, `thermostat`, `melder` | AD, RTR, RM | grau |
+
+Normhinweise (nur Hinweise): Punkte außerhalb der Installationszonen (in Küchen zulässig, Stichleitung), Schalter über
+1,05 m bzw. barrierefrei nicht 0,85 m, Schalter auf der Bandseite oder nicht 10–30 cm neben der Tür, Steckdosen über
+der Arbeitsfläche weniger als 2 (★★/★★★: 3) je angefangene 1,20 m, Steckdose dicht über der Arbeitsplatte,
+allgemeine Steckdose hinter einem Möbel, Küchenausstattung nach DIN 18015-2 Tab. 2 (Herd, Geschirrspüler,
+Mikrowelle/Dampfgarer, Kühlgerät, Dunstabzug, IuK, Steckdosenzahl), „Praxis“: Steckdose direkt über Spüle/Kochfeld.
+Beispiel: `referenz/beispiele/kuechenplan.json`.

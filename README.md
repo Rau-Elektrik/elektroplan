@@ -18,6 +18,7 @@ Du beschreibst den Plan in normaler Sprache, Claude erstellt ihn.
 | **Stromlaufplan der Verteilung** (allpolig) | „Stromlaufplan für die UV Wohnung OG“ | Dieselben Daten, am besten mit Phase je Stromkreis |
 | **Stromlaufplan Installationsschaltungen** | „Kreuzschaltung im Flur mit 3 Schaltern, 2 Leuchten an F7 B10“ | Schaltungsart, LS, Phase, Anzahl Schalter/Leuchten |
 | **Installationsplan** (Grundriss mit Symbolen) | „Installationsplan Küche 3,5 × 3,2 m, Tür unten rechts …“ oder Architekten-PDF mit Maßstab | Raummaße oder Grundriss, Geräte mit Stromkreis und Höhe |
+| **Küchenplan** (Wandansicht mit Höhen) | „Küchenplan für Familie Muster, hier ist der Plan vom Küchenstudio“ oder „Wand A 3,40 m: US 60, GSP, Spüle 80 unterm Fenster …“ | Je Wand Breite, Fenster/Türen, Möbel von links nach rechts; Elektropunkte mit Abstand von links, Höhe, Stromkreis – oder Claude schlägt sie nach DIN 18015-2 vor |
 
 Schaltungen im Stromlaufplan: Aus-, Serien-, Wechsel-, Kreuzschaltung, Stromstoßschaltung, Treppenlicht, Dimmer, Bewegungsmelder, Steckdosen, Herd/Drehstrom, Wendeschützschaltung und freie Strompfade.
 
@@ -25,9 +26,17 @@ Schaltungen im Stromlaufplan: Aus-, Serien-, Wechsel-, Kreuzschaltung, Stromsto�
 |---|---|---|
 | ![](docs/stromlaufplan_verteilung.png) | ![](docs/stromlaufplan_schaltungen.png) | ![](docs/installationsplan.png) |
 
+Der **Küchenplan** zeigt jede Wand von vorn: Unter-, Ober- und Hochschränke mit Gerätenischen, Arbeitsplatte, Dunstabzug, Fenster und Türen. Die Dosen sind maßstäblich (Ø 68 mm) mit Nummer und Kurzzeichen eingezeichnet, unten die Abstände ab linker Wandecke, links die Höhen über Fertigfußboden, rechts die Möbelhöhen. Die Installationszonen nach DIN 18015-3 sind hinterlegt, daneben steht die Punkteliste mit Symbol, x, h, Stromkreis und Bemerkung – für Küchenbauer und Baustelle.
+
+![Küchenplan – Wandansicht mit Höhen](docs/kuechenplan.png)
+
 Alle Beispiele als PDF, .qet und Excel liegen im Ordner [`beispiele/`](beispiele/), alle Symbole im [Symbolkatalog](beispiele/Symbolkatalog.pdf).
 
-Dazu prüft der Skill (nur als Hinweis, die Entscheidung bleibt bei dir): fehlender 30-mA-FI, LS zu groß für den Querschnitt, Polzahl zur Leitung, Stromkreise je FI, Spannungsfall > 3 %, Ausstattung nach DIN 18015-2, Installationszonen nach DIN 18015-3, Bereiche im Bad nach VDE 0100-701.
+Dazu prüft der Skill (nur als Hinweis, die Entscheidung bleibt bei dir):
+
+- **Verteilung**: fehlender 30-mA-FI (Steckdosen und Beleuchtung), LS zu groß für den Querschnitt, Polzahl zur Leitung, Stromkreise je FI (DIN 18015-1: höchstens 2 je 2-poligem, 6 je 4-poligem FI), Herd 20 A, Durchlauferhitzer, Ladeeinrichtung, Zuleitung 63 A, Spannungsfall > 3 %, Stromkreise zur Wohnfläche (DIN 18015-2 Tabelle 1).
+- **Installationsplan**: Ausstattung je Raum nach DIN 18015-2 (oder ★★/★★★ nach RAL-RG 678), Schaltstelle an jedem Raumzugang, Installationszonen und Schalterhöhe nach DIN 18015-3 (Schlossseite der Tür), barrierefrei nach DIN 18040-2, Rauchwarnmelder nach DIN 14676-1, Bereiche im Bad nach VDE 0100-701.
+- **Küchenplan**: 2 Steckdosen je 1,20 m Arbeitsfläche, Anschlüsse für Herd, Geschirrspüler, Mikrowelle, Kühlgerät, Dunstabzug und Daten, Steckdosen hinter Möbeln oder direkt über Spüle/Kochfeld.
 
 ## Installation
 
@@ -126,7 +135,7 @@ install.ps1, install.sh  Installationsskripte
 
 ## Hinweise
 
-- Der Skill ist ein Werkzeug für **Elektrofachkräfte**. Die Normhinweise ersetzen keine Bemessung, Prüfung oder Dokumentation nach VDE. Die Tabelle zu DIN 18015-2 ist noch nicht mit dem Normtext abgeglichen (`"geprueft": false`) – Korrekturen sind willkommen.
+- Der Skill ist ein Werkzeug für **Elektrofachkräfte**. Die Normhinweise ersetzen keine Bemessung, Prüfung oder Dokumentation nach VDE. Die Ausstattungstabelle ist mit DIN 18015-2:2021-10 und RAL-RG 678:2023-02 abgeglichen; der Skill enthält nur Zahlenwerte und Fundstellen, keinen Normtext – maßgeblich ist die Norm selbst. Mehrfachsteckdosen zählen standardmäßig als ein Auslass (`"zaehlweise": "einsatz"` zählt jede Steckdose).
 - Die Symbole sind eigene Zeichnungen nach DIN EN 60617, eingebettet in jede .qet-Datei.
 - Fehler gefunden oder ein Symbol fehlt? Gern ein [Issue](https://github.com/julayyt/elektroplan/issues) oder einen Pull Request.
 

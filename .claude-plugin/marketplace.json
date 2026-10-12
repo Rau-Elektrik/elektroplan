@@ -8,8 +8,8 @@
     {
       "name": "elektroplan",
       "source": "./",
-      "description": "Verteilerplan, Stromlaufplan und Installationsplan als QElectroTech-Datei und PDF mit eigenem Firmenschriftfeld.",
-      "version": "1.0.0",
+      "description": "Verteilerplan, Stromlaufplan, Installationsplan und Küchenplan (Wandansicht mit Höhen) als QElectroTech-Datei und PDF mit eigenem Firmenschriftfeld.",
+      "version": "1.1.0",
       "category": "productivity"
     }
   ]

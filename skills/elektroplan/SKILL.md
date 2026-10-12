@@ -1,9 +1,9 @@
 ---
 name: elektroplan
-description: "Elektropläne nach DIN EN 60617 als QElectroTech-Datei (.qet) plus PDF mit eigenem Firmenschriftfeld und Logo – Verteilerplan einpolig und Stromlaufplan der Verteilung allpolig (Klemmleiste X1, Hauptschalter, Schienen, FI, LS, Abgangsklemmen), beides auch aus der Excel-Stromkreisliste; Stromlaufplan von Installationsschaltungen (Wechsel-, Kreuz-, Stromstoßschaltung, Wendeschütz …); Installationsplan (Grundriss mit Symbolen, Legende mit Stückzahlen). Verwenden bei Schaltplan, Verteilerplan, Stromlaufplan, Übersichtsschaltplan, Installationsplan, Elektroplan, Verteilerdokumentation, Stromkreisliste, QElectroTech – und zum Einrichten oder Ändern der Firmendaten/des Logos für diese Pläne."
+description: "Elektropläne nach DIN EN 60617 als QElectroTech-Datei (.qet) plus PDF mit eigenem Firmenschriftfeld und Logo – Verteilerplan einpolig und Stromlaufplan der Verteilung allpolig (Klemmleiste X1, Hauptschalter, Schienen, FI, LS, Abgangsklemmen), beides auch aus der Excel-Stromkreisliste; Stromlaufplan von Installationsschaltungen (Wechsel-, Kreuz-, Stromstoßschaltung, Wendeschütz …); Installationsplan (Grundriss mit Symbolen, Legende mit Stückzahlen); Küchenplan/Wandansicht (Frontansicht je Wand mit Küchenmöbeln, Dosen, Höhen über OKFF, Installationszonen, Punkteliste). Normhinweise nach DIN 18015-1/-2/-3, RAL-RG 678, DIN 18040-2, DIN 14676-1. Verwenden bei Schaltplan, Verteilerplan, Stromlaufplan, Übersichtsschaltplan, Installationsplan, Elektroplan, Küchenplan, Küchenansicht, Wandansicht, Höhenplan, Verteilerdokumentation, Stromkreisliste, QElectroTech – und zum Einrichten oder Ändern der Firmendaten/des Logos für diese Pläne."
 ---
 
-# Elektroplan (Verteilerplan · Stromlaufplan · Installationsplan)
+# Elektroplan (Verteilerplan · Stromlaufplan · Installationsplan · Küchenplan)
 
 Erzeugt aus einer JSON-Beschreibung (oder der Excel-Stromkreisliste):
 - **`.qet`**: Projekt für QElectroTech (ab 0.100), voll bearbeitbar. Symbole eingebettet unter „Importierte Elemente › Elektroplan (DIN EN 60617)“, Schriftfeld als eingebettete Vorlage `elektroplan_a3q` / `_a4q` / `_a4h`.
@@ -40,7 +40,8 @@ python -X utf8 <SKILL>/scripts/einrichtung.py status
   „Stromlaufplan“ für eine Verteilung meint in der Praxis meist den **allpoligen Stromlaufplan der Verteilung** (`--darstellung allpolig`). Den Baustein-Stromlaufplan (Wechsel-, Kreuzschaltung …) nur, wenn ausdrücklich Installationsschaltungen gewünscht sind. Im Zweifel kurz nachfragen.
 - *Stromlaufplan*: welche Schaltungen (Typen siehe Referenz, auch Wendeschützschaltung `wendeschuetz`), LS und Phase, Anzahl Schalter/Taster/Leuchten, Orte der Schalter.
 - *Installationsplan*: Raummaße aus dem Aufmaß (Innenmaße, Wanddicken, Türen, Fenster) **oder** Grundriss vom Architekten (PDF/Bild + Maßstab bzw. eine bekannte Breite). Dazu je Gerät Raum, Position, Wand, Stromkreis, Höhe.
-  Nennt der Nutzer nur Räume, aber keine Geräte: zuerst eine **Ausstattung nach DIN 18015-2 vorschlagen** (`referenz/ausstattung_din18015.md`, Zahlen in `ausstattung_din18015.json`) und bestätigen lassen, erst dann zeichnen. Solange die Tabelle `"geprueft": false` hat, den Vorschlag als „Tabelle noch nicht mit Normtext abgeglichen“ kennzeichnen.
+  Nennt der Nutzer nur Räume, aber keine Geräte: zuerst eine **Ausstattung nach DIN 18015-2 vorschlagen** (`referenz/ausstattung_din18015.md`, Zahlen in `ausstattung_din18015.json`, mit DIN 18015-2:2021-10 abgeglichen) und bestätigen lassen, erst dann zeichnen. Standard ist Ausstattungswert 1 (Mindestausstattung); ★★/★★★ nach RAL-RG 678 nur auf Wunsch (`"ausstattungswert": 2|3`).
+- *Küchenplan / Wandansicht*: je Wand Breite, Fenster/Türen (Brüstung, Anschlag) und die Möbel von links nach rechts mit Breiten – am besten aus dem Plan des Küchenstudios (PDF/Foto, Maße ablesen und bestätigen lassen). Dazu je Elektropunkt x (Mitte ab linker Wandecke), h (Mitte über OKFF), Kombination, Stromkreis. Fehlen Punkte: Ausstattung Küche nach DIN 18015-2 vorschlagen (2 Steckdosen je 1,20 m Arbeitsfläche, Herd 3 × 230 V, Geschirrspüler, Mikrowelle/Dampfgarer, Kühlgerät, Dunstabzug, IuK) und Lage nach Praxis (Geschirrspüler-Anschluss im Nachbarschrank, Kühlschrank im Hochschrank über dem Gerät, Arbeitsplatte h = 1,15 m, nicht über Spüle/Kochfeld). Herstellerangaben gehen vor. Eine Wand je A3-Blatt bei 1:20; alle Wände auf einem Blatt mit `"massstab": 50`.
 - Kopfdaten: Kunde, Objekt, Auftrags-Nr., Datum, Revision. `bearbeiter` weglassen = Kürzel aus der Einrichtung.
 
 ## 2. Plan-JSON schreiben
@@ -64,7 +65,7 @@ Vorschau-PNG ansehen (unter Windows kurzen Vorschauordner wählen, z. B. `%TEMP%
 - `HINWEIS (Einrichtung)`: keine Firmendaten → Schritt 0 nachholen.
 - `HINWEIS (Layout)`: überlappende Texte oder Inhalt außerhalb des Rahmens. Durch Ändern der JSON beheben (andere Position, kürzerer Text, anderes Format).
 - `HINWEIS (fachlich)`: nur Verteilung (FI-Pflicht, Querschnitt zu Nennstrom, Polzahl zu Aderzahl, Anzahl Stromkreise je FI). Nichts eigenmächtig ändern, sondern dem Nutzer nennen. Die Bemessung bleibt Sache der Elektrofachkraft.
-- `HINWEIS (Norm)`: Spannungsfall je Stromkreis (> 3 %, DIN 18015-1 / VDE 0100-520), Stromkreisanzahl zur `wohnflaeche` und Ausstattung je Raum (DIN 18015-2), Montagehöhen und Schalter neben Türen (DIN 18015-3), Steckdosen/Schalter in Bereich 1/2 von Dusche/Wanne (VDE 0100-701, wenn `sanitaer` angegeben). Ebenfalls nur Hinweise.
+- `HINWEIS (Norm)`: Spannungsfall je Stromkreis (> 3 %, DIN 18015-1), Stromkreisanzahl zur `wohnflaeche` (DIN 18015-2 Tab. 1), Herd 20 A / Durchlauferhitzer 35 A / Ladeeinrichtung 32 A / Zuleitung 63 A (DIN 18015-1), Ausstattung je Raum (DIN 18015-2 Tab. 2 bzw. RAL-RG 678), Schaltstelle je Raumzugang, Installationszonen und Schaltermitte ≤ 1,05 m, Schalter an der Schlossseite (DIN 18015-3), barrierefrei 0,85 m (DIN 18040-2), Rauchwarnmelder (DIN 14676-1), Bereich 1/2 von Dusche/Wanne (VDE 0100-701), im Küchenplan Steckdosen je 1,20 m Arbeitsfläche und Küchenanschlüsse. „Praxis“-Hinweise sind keine Norm. Ebenfalls nur Hinweise.
 
 ## 5. Ablage und Übergabe
 
@@ -80,7 +81,7 @@ Ablage: der Ordner, den der Nutzer nennt, sonst `ablage` aus der Einrichtung (`<
 - **Neu erzeugen überschreibt die `.qet`.** Wurde die Datei in QElectroTech von Hand bearbeitet: nicht überschreiben, sondern mit neuem Namen oder neuer Revision erzeugen und vorher fragen.
 - Die Pläne sind ein Werkzeug für Elektrofachkräfte. Normhinweise ersetzen keine Bemessung und Prüfung nach VDE.
 - BMK im Verteilerplan ohne Bindestrich (`F1`, `Q1`, `K1`), fortlaufend in Verteilerreihenfolge; FI und LS teilen sich die F-Nummern (wie in der Stromkreisliste).
-- Fachliche Grundlagen und Konventionen: `referenz/fachliches.md`.
+- Fachliche Grundlagen, Normwerte mit Fundstellen und Konventionen: `referenz/fachliches.md`. Normtexte nicht wörtlich in Pläne oder den Skill übernehmen (Urheberrecht DIN) – nur Zahlenwerte und Fundstellen.
 - Grundriss vom Architekten: zuerst Raster erzeugen und Positionen ablesen:
   ```
   python -X utf8 <SKILL>/scripts/grundriss_raster.py PLAN.pdf --massstab 100 --dpi 150 [--ausschnitt x0 y0 x1 y1] --ausgabe raster.png
@@ -103,12 +104,13 @@ Ablage: der Ordner, den der Nutzer nennt, sonst `ablage` aus der Einrichtung (`<
 | `scripts/ep/verteiler_allpolig.py` | Stromlaufplan der Verteilung, allpolig |
 | `scripts/ep/stromlaufplan.py` | Schaltungsbausteine Stromlaufplan |
 | `scripts/ep/installationsplan.py` | Grundriss, Wandautomatik, Legende, Maßstabsbalken |
+| `scripts/ep/wandansicht.py` | Küchenplan/Wandansicht: Möbel, Dosen maßstäblich, steigende Bemaßung, Zonen, Punkteliste, Küchen-Normhinweise |
 | `scripts/ep/stromkreisliste.py` | Import der Excel-Stromkreisliste und Ausfüllen der Vorlage |
-| `scripts/ep/normpruefung.py` | Normhinweise (Spannungsfall, DIN 18015-2/-3, VDE 0100-701) |
+| `scripts/ep/normpruefung.py` | Normhinweise (DIN 18015-1/-2/-3, RAL-RG 678, DIN 18040-2, DIN 14676-1, VDE 0100-701) |
 | `scripts/ep/symbole.py` | Symbolsatz DIN EN 60617 (QElectroTech-Elementformat) |
 | `scripts/ep/qet_writer.py`, `pdf_writer.py` | Ausgabe .qet / PDF aus demselben Modell |
 | `scripts/ep/schriftfeld.py` | Schriftfeld mit Firmendaten und Logo |
-| `referenz/plan_format.md` | JSON-Format aller drei Planarten |
+| `referenz/plan_format.md` | JSON-Format aller Planarten (Abschnitt 4: Küchenplan/Wandansicht) |
 | `referenz/fachliches.md` | Normen, Kennbuchstaben, Konventionen |
-| `referenz/ausstattung_din18015.md` / `.json` | Ausstattung nach DIN 18015-2 (Tabelle noch ungeprüft) |
+| `referenz/ausstattung_din18015.md` / `.json` | Ausstattung nach DIN 18015-2:2021-10 + RAL-RG 678 ★★/★★★ (abgeglichen) |
 | `referenz/beispiele/*.json` | Musterpläne |

@@ -536,14 +536,17 @@ def plausibilitaet(daten: dict) -> list[str]:
         if art not in ("LS", "FILS", "SICH"):
             continue
         fi = _norm(e.get("fi"))
-        if fi:
-            anzahl_je_fi[fi] = anzahl_je_fi.get(fi, 0) + 1
+        if fi and _zahl(e.get("pole")) not in ("3", "3+N", "4"):
+            anzahl_je_fi[fi] = anzahl_je_fi.get(fi, 0) + 1       # einphasige Endstromkreise
         mit_fi = bool(fi) or art == "FILS"
         text = f"{_norm(e.get('verbraucher'))} {_norm(e.get('raum'))}".lower()
         if not mit_fi:
             if "steckdose" in text:
-                out.append(f"{bmk}: Steckdosenstromkreis ohne FI – VDE 0100-410 (411.3.3): "
-                           "30-mA-FI für Steckdosen bis 32 A prüfen")
+                out.append(f"{bmk}: Steckdosenstromkreis ohne FI – VDE 0100-410 (411.3.3) / DIN 18015-1 "
+                           "(5.2.5): 30-mA-FI für Steckdosen bis 32 A")
+            elif re.search(r"licht|beleucht|leuchte|lampe", text):
+                out.append(f"{bmk}: Beleuchtungsstromkreis ohne FI – DIN 18015-1 (5.2.5) / VDE 0100-410: "
+                           "30-mA-FI auch für Beleuchtungsstromkreise in Wohnungen")
             elif re.search(r"\bbad\b|dusche|wc", text):
                 out.append(f"{bmk}: Stromkreis im Bad ohne FI – VDE 0100-701: 30-mA-FI prüfen "
                            "(Ausnahmen beachten)")
@@ -572,7 +575,10 @@ def plausibilitaet(daten: dict) -> list[str]:
         if n and pole in ("1", "1+N") and n >= 5:
             out.append(f"{bmk}: einpoliges Schutzorgan an {n}-adriger Leitung – richtig?")
     for fi, n in anzahl_je_fi.items():
-        if n > 6:
-            out.append(f"{fi}: {n} Stromkreise an einem FI – Ableitströme und Verfügbarkeit "
-                       "prüfen, ggf. auf mehrere FI aufteilen")
+        zweipolig = _zahl(fis.get(fi, {}).get("pole")) in ("2", "1+N")
+        grenze = 2 if zweipolig else 6
+        if n > grenze:
+            out.append(f"{fi}: {n} einphasige Stromkreise an einem {'2' if zweipolig else '4'}-poligen FI – "
+                       f"DIN 18015-1 (5.2.5) sieht höchstens {grenze} vor (Verfügbarkeit, Ableitströme); "
+                       "aufteilen oder FI/LS")
     return out

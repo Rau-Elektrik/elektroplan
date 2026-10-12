@@ -1,0 +1,89 @@
+{
+  "plan": "kuechenplan",
+  "titel": "Elektroplan Küche – Wandansichten",
+  "dateiname": "2026-10-12 Kuechenplan Beispiel",
+  "raum": "Küche",
+  "projekt": {
+    "kunde": "Familie Muster",
+    "objekt": "Musterstraße 12, 12345 Musterstadt",
+    "auftrag": "2026-014",
+    "datum": "12.10.2026",
+    "bearbeiter": "M. Mustermann",
+    "revision": "A"
+  },
+  "deckenhoehe": 2.50,
+  "kueche": {"arbeitsplatte": 0.91, "sockel": 0.10, "oberschrank_uk": 1.45, "oberschrank_ok": 2.17},
+  "zonen": true,
+  "waende": [
+    {
+      "name": "Wand A",
+      "bezeichnung": "Spülenzeile (Fensterwand)",
+      "breite": 3.40,
+      "oeffnungen": [{"art": "fenster", "x": 1.30, "breite": 1.00, "bruestung": 1.05, "hoehe": 1.20}],
+      "moebel": [
+        {"art": "unterschrank", "breite": 0.60},
+        {"art": "geschirrspueler", "breite": 0.60},
+        {"art": "spuele", "breite": 0.80},
+        {"art": "unterschrank", "breite": 0.60},
+        {"art": "unterschrank", "breite": 0.80, "text": "Eck-US"},
+        {"art": "oberschrank", "x": 0, "breite": 1.20},
+        {"art": "oberschrank", "x": 2.40, "breite": 1.00}
+      ],
+      "linien": [{"art": "led", "x": 0.05, "breite": 1.10, "h": 1.43, "text": "LED"}],
+      "punkte": [
+        {"symbol": "geraet", "text": "GS", "x": 0.30, "h": 0.30, "stromkreis": "F6",
+         "bemerkung": "im Nachbarschrank, nicht hinter dem GSP"},
+        {"symbol": "steckdose", "anzahl": 2, "x": 0.40, "h": 1.15, "stromkreis": "F3", "text": "Arbeitsplatte"},
+        {"symbol": "auslass", "text": "Unterbauleuchte", "x": 1.10, "h": 1.40, "stromkreis": "F2",
+         "bemerkung": "Leitung 30 cm Vorrat, Treiber im OS"},
+        {"symbol": "geraet", "text": "KL", "x": 2.25, "h": 0.50, "stromkreis": "F7",
+         "bemerkung": "Untertischgerät 5 l, Steckdose im Spülenschrank"},
+        {"symbol": "steckdose", "anzahl": 2, "x": 2.65, "h": 1.15, "stromkreis": "F3", "text": "Arbeitsplatte"},
+        {"symbol": "daten", "anzahl": 1, "x": 3.05, "h": 1.15, "text": "LAN"},
+        {"symbol": "steckdose", "anzahl": 1, "x": 3.121, "h": 1.15, "stromkreis": "F3", "text": "IuK",
+         "bemerkung": "im 2-fach-Rahmen mit Pkt. 6"}
+      ]
+    },
+    {
+      "name": "Wand B",
+      "bezeichnung": "Herdzeile mit Hochschränken",
+      "breite": 3.00,
+      "moebel": [
+        {"art": "kuehlschrank", "breite": 0.60, "nischen": [{"uk": 0.15, "ok": 1.78, "text": "Kühlschrank"}]},
+        {"art": "hochschrank", "breite": 0.60, "text": "HS Geräte",
+         "nischen": [{"uk": 0.85, "ok": 1.45, "text": "Backofen"}, {"uk": 1.45, "ok": 1.83, "text": "Mikrowelle"}]},
+        {"art": "unterschrank", "breite": 0.60},
+        {"art": "kochfeld", "breite": 0.80, "text": "Kochfeld-US"},
+        {"art": "unterschrank", "breite": 0.40},
+        {"art": "oberschrank", "x": 1.20, "breite": 0.60},
+        {"art": "dunstabzug", "x": 1.80, "breite": 0.80},
+        {"art": "oberschrank", "x": 2.60, "breite": 0.40}
+      ],
+      "punkte": [
+        {"symbol": "steckdose", "x": 0.30, "h": 2.05, "stromkreis": "F8", "text": "Kühlschrank",
+         "bemerkung": "über dem Gerät im HS-Oberteil"},
+        {"symbol": "geraet", "text": "BO", "x": 0.90, "h": 0.30, "stromkreis": "F9",
+         "bemerkung": "im Sockelfach des Geräte-HS"},
+        {"symbol": "geraet", "text": "MW", "x": 0.90, "h": 2.05, "stromkreis": "F11", "bemerkung": "Kombi-Mikrowelle"},
+        {"symbol": "steckdose", "anzahl": 2, "x": 1.50, "h": 1.15, "stromkreis": "F4", "text": "Arbeitsplatte"},
+        {"symbol": "geraet", "text": "H", "x": 2.20, "h": 0.40, "stromkreis": "F10",
+         "bemerkung": "Herdanschlussdose, 5×2,5 mm²"},
+        {"symbol": "steckdose", "x": 2.20, "h": 2.30, "stromkreis": "F4", "text": "Dunstabzug",
+         "bemerkung": "in der Kaminverkleidung"},
+        {"symbol": "steckdose", "anzahl": 2, "x": 2.80, "h": 1.15, "stromkreis": "F4", "text": "Arbeitsplatte"}
+      ]
+    },
+    {
+      "name": "Wand C",
+      "bezeichnung": "Türwand",
+      "breite": 2.40,
+      "oeffnungen": [{"art": "tuer", "x": 0.25, "breite": 0.885, "hoehe": 2.01, "anschlag": "links"}],
+      "punkte": [
+        {"symbol": "schalter", "art": "aus", "anzahl": 2, "richtung": "senkrecht", "x": 1.335, "h": 1.05,
+         "stromkreis": "F2", "text": "Decke / Unterbau"},
+        {"symbol": "thermostat", "x": 1.70, "h": 1.50, "bemerkung": "Raumthermostat FBH, nach Hersteller"},
+        {"symbol": "steckdose", "anzahl": 2, "x": 2.05, "h": 0.30, "stromkreis": "F5", "text": "allgemein"}
+      ]
+    }
+  ]
+}

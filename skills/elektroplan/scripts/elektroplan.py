@@ -5,7 +5,8 @@ Aufruf:
                        [--vorschau ORDNER | --keine-vorschau]
   python elektroplan.py STROMKREISLISTE.xlsx ...   (Verteilerplan aus der Excel-Vorlage)
 
-PLAN.json enthält "plan": "verteilerplan" | "stromlaufplan" | "installationsplan".
+PLAN.json enthält "plan": "verteilerplan" | "stromlaufplan" | "installationsplan" | "wandansicht"
+  ("kuechenplan" = Wandansicht der Küche mit Möbeln, Elektropunkten und Höhen).
 Verteilung (mit "schutzorgane"): --darstellung einpolig | allpolig | beide,
   --stromkreisliste füllt zusätzlich die Excel-Vorlage „Verteilerdokumentation Stromkreisliste“ aus.
 Format siehe referenz/plan_format.md.
@@ -25,7 +26,7 @@ from ep.pruefung import pruefe  # noqa: E402
 from ep.qet_writer import schreibe_qet  # noqa: E402
 
 STANDARDFORMAT = {"verteilerplan": "A3 quer", "stromlaufplan": "A4 quer",
-                  "installationsplan": "A3 quer"}
+                  "installationsplan": "A3 quer", "wandansicht": "A3 quer", "kuechenplan": "A3 quer"}
 
 
 def lade(pfad: Path) -> dict:
@@ -60,9 +61,11 @@ def baue(daten: dict, fmt_name: str | None = None, darstellung: str | None = Non
         from ep import stromlaufplan as m
     elif art == "installationsplan":
         from ep import installationsplan as m
+    elif art in ("wandansicht", "kuechenplan", "küchenplan"):
+        from ep import wandansicht as m
     else:
         raise SystemExit(f'Unbekannte Planart {art!r} – erwartet "verteilerplan", '
-                         f'"stromlaufplan" oder "installationsplan"')
+                         f'"stromlaufplan", "installationsplan" oder "wandansicht"/"kuechenplan"')
     return m.baue(daten, fmt)
 
 
