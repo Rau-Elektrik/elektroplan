@@ -1,0 +1,16 @@
+{
+  "name": "elektroplan",
+  "owner": { "name": "julayyt", "url": "https://github.com/julayyt" },
+  "metadata": {
+    "description": "Elektropläne nach DIN EN 60617 für Elektrofachbetriebe"
+  },
+  "plugins": [
+    {
+      "name": "elektroplan",
+      "source": "./",
+      "description": "Verteilerplan, Stromlaufplan und Installationsplan als QElectroTech-Datei und PDF mit eigenem Firmenschriftfeld.",
+      "version": "1.0.0",
+      "category": "productivity"
+    }
+  ]
+}

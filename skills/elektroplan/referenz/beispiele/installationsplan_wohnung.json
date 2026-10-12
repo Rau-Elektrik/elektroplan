@@ -1,0 +1,82 @@
+{
+  "plan": "installationsplan",
+  "format": "A3 quer",
+  "dateiname": "Installationsplan Wohnung Beispiel",
+  "titel": "Installationsplan Wohnung 1. OG",
+  "projekt": {"kunde": "Familie Muster", "objekt": "Musterstraße 12, 12345 Musterstadt",
+              "auftrag": "2026-014", "datum": "08.10.2026", "bearbeiter": "M. Mustermann", "revision": "A"},
+  "grundriss": {
+    "wanddicke": 0.115,
+    "raeume": [
+      {"name": "Küche", "x": 0, "y": 0, "b": 3.5, "t": 3.2, "wand": {"n": 0.3, "w": 0.3}},
+      {"name": "Bad", "x": 3.615, "y": 0, "b": 2.2, "t": 3.2, "wand": {"n": 0.3}},
+      {"name": "Schlafzimmer", "x": 5.93, "y": 0, "b": 3.8, "t": 3.2, "wand": {"n": 0.3, "o": 0.3}},
+      {"name": "Flur", "x": 0, "y": 3.315, "b": 9.73, "t": 1.4, "wand": {"w": 0.3, "o": 0.3},
+       "textpos": [6.2, 0.9]},
+      {"name": "Wohnzimmer", "x": 0, "y": 4.83, "b": 5.5, "t": 4.2, "wand": {"s": 0.3, "w": 0.3}},
+      {"name": "Kinderzimmer", "x": 5.615, "y": 4.83, "b": 4.115, "t": 4.2, "wand": {"s": 0.3, "o": 0.3}}
+    ],
+    "tueren": [
+      {"raum": "Küche", "seite": "s", "pos": 2.4},
+      {"raum": "Bad", "seite": "s", "pos": 0.6, "breite": 0.76},
+      {"raum": "Schlafzimmer", "seite": "s", "pos": 0.5, "anschlag": "ende"},
+      {"raum": "Wohnzimmer", "seite": "n", "pos": 4.3},
+      {"raum": "Kinderzimmer", "seite": "n", "pos": 0.4},
+      {"raum": "Flur", "seite": "w", "pos": 0.2, "breite": 1.0}
+    ],
+    "fenster": [
+      {"raum": "Küche", "seite": "n", "pos": 1.0, "breite": 1.2},
+      {"raum": "Bad", "seite": "n", "pos": 0.7, "breite": 0.8},
+      {"raum": "Schlafzimmer", "seite": "n", "pos": 1.2, "breite": 1.4},
+      {"raum": "Wohnzimmer", "seite": "s", "pos": 1.0, "breite": 2.5},
+      {"raum": "Wohnzimmer", "seite": "w", "pos": 1.5, "breite": 1.2},
+      {"raum": "Kinderzimmer", "seite": "s", "pos": 1.3, "breite": 1.4}
+    ]
+  },
+  "geraete": [
+    {"raum": "Küche", "symbol": "steckdose", "anzahl": 2, "x": 0.5, "y": 0, "stromkreis": "F2", "hoehe": 1.1},
+    {"raum": "Küche", "symbol": "steckdose", "anzahl": 2, "x": 2.8, "y": 0, "stromkreis": "F3", "hoehe": 1.1},
+    {"raum": "Küche", "symbol": "geraet", "text": "GS", "x": 3.5, "y": 0.9, "stromkreis": "F4", "hoehe": 0.3},
+    {"raum": "Küche", "symbol": "geraet", "text": "H", "x": 0, "y": 1.6, "stromkreis": "F11", "hoehe": 0.7},
+    {"raum": "Küche", "symbol": "steckdose", "x": 0, "y": 2.6, "stromkreis": "F5", "hoehe": 0.3},
+    {"raum": "Küche", "symbol": "leuchte", "x": 1.75, "y": 1.6, "stromkreis": "F7"},
+    {"raum": "Küche", "symbol": "schalter", "art": "aus", "x": 2.1, "y": 3.2, "stromkreis": "F7", "hoehe": 1.05},
+
+    {"raum": "Bad", "symbol": "leuchte", "x": 1.1, "y": 1.6, "stromkreis": "F10"},
+    {"raum": "Bad", "symbol": "wandleuchte", "x": 2.2, "y": 1.2, "stromkreis": "F10", "hoehe": 2.0},
+    {"raum": "Bad", "symbol": "steckdose", "anzahl": 2, "x": 2.2, "y": 2.0, "stromkreis": "F10", "hoehe": 1.2},
+    {"raum": "Bad", "symbol": "steckdose", "x": 0, "y": 0.8, "stromkreis": "F12", "hoehe": 0.3, "bemerkung": "WM"},
+    {"raum": "Bad", "symbol": "geraet", "text": "DLE", "x": 0, "y": 2.3, "stromkreis": "F14", "hoehe": 1.4},
+    {"raum": "Bad", "symbol": "schalter", "art": "aus", "x": 1.6, "y": 3.2, "stromkreis": "F10", "hoehe": 1.05},
+
+    {"raum": "Schlafzimmer", "symbol": "leuchte", "x": 1.9, "y": 1.6, "stromkreis": "F9"},
+    {"raum": "Schlafzimmer", "symbol": "schalter", "art": "aus", "x": 1.6, "y": 3.2, "stromkreis": "F9", "hoehe": 1.05},
+    {"raum": "Schlafzimmer", "symbol": "steckdose", "anzahl": 2, "x": 0, "y": 1.0, "stromkreis": "F9", "hoehe": 0.7},
+    {"raum": "Schlafzimmer", "symbol": "steckdose", "anzahl": 2, "x": 3.8, "y": 1.0, "stromkreis": "F9", "hoehe": 0.7},
+    {"raum": "Schlafzimmer", "symbol": "steckdose", "x": 3.1, "y": 3.2, "stromkreis": "F9", "hoehe": 0.3},
+
+    {"raum": "Flur", "symbol": "leuchte", "x": 2.4, "y": 0.7, "stromkreis": "F7"},
+    {"raum": "Flur", "symbol": "leuchte", "x": 7.2, "y": 0.7, "stromkreis": "F7"},
+    {"raum": "Flur", "symbol": "schalter", "art": "wechsel", "x": 1.4, "y": 0, "stromkreis": "F7", "hoehe": 1.05},
+    {"raum": "Flur", "symbol": "schalter", "art": "kreuz", "x": 5.5, "y": 1.4, "stromkreis": "F7", "hoehe": 1.05},
+    {"raum": "Flur", "symbol": "schalter", "art": "wechsel", "x": 9.1, "y": 0, "stromkreis": "F7", "hoehe": 1.05},
+    {"raum": "Flur", "symbol": "verteiler", "x": 8.1, "y": 1.4, "bemerkung": "UV"},
+    {"raum": "Flur", "symbol": "rauchmelder", "x": 4.8, "y": 0.7},
+    {"raum": "Flur", "symbol": "klingel", "x": 0.6, "y": 0, "hoehe": 2.0},
+
+    {"raum": "Wohnzimmer", "symbol": "leuchte", "x": 2.75, "y": 2.1, "stromkreis": "F8"},
+    {"raum": "Wohnzimmer", "symbol": "schalter", "art": "wechsel", "x": 3.9, "y": 0, "stromkreis": "F8", "hoehe": 1.05},
+    {"raum": "Wohnzimmer", "symbol": "schalter", "art": "wechsel", "x": 0, "y": 3.4, "stromkreis": "F8", "hoehe": 1.05},
+    {"raum": "Wohnzimmer", "symbol": "steckdose", "anzahl": 2, "x": 1.2, "y": 0, "stromkreis": "F8", "hoehe": 0.3},
+    {"raum": "Wohnzimmer", "symbol": "steckdose", "anzahl": 3, "x": 5.5, "y": 2.6, "stromkreis": "F8", "hoehe": 0.3},
+    {"raum": "Wohnzimmer", "symbol": "tv", "x": 5.5, "y": 1.9, "hoehe": 0.3},
+    {"raum": "Wohnzimmer", "symbol": "daten", "x": 5.5, "y": 1.4, "hoehe": 0.3},
+    {"raum": "Wohnzimmer", "symbol": "steckdose", "anzahl": 2, "x": 4.4, "y": 4.2, "stromkreis": "F8", "hoehe": 0.3},
+
+    {"raum": "Kinderzimmer", "symbol": "leuchte", "x": 2.05, "y": 2.1, "stromkreis": "F9"},
+    {"raum": "Kinderzimmer", "symbol": "schalter", "art": "aus", "x": 1.6, "y": 0, "stromkreis": "F9", "hoehe": 1.05},
+    {"raum": "Kinderzimmer", "symbol": "steckdose", "anzahl": 2, "x": 0, "y": 3.0, "stromkreis": "F9", "hoehe": 0.3},
+    {"raum": "Kinderzimmer", "symbol": "steckdose", "anzahl": 2, "x": 4.115, "y": 2.0, "stromkreis": "F9", "hoehe": 0.3},
+    {"raum": "Kinderzimmer", "symbol": "rauchmelder", "x": 2.05, "y": 1.0}
+  ]
+}

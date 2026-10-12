@@ -1,0 +1,1643 @@
+<project title="Stromlaufplan Beleuchtung und Steckdosen" version="0.100.0" uuid="{ad0ea884-4f21-5015-a1cb-2cb541a774f4}">
+    <titleblocktemplates>
+        <titleblocktemplate name="elektroplan_a4q">
+            <information>Schriftfeld Muster Elektrotechnik GmbH – erzeugt vom Skill elektroplan</information>
+            <logos>
+                <logo name="firmenlogo.png" type="png" storage="base64">iVBORw0KGgoAAAANSUhEUgAAAggAAAFACAYAAADZH4T/AABaXElEQVR42u3dd5hdVbk/8O+71t6nTEkhJNQUmkgioiaUZNpREMQKgRkbklAEu2Iv95oTveq9v6te5VouRbqCMyGAiggITsiEGpSWCAIhoXeSTDvn7L3W+/vj7BMmk0mZSSGZ+X6eZx4lyZw5Z589Z3/3Wu96l6gqiIiIiPoyPARERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBARERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBARERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERENKwEPASbNuPs88Ol550VVf77oC/cNaq05pmzjA13UxedCWvHw8cKiPBo7YQUXoKU8a74DxPW/MWXOpenXPUfHr3i+LWVfyItbVZbmx0PFhHR60RVeRQGOjB5GOShCujeZ/+xKixGZxoJj4IxxwI6ToIUfKkHUM+DtQukBDEhJMzCl7oB6MsSZi5DHN21ctLfF2g+73P59mDR/JxTBX8hiIgYEDZyUPrcUU45/bpz4HGOTVdPVHXwUS/gnVfAi4gFwJGDXSMkqCqciARiLEyqCuo91EX3qEb/s/KiE68sB8O80XyeqY+IeC1kQFhfS0ubbW1tdlNO+f1RNjv6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h7roHtXof1ZedOKVACD5vGHNARERA8LGD0weBnmoArr32X+sCovRmUbCo2DMsYCOkyAFX+oBlNeSXSAcQEwICbPwpW4A+rKEmcsQR3etnPT3BZrP+1y+PVg0P+e4WoGIiAFhi8w4+/xw6XmvF6od9IW7RpXWPHOWseFu6qIzYe14+OG3G+QwygZegpTxrvgPE9b8xZc6l6dc9R8eveL4tQONGBEREQMCERERgUWKRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBARERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCDwERERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBARERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhERETEgEBEREQMCERERMSAQERERAwIRERExIBAREREDAhEREQ0Iv1/EpGyT7k0hUsAAAAASUVORK5CYII=</logo>
+            </logos>
+            <grid cols="130;200;330;60;230;70;" rows="20;20;20;20;">
+                <logo row="0" col="0" name="" rowspan="4" resource="firmenlogo.png" />
+                <field row="0" col="1" name="" fontsize="8" align="left" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">Muster Elektrotechnik GmbH</translation>
+                        <translation lang="en">Muster Elektrotechnik GmbH</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="1" col="1" name="" fontsize="6" align="left" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">Max Mustermann · Musterstraße 1</translation>
+                        <translation lang="en">Max Mustermann · Musterstraße 1</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="2" col="1" name="" fontsize="6" align="left" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">12345 Musterstadt</translation>
+                        <translation lang="en">12345 Musterstadt</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="3" col="1" name="" fontsize="6" align="left" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">Tel. 0123 456789 · muster-elektro.de</translation>
+                        <translation lang="en">Tel. 0123 456789 · muster-elektro.de</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="0" col="2" name="" rowspan="2" fontsize="11" align="center" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">%title</translation>
+                        <translation lang="en">%title</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="2" col="2" name="" fontsize="7" align="center" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">%anlage</translation>
+                        <translation lang="en">%anlage</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="3" col="2" name="" fontsize="6" align="center" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">%plantyp</translation>
+                        <translation lang="en">%plantyp</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="0" col="3" name="" fontsize="6" align="left" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">Kunde</translation>
+                        <translation lang="en">Kunde</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="0" col="4" name="" fontsize="7" align="left" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">%kunde</translation>
+                        <translation lang="en">%kunde</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="1" col="3" name="" fontsize="6" align="left" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">Objekt</translation>
+                        <translation lang="en">Objekt</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="1" col="4" name="" fontsize="7" align="left" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">%objekt</translation>
+                        <translation lang="en">%objekt</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="2" col="3" name="" fontsize="6" align="left" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">Auftrag</translation>
+                        <translation lang="en">Auftrag</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="2" col="4" name="" fontsize="7" align="left" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">%auftrag</translation>
+                        <translation lang="en">%auftrag</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="3" col="3" name="" fontsize="6" align="left" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">Erstellt</translation>
+                        <translation lang="en">Erstellt</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="3" col="4" name="" fontsize="7" align="left" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">%datum · %bearbeiter</translation>
+                        <translation lang="en">%datum · %bearbeiter</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="0" col="5" name="" fontsize="6" align="center" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">Blatt</translation>
+                        <translation lang="en">Blatt</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="1" col="5" name="" rowspan="2" fontsize="11" align="center" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">%folio</translation>
+                        <translation lang="en">%folio</translation>
+                    </value>
+                    <label />
+                </field>
+                <field row="3" col="5" name="" fontsize="6" align="center" valign="center" hadjust="true" displaylabel="false">
+                    <value>
+                        <translation lang="de">Rev. %indexrev</translation>
+                        <translation lang="en">Rev. %indexrev</translation>
+                    </value>
+                    <label />
+                </field>
+            </grid>
+        </titleblocktemplate>
+    </titleblocktemplates>
+    <properties />
+    <symbol_texts upright="true" />
+    <newdiagrams>
+        <border cols="20" colsize="50" rows="9" rowsize="70" displaycols="true" displayrows="true" />
+        <inset titleblocktemplate="elektroplan_a4q" titleblocktemplateCollection="embedded" folio="%id/%total" displayAt="bottom" date="null" title="" author="" plant="" locmach="" indexrev="" version="" filename="" auto_page_num="" />
+        <conductors type="multi" num="" displaytext="0" condsize="1" color="#000000" numsize="7" />
+    </newdiagrams>
+    <diagram uuid="{d0a89d3f-f2f5-5b35-82ce-747c78a58980}" title="Stromlaufplan Beleuchtung und Steckdosen" author="M. Mustermann" date="null" folio="%id/%total" plant="UV Wohnung 1. OG · Flur, Wohnzimmer, Küche" locmach="" indexrev="A" version="0.100.0" filename="" auto_page_num="" displayAt="bottom" titleblocktemplate="elektroplan_a4q" titleblocktemplateCollection="embedded" cols="20" colsize="50" rows="9" rowsize="70" height="630" displaycols="true" displayrows="true" order="1" freezeNewElement="false" freezeNewConductor="false">
+        <properties>
+            <property name="kunde" show="1">Familie Muster</property>
+            <property name="objekt" show="1">Musterstraße 12, 12345 Musterstadt</property>
+            <property name="auftrag" show="1">2026-014</property>
+            <property name="datum" show="1">08.10.2026</property>
+            <property name="bearbeiter" show="1">M. Mustermann</property>
+            <property name="indexrev" show="1">A</property>
+            <property name="anlage" show="1">UV Wohnung 1. OG · Flur, Wohnzimmer, Küche</property>
+            <property name="plantyp" show="1">Stromlaufplan in aufgelöster Darstellung · DIN EN 61082 / DIN EN 60617</property>
+        </properties>
+        <defaultconductor type="multi" num="" displaytext="0" condsize="1" color="#000000" numsize="7" />
+        <elements>
+            <element type="embed://import/elektroplan_din_en_60617/ls.elmt" uuid="{7511e85b-9f4b-52c6-94d4-99060d581e0c}" prefix="" freezeLabel="false" x="100" y="140" z="10" orientation="0">
+                <terminals>
+                    <terminal id="0" x="0" y="-26" orientation="0" />
+                    <terminal id="1" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">F8</elementInformation>
+                    <elementInformation name="comment" show="1">B16</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="8" y="-26" rotation="0" uuid="{abbdc13a-0509-56c1-959d-c684257b3b70}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>F8</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-13" rotation="0" uuid="{d182c7d6-b24f-5028-8dd8-36b02e31f892}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>B16</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-1" rotation="0" uuid="{9546e639-6d71-57e6-ab1e-c071d09e19f3}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>function</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/wechsler_hand____11.elmt" uuid="{384791f5-0834-510b-8252-5f7cf5290e7f}" prefix="" freezeLabel="false" x="100" y="250" z="10" orientation="0">
+                <terminals>
+                    <terminal id="2" x="0" y="-26" orientation="0" />
+                    <terminal id="3" x="20" y="26" orientation="2" />
+                    <terminal id="4" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">S1</elementInformation>
+                    <elementInformation name="comment" show="1">Tür Flur</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="8" y="-26" rotation="0" uuid="{81251693-8b09-5fd6-8a80-fbbb5db27d84}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>S1</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-13" rotation="0" uuid="{7943510d-bf7a-5c9d-812d-22264e3dcb91}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>Tür Flur</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-1" rotation="0" uuid="{021ecbd5-224b-57cf-9fa7-8fd04d93c927}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>function</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/wechsler_hand____01.elmt" uuid="{504c7d9f-7804-574f-9429-d1f15a649446}" prefix="" freezeLabel="false" x="100" y="360" z="10" orientation="0">
+                <terminals>
+                    <terminal id="5" x="0" y="26" orientation="2" />
+                    <terminal id="6" x="20" y="-26" orientation="0" />
+                    <terminal id="7" x="0" y="-26" orientation="0" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">S2</elementInformation>
+                    <elementInformation name="comment" show="1">Tür Balkon</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="26" y="-26" rotation="0" uuid="{97bc1fd6-e022-55ca-859c-2149ac46c715}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>S2</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="26" y="-13" rotation="0" uuid="{f51bee33-591d-5bb1-8ec4-d4655502d0e8}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>Tür Balkon</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/leuchte.elmt" uuid="{af90367c-4236-5f22-b43d-9352f467b9cc}" prefix="" freezeLabel="false" x="100" y="505" z="10" orientation="0">
+                <terminals>
+                    <terminal id="8" x="0" y="-26" orientation="0" />
+                    <terminal id="9" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">E1</elementInformation>
+                    <elementInformation name="comment" show="1">Decke</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="13" y="-26" rotation="0" uuid="{bc0c29b1-665c-5ba5-a52b-b31ef10fb3a6}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>E1</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="13" y="6" rotation="0" uuid="{baf61af0-9c0b-52aa-a71f-bbd52727a945}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>Decke</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/ls.elmt" uuid="{548cdf1c-d717-5bbf-87f9-72e90f862b98}" prefix="" freezeLabel="false" x="200" y="140" z="10" orientation="0">
+                <terminals>
+                    <terminal id="10" x="0" y="-26" orientation="0" />
+                    <terminal id="11" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">F7</elementInformation>
+                    <elementInformation name="comment" show="1">B10</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="8" y="-26" rotation="0" uuid="{d1dcbcaf-5360-52d9-b5ad-7548f671c22c}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>F7</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-13" rotation="0" uuid="{81b55e7a-c730-5b3d-b299-6573188c549f}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>B10</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-1" rotation="0" uuid="{087edc60-7c83-5ac0-9419-7eea819a1529}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>function</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/wechsler_hand____11.elmt" uuid="{e16d09a5-bc90-5f88-93ac-20bef3bf01dd}" prefix="" freezeLabel="false" x="200" y="235" z="10" orientation="0">
+                <terminals>
+                    <terminal id="12" x="0" y="-26" orientation="0" />
+                    <terminal id="13" x="20" y="26" orientation="2" />
+                    <terminal id="14" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">S3</elementInformation>
+                    <elementInformation name="comment" show="1">Eingang</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="8" y="-26" rotation="0" uuid="{57e5cb23-0f03-5254-b15c-4f3ea905efdc}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>S3</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-13" rotation="0" uuid="{2084421a-75a2-560c-96b6-adbff0a8210f}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>Eingang</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-1" rotation="0" uuid="{57afac80-d8ee-559c-adeb-dc799b3bcc0f}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>function</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/kreuzschalter.elmt" uuid="{e6586553-9a0e-5c0f-a46a-e08cd50ff88c}" prefix="" freezeLabel="false" x="200" y="320" z="10" orientation="0">
+                <terminals>
+                    <terminal id="15" x="0" y="-26" orientation="0" />
+                    <terminal id="16" x="20" y="-26" orientation="0" />
+                    <terminal id="17" x="0" y="26" orientation="2" />
+                    <terminal id="18" x="20" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">S4</elementInformation>
+                    <elementInformation name="comment" show="1">Bad</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="26" y="-26" rotation="0" uuid="{cdb40d92-7297-5087-8ddb-f14a081c0286}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>S4</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="26" y="-13" rotation="0" uuid="{c491bde4-a211-5749-9b47-356bf649ec31}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>Bad</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/wechsler_hand____01.elmt" uuid="{6fc9f476-cda6-58b6-baeb-14eb26447584}" prefix="" freezeLabel="false" x="200" y="405" z="10" orientation="0">
+                <terminals>
+                    <terminal id="19" x="0" y="26" orientation="2" />
+                    <terminal id="20" x="20" y="-26" orientation="0" />
+                    <terminal id="21" x="0" y="-26" orientation="0" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">S5</elementInformation>
+                    <elementInformation name="comment" show="1">Küche</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="26" y="-26" rotation="0" uuid="{0a447799-1ac0-5ace-8cec-a6ef0aceddd7}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>S5</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="26" y="-13" rotation="0" uuid="{50e1794f-a63b-5b0a-a9b6-372ee99060f9}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>Küche</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/leuchte.elmt" uuid="{8ca61f94-a2e5-5cd9-b9a0-204dc97cd92d}" prefix="" freezeLabel="false" x="200" y="505" z="10" orientation="0">
+                <terminals>
+                    <terminal id="22" x="0" y="-26" orientation="0" />
+                    <terminal id="23" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">E2</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="13" y="-26" rotation="0" uuid="{e8f3aef0-ceb2-596b-87ac-ef92eca9a380}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>E2</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="13" y="6" rotation="0" uuid="{b3390c23-9605-571c-9afa-c731a6e4d28b}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/leuchte.elmt" uuid="{74a58fc1-4ab2-5f47-960a-97463b5a0196}" prefix="" freezeLabel="false" x="250" y="505" z="10" orientation="0">
+                <terminals>
+                    <terminal id="24" x="0" y="-26" orientation="0" />
+                    <terminal id="25" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">E3</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="13" y="-26" rotation="0" uuid="{2dab281b-4039-5bd2-abb2-5b8515646585}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>E3</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="13" y="6" rotation="0" uuid="{a5f8eef0-c7a5-5099-a0a9-0735c12cf8c7}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/ls.elmt" uuid="{65742799-257d-5b29-9690-e95fa6e8838e}" prefix="" freezeLabel="false" x="300" y="140" z="10" orientation="0">
+                <terminals>
+                    <terminal id="26" x="0" y="-26" orientation="0" />
+                    <terminal id="27" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">F15</elementInformation>
+                    <elementInformation name="comment" show="1">B10</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="8" y="-26" rotation="0" uuid="{b96e0247-73c5-5991-9c5f-b573b97df285}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>F15</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-13" rotation="0" uuid="{619341d6-7c18-5f3b-b1b9-67f7b4546a5c}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>B10</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-1" rotation="0" uuid="{789ec31b-d9a2-5f44-9bfc-d6133cbae537}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>function</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/schliesser_druck__.elmt" uuid="{707aacc9-0ef8-5050-93c3-406a6a15503a}" prefix="" freezeLabel="false" x="300" y="290" z="10" orientation="0">
+                <terminals>
+                    <terminal id="28" x="0" y="-26" orientation="0" />
+                    <terminal id="29" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">S6</elementInformation>
+                    <elementInformation name="comment" show="1">EG</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="8" y="-26" rotation="0" uuid="{5accb3f4-29ba-5ebb-aa76-7fd384950fb7}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>S6</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-13" rotation="0" uuid="{25741df8-3dad-5b03-a2ba-246ecae03ed7}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>EG</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-1" rotation="0" uuid="{b2bedbd0-37bd-516d-8724-add06135a49d}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>function</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/schliesser_druck__.elmt" uuid="{562841de-9ced-5c59-80cc-9f05983b974b}" prefix="" freezeLabel="false" x="350" y="290" z="10" orientation="0">
+                <terminals>
+                    <terminal id="30" x="0" y="-26" orientation="0" />
+                    <terminal id="31" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">S7</elementInformation>
+                    <elementInformation name="comment" show="1">OG</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="8" y="-26" rotation="0" uuid="{8e7337b2-cec4-5ff8-8ed4-3541db5f132f}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>S7</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-13" rotation="0" uuid="{f70c7e62-192d-5173-b775-e3272d2349d7}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>OG</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-1" rotation="0" uuid="{4fb693fd-ae8a-515f-b19a-c518ccd4ec66}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>function</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/schliesser_druck__.elmt" uuid="{a4451f1f-4e30-5a0c-b3d1-5cd65e4e6591}" prefix="" freezeLabel="false" x="400" y="290" z="10" orientation="0">
+                <terminals>
+                    <terminal id="32" x="0" y="-26" orientation="0" />
+                    <terminal id="33" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">S8</elementInformation>
+                    <elementInformation name="comment" show="1">DG</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="8" y="-26" rotation="0" uuid="{afab5f76-8189-5ea7-8dd1-aad15f8f291a}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>S8</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-13" rotation="0" uuid="{7b61466a-d892-5294-b0f3-1b1de859a614}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>DG</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-1" rotation="0" uuid="{d782434a-83df-5618-a383-0adb772a8681}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>function</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/spule_sst.elmt" uuid="{6af9f844-ad04-5e48-bf53-1e5592df398b}" prefix="" freezeLabel="false" x="400" y="505" z="10" orientation="0">
+                <terminals>
+                    <terminal id="34" x="0" y="-26" orientation="0" />
+                    <terminal id="35" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">K1</elementInformation>
+                    <elementInformation name="comment" show="1">SST</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="18" y="-26" rotation="0" uuid="{934d4279-e654-50c1-803f-6e750df39727}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>K1</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="18" y="-13" rotation="0" uuid="{8d9d8532-7ec8-5ee0-90c8-051c636c2daf}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>SST</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/schliesser_keine_1_2.elmt" uuid="{6af3bb04-3b12-534a-bd89-f161e3e9701f}" prefix="" freezeLabel="false" x="450" y="290" z="10" orientation="0">
+                <terminals>
+                    <terminal id="36" x="0" y="-26" orientation="0" />
+                    <terminal id="37" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">K1</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="8" y="-26" rotation="0" uuid="{5248e408-4d88-56cc-a30c-11cac4b7248c}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>K1</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-13" rotation="0" uuid="{50921bfa-6c08-5635-8a84-adb27e52a61e}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-1" rotation="0" uuid="{eda84d09-bb2c-5763-83f6-df0a9e493965}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>function</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/leuchte.elmt" uuid="{41ff7362-43d6-50e9-9abd-d5e3d89c6349}" prefix="" freezeLabel="false" x="450" y="505" z="10" orientation="0">
+                <terminals>
+                    <terminal id="38" x="0" y="-26" orientation="0" />
+                    <terminal id="39" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">E4</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="13" y="-26" rotation="0" uuid="{c613d8b4-3dcd-576f-9d5c-334cdc586382}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>E4</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="13" y="6" rotation="0" uuid="{53188ab4-dd87-5d57-a26c-08fb43cef10d}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/leuchte.elmt" uuid="{7d314eaa-ca20-5708-898f-9643b7daed92}" prefix="" freezeLabel="false" x="500" y="505" z="10" orientation="0">
+                <terminals>
+                    <terminal id="40" x="0" y="-26" orientation="0" />
+                    <terminal id="41" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">E5</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="13" y="-26" rotation="0" uuid="{3f50f112-d887-57a1-bd09-7dbbc96fd463}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>E5</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="13" y="6" rotation="0" uuid="{96ccdc9f-83af-5bc6-aded-24c87a2d052e}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/ls.elmt" uuid="{af40ab5e-a9d4-5b0c-ac62-4224bbcff503}" prefix="" freezeLabel="false" x="550" y="140" z="10" orientation="0">
+                <terminals>
+                    <terminal id="42" x="0" y="-26" orientation="0" />
+                    <terminal id="43" x="0" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">F2</elementInformation>
+                    <elementInformation name="comment" show="1">B16</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="8" y="-26" rotation="0" uuid="{1aa3d305-7528-5c95-b887-36be6ac786d9}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>F2</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-13" rotation="0" uuid="{1dd33b9f-9b46-59b9-9d19-cc76a35dbcc8}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>B16</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="8" y="-1" rotation="0" uuid="{a9cb8c65-5172-5987-b9ec-133119cfdcd2}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>function</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/steckdose.elmt" uuid="{88ce2be8-e1ff-5487-ac96-673cb212219e}" prefix="" freezeLabel="false" x="550" y="505" z="10" orientation="0">
+                <terminals>
+                    <terminal id="44" x="0" y="-26" orientation="0" />
+                    <terminal id="45" x="-10" y="26" orientation="2" />
+                    <terminal id="46" x="10" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">XD1</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="4" y="-38" rotation="0" uuid="{b40e280b-1a3a-5799-a9e6-32ba72df3f40}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>XD1</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="4" y="-27" rotation="0" uuid="{6046cd0c-5df6-59d4-b6af-5f5e2c053441}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/steckdose.elmt" uuid="{6d8e61dd-69cf-5fcc-8487-28698a61bc7d}" prefix="" freezeLabel="false" x="600" y="505" z="10" orientation="0">
+                <terminals>
+                    <terminal id="47" x="0" y="-26" orientation="0" />
+                    <terminal id="48" x="-10" y="26" orientation="2" />
+                    <terminal id="49" x="10" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">XD2</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="4" y="-38" rotation="0" uuid="{98e8fc33-be9d-5b6c-bb38-7251d8b901ea}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>XD2</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="4" y="-27" rotation="0" uuid="{fee94072-1ffe-5538-9f3b-95cea6b8a8b5}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/steckdose.elmt" uuid="{117c176e-bb4a-5788-bb0b-a2cc7c3ccefe}" prefix="" freezeLabel="false" x="650" y="505" z="10" orientation="0">
+                <terminals>
+                    <terminal id="50" x="0" y="-26" orientation="0" />
+                    <terminal id="51" x="-10" y="26" orientation="2" />
+                    <terminal id="52" x="10" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">XD3</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="4" y="-38" rotation="0" uuid="{e7a981e2-bb37-5633-a610-eefdeebaefef}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>XD3</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="4" y="-27" rotation="0" uuid="{1d2ecba1-65be-55cc-a552-c901af4c726e}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/ls3.elmt" uuid="{f64e397a-ba3a-5573-bd19-c770e1a625b9}" prefix="" freezeLabel="false" x="705" y="140" z="10" orientation="0">
+                <terminals>
+                    <terminal id="53" x="0" y="-26" orientation="0" />
+                    <terminal id="54" x="0" y="26" orientation="2" />
+                    <terminal id="55" x="20" y="-26" orientation="0" />
+                    <terminal id="56" x="20" y="26" orientation="2" />
+                    <terminal id="57" x="40" y="-26" orientation="0" />
+                    <terminal id="58" x="40" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">F11</elementInformation>
+                    <elementInformation name="comment" show="1">B16</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="48" y="-26" rotation="0" uuid="{60b984ef-fc49-5392-ac9b-4933358efdd6}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>F11</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="48" y="-13" rotation="0" uuid="{75112c0b-d15f-5491-be60-e430e6ed73c7}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>B16</text>
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/drehstrom_Herd_60.elmt" uuid="{98335328-3f9d-54aa-8042-d35fd7f2d199}" prefix="" freezeLabel="false" x="725" y="505" z="10" orientation="0">
+                <terminals>
+                    <terminal id="59" x="-20" y="-26" orientation="0" />
+                    <terminal id="60" x="0" y="-26" orientation="0" />
+                    <terminal id="61" x="20" y="-26" orientation="0" />
+                    <terminal id="62" x="-10" y="26" orientation="2" />
+                    <terminal id="63" x="10" y="26" orientation="2" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="label" show="1">E6</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text x="33" y="-30" rotation="0" uuid="{6d0a0957-de2b-5f26-a645-824b437073ed}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text>E6</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text x="33" y="-17" rotation="0" uuid="{cde23a96-8c0a-5551-b7c5-685b5a83d2b8}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular" Halignment="AlignLeft" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" frame="false" keep_visual_rotation="true">
+                        <text />
+                        <info_name>comment</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/schiene_anfang_L1.elmt" uuid="{f867fad8-78f7-5be2-b24a-f87e6aac1e04}" prefix="" freezeLabel="false" x="55" y="45" z="10" orientation="0">
+                <terminals>
+                    <terminal id="64" x="-4" y="0" orientation="1" />
+                </terminals>
+                <inputs />
+                <dynamic_texts />
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/schiene_ende_L1.elmt" uuid="{254fcc49-34ca-5a73-a3ca-2db6ec2ad400}" prefix="" freezeLabel="false" x="965" y="45" z="10" orientation="0">
+                <terminals>
+                    <terminal id="65" x="4" y="0" orientation="3" />
+                </terminals>
+                <inputs />
+                <dynamic_texts />
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/schiene_anfang_L2.elmt" uuid="{787f3eb5-f73c-5551-bb34-e36a8be1c9ec}" prefix="" freezeLabel="false" x="55" y="57" z="10" orientation="0">
+                <terminals>
+                    <terminal id="66" x="-4" y="0" orientation="1" />
+                </terminals>
+                <inputs />
+                <dynamic_texts />
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/schiene_ende_L2.elmt" uuid="{fe833e01-e76e-5c25-8005-7c7f04371e8e}" prefix="" freezeLabel="false" x="965" y="57" z="10" orientation="0">
+                <terminals>
+                    <terminal id="67" x="4" y="0" orientation="3" />
+                </terminals>
+                <inputs />
+                <dynamic_texts />
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/schiene_anfang_L3.elmt" uuid="{fc382879-bcd8-584b-9eef-7d525d67a4ad}" prefix="" freezeLabel="false" x="55" y="69" z="10" orientation="0">
+                <terminals>
+                    <terminal id="68" x="-4" y="0" orientation="1" />
+                </terminals>
+                <inputs />
+                <dynamic_texts />
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/schiene_ende_L3.elmt" uuid="{e6847e34-e002-54a8-a74a-2e41f9676f79}" prefix="" freezeLabel="false" x="965" y="69" z="10" orientation="0">
+                <terminals>
+                    <terminal id="69" x="4" y="0" orientation="3" />
+                </terminals>
+                <inputs />
+                <dynamic_texts />
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/schiene_anfang_N.elmt" uuid="{9ceb7e6e-1bb5-5c5e-8e3c-a09549e89f2a}" prefix="" freezeLabel="false" x="55" y="590" z="10" orientation="0">
+                <terminals>
+                    <terminal id="70" x="-4" y="0" orientation="1" />
+                </terminals>
+                <inputs />
+                <dynamic_texts />
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/schiene_ende_N.elmt" uuid="{8e8c0f78-bb63-5a53-a837-9e8624e67bec}" prefix="" freezeLabel="false" x="965" y="590" z="10" orientation="0">
+                <terminals>
+                    <terminal id="71" x="4" y="0" orientation="3" />
+                </terminals>
+                <inputs />
+                <dynamic_texts />
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/schiene_anfang_PE.elmt" uuid="{d79e74a5-945f-5ba6-9379-8dbcf1ba133e}" prefix="" freezeLabel="false" x="55" y="605" z="10" orientation="0">
+                <terminals>
+                    <terminal id="72" x="-4" y="0" orientation="1" />
+                </terminals>
+                <inputs />
+                <dynamic_texts />
+                <texts_groups />
+            </element>
+            <element type="embed://import/elektroplan_din_en_60617/schiene_ende_PE.elmt" uuid="{33516eab-a6b1-5613-b058-9e69eb038596}" prefix="" freezeLabel="false" x="965" y="605" z="10" orientation="0">
+                <terminals>
+                    <terminal id="73" x="4" y="0" orientation="3" />
+                </terminals>
+                <inputs />
+                <dynamic_texts />
+                <texts_groups />
+            </element>
+        </elements>
+        <conductors>
+            <conductor uuid="{742aa275-b85d-5203-89c5-bae0f9da48ef}" x="0" y="0" element1="{7511e85b-9f4b-52c6-94d4-99060d581e0c}" element1_label="F8" element1_name="Leitungsschutzschalter (LS)" terminal1="{d02ea1de-6db8-5a94-a737-e71d4a03feff}" terminalname1="2" element2="{384791f5-0834-510b-8252-5f7cf5290e7f}" element2_label="S1" element2_name="Wechselschalter" terminal2="{3e94bc22-87c2-5871-a8f8-5a6f768bee75}" terminalname2="c" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="50" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{197dadc2-e085-5891-acdf-df591df62a44}" x="0" y="0" element1="{384791f5-0834-510b-8252-5f7cf5290e7f}" element1_label="S1" element1_name="Wechselschalter" terminal1="{5b9f818e-286c-573f-a0e0-d72a1cf1e04a}" terminalname1="no" element2="{504c7d9f-7804-574f-9429-d1f15a649446}" element2_label="S2" element2_name="Wechselschalter" terminal2="{22b0dc1e-89b2-56ae-aa2b-178285cb038b}" terminalname2="no" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="50" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{660a3e2a-8554-5af7-91d1-d27dcea737a1}" x="0" y="0" element1="{384791f5-0834-510b-8252-5f7cf5290e7f}" element1_label="S1" element1_name="Wechselschalter" terminal1="{4cef73f5-1fd3-5f72-9295-f1f00e44cf01}" terminalname1="nc" element2="{504c7d9f-7804-574f-9429-d1f15a649446}" element2_label="S2" element2_name="Wechselschalter" terminal2="{ee6b8956-6e0c-503b-b2f5-991c2400c9c5}" terminalname2="nc" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="50" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{179cde0a-799f-5ace-9ff3-eefa84e1ebda}" x="0" y="0" element1="{504c7d9f-7804-574f-9429-d1f15a649446}" element1_label="S2" element1_name="Wechselschalter" terminal1="{d6e09fc5-db73-5b1e-b486-45f49af30f19}" terminalname1="c" element2="{af90367c-4236-5f22-b43d-9352f467b9cc}" element2_label="E1" element2_name="Leuchte / Lampe" terminal2="{3b43add4-1e22-5498-9cf3-4ce13bf599a4}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="85" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{7bf64407-9393-57d2-a387-12dd7d37df83}" x="0" y="0" element1="{548cdf1c-d717-5bbf-87f9-72e90f862b98}" element1_label="F7" element1_name="Leitungsschutzschalter (LS)" terminal1="{d02ea1de-6db8-5a94-a737-e71d4a03feff}" terminalname1="2" element2="{e16d09a5-bc90-5f88-93ac-20bef3bf01dd}" element2_label="S3" element2_name="Wechselschalter" terminal2="{3e94bc22-87c2-5871-a8f8-5a6f768bee75}" terminalname2="c" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="35" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{4dfb0677-df3f-5192-8fb0-5ecf34ee4949}" x="0" y="0" element1="{e16d09a5-bc90-5f88-93ac-20bef3bf01dd}" element1_label="S3" element1_name="Wechselschalter" terminal1="{5b9f818e-286c-573f-a0e0-d72a1cf1e04a}" terminalname1="no" element2="{e6586553-9a0e-5c0f-a46a-e08cd50ff88c}" element2_label="S4" element2_name="Kreuzschalter" terminal2="{abfbad65-3db3-527e-9930-7eb701c62cf0}" terminalname2="a" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="25" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{d73ca9bc-96dd-5cef-956d-5fd24d097e7e}" x="0" y="0" element1="{e16d09a5-bc90-5f88-93ac-20bef3bf01dd}" element1_label="S3" element1_name="Wechselschalter" terminal1="{4cef73f5-1fd3-5f72-9295-f1f00e44cf01}" terminalname1="nc" element2="{e6586553-9a0e-5c0f-a46a-e08cd50ff88c}" element2_label="S4" element2_name="Kreuzschalter" terminal2="{da0359a1-dc24-57bd-abf4-127502703a8a}" terminalname2="b" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="25" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{da3b17bf-e6c2-5daa-94f7-5312d4f792b6}" x="0" y="0" element1="{e6586553-9a0e-5c0f-a46a-e08cd50ff88c}" element1_label="S4" element1_name="Kreuzschalter" terminal1="{598320d2-7751-500a-b6bd-842ced1af69f}" terminalname1="c" element2="{6fc9f476-cda6-58b6-baeb-14eb26447584}" element2_label="S5" element2_name="Wechselschalter" terminal2="{22b0dc1e-89b2-56ae-aa2b-178285cb038b}" terminalname2="no" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="25" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{fba78fb7-e281-5aaa-8eba-12015549f216}" x="0" y="0" element1="{e6586553-9a0e-5c0f-a46a-e08cd50ff88c}" element1_label="S4" element1_name="Kreuzschalter" terminal1="{2bbb89f1-2a87-5c4d-8774-41e1254c7d91}" terminalname1="d" element2="{6fc9f476-cda6-58b6-baeb-14eb26447584}" element2_label="S5" element2_name="Wechselschalter" terminal2="{ee6b8956-6e0c-503b-b2f5-991c2400c9c5}" terminalname2="nc" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="25" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{6578d3b9-d8ef-52ea-a0c6-039f3000a4d2}" x="0" y="0" element1="{6fc9f476-cda6-58b6-baeb-14eb26447584}" element1_label="S5" element1_name="Wechselschalter" terminal1="{d6e09fc5-db73-5b1e-b486-45f49af30f19}" terminalname1="c" element2="{8ca61f94-a2e5-5cd9-b9a0-204dc97cd92d}" element2_label="E2" element2_name="Leuchte / Lampe" terminal2="{3b43add4-1e22-5498-9cf3-4ce13bf599a4}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="40" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{5946522c-d45b-58fc-aa4d-17277219fe7b}" x="0" y="0" element1="{8ca61f94-a2e5-5cd9-b9a0-204dc97cd92d}" element1_label="E2" element1_name="Leuchte / Lampe" terminal1="{3b43add4-1e22-5498-9cf3-4ce13bf599a4}" terminalname1="1" element2="{74a58fc1-4ab2-5f47-960a-97463b5a0196}" element2_label="E3" element2_name="Leuchte / Lampe" terminal2="{3b43add4-1e22-5498-9cf3-4ce13bf599a4}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="-15" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="15" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{785b026a-e032-5072-bfb2-dfca3c8e70dd}" x="0" y="0" element1="{65742799-257d-5b29-9690-e95fa6e8838e}" element1_label="F15" element1_name="Leitungsschutzschalter (LS)" terminal1="{d02ea1de-6db8-5a94-a737-e71d4a03feff}" terminalname1="2" element2="{707aacc9-0ef8-5050-93c3-406a6a15503a}" element2_label="S6" element2_name="Taster (Schließer)" terminal2="{4281e1e8-2901-5918-a194-2bf7a7f81696}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="90" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{568efaf0-f6e8-5384-a20a-e81bb078de86}" x="0" y="0" element1="{707aacc9-0ef8-5050-93c3-406a6a15503a}" element1_label="S6" element1_name="Taster (Schließer)" terminal1="{4281e1e8-2901-5918-a194-2bf7a7f81696}" terminalname1="1" element2="{562841de-9ced-5c59-80cc-9f05983b974b}" element2_label="S7" element2_name="Taster (Schließer)" terminal2="{4281e1e8-2901-5918-a194-2bf7a7f81696}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="-25" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="25" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{9a99c5fb-92a5-5ff1-a712-a3aaca813f58}" x="0" y="0" element1="{562841de-9ced-5c59-80cc-9f05983b974b}" element1_label="S7" element1_name="Taster (Schließer)" terminal1="{4281e1e8-2901-5918-a194-2bf7a7f81696}" terminalname1="1" element2="{a4451f1f-4e30-5a0c-b3d1-5cd65e4e6591}" element2_label="S8" element2_name="Taster (Schließer)" terminal2="{4281e1e8-2901-5918-a194-2bf7a7f81696}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="-25" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="25" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{6776ac38-2936-5591-b5c8-3d9570b6e4c3}" x="0" y="0" element1="{a4451f1f-4e30-5a0c-b3d1-5cd65e4e6591}" element1_label="S8" element1_name="Taster (Schließer)" terminal1="{4281e1e8-2901-5918-a194-2bf7a7f81696}" terminalname1="1" element2="{6af3bb04-3b12-534a-bd89-f161e3e9701f}" element2_label="K1" element2_name="Schließer" terminal2="{1f5cd5fc-71db-5b9a-b85f-02aff14248ac}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="-25" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="25" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{2410871c-1e60-56bd-b920-d733b3172a81}" x="0" y="0" element1="{a4451f1f-4e30-5a0c-b3d1-5cd65e4e6591}" element1_label="S8" element1_name="Taster (Schließer)" terminal1="{e6b37f28-b792-51cc-86eb-f7c58f47eb9a}" terminalname1="2" element2="{6af9f844-ad04-5e48-bf53-1e5592df398b}" element2_label="K1" element2_name="Spule Stromstoßschalter" terminal2="{5e6f51a0-2fbc-5994-8e6f-48812902824f}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="155" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{3a16993d-da3f-5494-91a4-377676720c69}" x="0" y="0" element1="{707aacc9-0ef8-5050-93c3-406a6a15503a}" element1_label="S6" element1_name="Taster (Schließer)" terminal1="{e6b37f28-b792-51cc-86eb-f7c58f47eb9a}" terminalname1="2" element2="{562841de-9ced-5c59-80cc-9f05983b974b}" element2_label="S7" element2_name="Taster (Schließer)" terminal2="{e6b37f28-b792-51cc-86eb-f7c58f47eb9a}" terminalname2="2" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="25" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="-25" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{e8655294-fa40-5852-be69-9769eeb0c3ea}" x="0" y="0" element1="{562841de-9ced-5c59-80cc-9f05983b974b}" element1_label="S7" element1_name="Taster (Schließer)" terminal1="{e6b37f28-b792-51cc-86eb-f7c58f47eb9a}" terminalname1="2" element2="{a4451f1f-4e30-5a0c-b3d1-5cd65e4e6591}" element2_label="S8" element2_name="Taster (Schließer)" terminal2="{e6b37f28-b792-51cc-86eb-f7c58f47eb9a}" terminalname2="2" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="25" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="-25" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{49a5c12d-57d3-5d6c-82ea-e343908bd5a3}" x="0" y="0" element1="{6af3bb04-3b12-534a-bd89-f161e3e9701f}" element1_label="K1" element1_name="Schließer" terminal1="{8703ca0b-8edf-52d4-86e2-fb9b1b7b054a}" terminalname1="2" element2="{41ff7362-43d6-50e9-9abd-d5e3d89c6349}" element2_label="E4" element2_name="Leuchte / Lampe" terminal2="{3b43add4-1e22-5498-9cf3-4ce13bf599a4}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="155" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{222ca528-c730-5dfd-94db-1501e8cf1807}" x="0" y="0" element1="{41ff7362-43d6-50e9-9abd-d5e3d89c6349}" element1_label="E4" element1_name="Leuchte / Lampe" terminal1="{3b43add4-1e22-5498-9cf3-4ce13bf599a4}" terminalname1="1" element2="{7d314eaa-ca20-5708-898f-9643b7daed92}" element2_label="E5" element2_name="Leuchte / Lampe" terminal2="{3b43add4-1e22-5498-9cf3-4ce13bf599a4}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="-15" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="15" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{28252921-290c-5500-8231-98c6330e6822}" x="0" y="0" element1="{af40ab5e-a9d4-5b0c-ac62-4224bbcff503}" element1_label="F2" element1_name="Leitungsschutzschalter (LS)" terminal1="{d02ea1de-6db8-5a94-a737-e71d4a03feff}" terminalname1="2" element2="{88ce2be8-e1ff-5487-ac96-673cb212219e}" element2_label="XD1" element2_name="Schutzkontaktsteckdose" terminal2="{8b442244-90b2-5113-a039-0c7b945505d7}" terminalname2="L" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="305" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{76884ad5-454d-5b86-b256-cf0a7633489b}" x="0" y="0" element1="{88ce2be8-e1ff-5487-ac96-673cb212219e}" element1_label="XD1" element1_name="Schutzkontaktsteckdose" terminal1="{8b442244-90b2-5113-a039-0c7b945505d7}" terminalname1="L" element2="{6d8e61dd-69cf-5fcc-8487-28698a61bc7d}" element2_label="XD2" element2_name="Schutzkontaktsteckdose" terminal2="{8b442244-90b2-5113-a039-0c7b945505d7}" terminalname2="L" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="-20" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="20" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{0ba6a653-fac2-5920-b8b8-9386b29fe629}" x="0" y="0" element1="{6d8e61dd-69cf-5fcc-8487-28698a61bc7d}" element1_label="XD2" element1_name="Schutzkontaktsteckdose" terminal1="{8b442244-90b2-5113-a039-0c7b945505d7}" terminalname1="L" element2="{117c176e-bb4a-5788-bb0b-a2cc7c3ccefe}" element2_label="XD3" element2_name="Schutzkontaktsteckdose" terminal2="{8b442244-90b2-5113-a039-0c7b945505d7}" terminalname2="L" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="-20" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="20" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{166c3a1a-59d1-5549-8c4f-0f8ad884a1fd}" x="0" y="0" element1="{f64e397a-ba3a-5573-bd19-c770e1a625b9}" element1_label="F11" element1_name="Leitungsschutzschalter 3-polig" terminal1="{0d030ccb-c2ec-574f-9ece-ebc4c929f46c}" terminalname1="2" element2="{98335328-3f9d-54aa-8042-d35fd7f2d199}" element2_label="E6" element2_name="Drehstromverbraucher Herd" terminal2="{40e28ff6-2624-594a-be0b-6864985844af}" terminalname2="L1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="305" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{629b9803-3cc9-5fd1-9aca-a83c69036a8e}" x="0" y="0" element1="{f64e397a-ba3a-5573-bd19-c770e1a625b9}" element1_label="F11" element1_name="Leitungsschutzschalter 3-polig" terminal1="{1e1f135b-03f4-5a30-aa41-9633183c01c5}" terminalname1="4" element2="{98335328-3f9d-54aa-8042-d35fd7f2d199}" element2_label="E6" element2_name="Drehstromverbraucher Herd" terminal2="{0f96eb3f-9d7e-5122-a411-ac7b02301d6c}" terminalname2="L2" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="305" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{4c21b694-7aae-51d8-921d-95d32f460588}" x="0" y="0" element1="{f64e397a-ba3a-5573-bd19-c770e1a625b9}" element1_label="F11" element1_name="Leitungsschutzschalter 3-polig" terminal1="{058a4c64-f33d-5779-a077-c5e73c6f6892}" terminalname1="6" element2="{98335328-3f9d-54aa-8042-d35fd7f2d199}" element2_label="E6" element2_name="Drehstromverbraucher Herd" terminal2="{ae7c474d-337b-5d63-a7cc-2ac630732df6}" terminalname2="L3" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="305" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{f3ba4aac-bf71-53f4-b8ce-5942c22e24c0}" x="0" y="0" element1="{f867fad8-78f7-5be2-b24a-f87e6aac1e04}" element1_label="" element1_name="Potential L1 (Anfang)" terminal1="{50d30ba6-95ff-53b5-90b7-489762585108}" terminalname1="1" element2="{548cdf1c-d717-5bbf-87f9-72e90f862b98}" element2_label="F7" element2_name="Leitungsschutzschalter (LS)" terminal2="{56935b8a-1ea1-5077-ba02-bf262faf7428}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="horizontal" length="145" />
+                <segment orientation="vertical" length="65" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{763a1256-48b5-5799-8b17-d227608918e0}" x="0" y="0" element1="{548cdf1c-d717-5bbf-87f9-72e90f862b98}" element1_label="F7" element1_name="Leitungsschutzschalter (LS)" terminal1="{56935b8a-1ea1-5077-ba02-bf262faf7428}" terminalname1="1" element2="{af40ab5e-a9d4-5b0c-ac62-4224bbcff503}" element2_label="F2" element2_name="Leitungsschutzschalter (LS)" terminal2="{56935b8a-1ea1-5077-ba02-bf262faf7428}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="-65" />
+                <segment orientation="horizontal" length="350" />
+                <segment orientation="vertical" length="65" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{373d155d-fb65-5c70-bc46-9900121372eb}" x="0" y="0" element1="{af40ab5e-a9d4-5b0c-ac62-4224bbcff503}" element1_label="F2" element1_name="Leitungsschutzschalter (LS)" terminal1="{56935b8a-1ea1-5077-ba02-bf262faf7428}" terminalname1="1" element2="{f64e397a-ba3a-5573-bd19-c770e1a625b9}" element2_label="F11" element2_name="Leitungsschutzschalter 3-polig" terminal2="{a308ba1f-5fc7-55f7-b69c-1a0b92d6aef0}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="-65" />
+                <segment orientation="horizontal" length="155" />
+                <segment orientation="vertical" length="65" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{760f72b4-b2a6-5b73-af42-e711edbc360b}" x="0" y="0" element1="{f64e397a-ba3a-5573-bd19-c770e1a625b9}" element1_label="F11" element1_name="Leitungsschutzschalter 3-polig" terminal1="{a308ba1f-5fc7-55f7-b69c-1a0b92d6aef0}" terminalname1="1" element2="{254fcc49-34ca-5a73-a3ca-2db6ec2ad400}" element2_label="" element2_name="Potential L1 (Ende)" terminal2="{3e96c68f-7c6e-520d-9497-c1bd00a1f081}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="-65" />
+                <segment orientation="horizontal" length="260" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{9c42fe68-ff33-531e-8243-d3021cf33e1c}" x="0" y="0" element1="{787f3eb5-f73c-5551-bb34-e36a8be1c9ec}" element1_label="" element1_name="Potential L2 (Anfang)" terminal1="{2310368c-4df2-523a-a5d3-f1795276ebb6}" terminalname1="1" element2="{7511e85b-9f4b-52c6-94d4-99060d581e0c}" element2_label="F8" element2_name="Leitungsschutzschalter (LS)" terminal2="{56935b8a-1ea1-5077-ba02-bf262faf7428}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="horizontal" length="45" />
+                <segment orientation="vertical" length="53" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{4b34ea41-f915-501b-83f9-cd38be565bf2}" x="0" y="0" element1="{7511e85b-9f4b-52c6-94d4-99060d581e0c}" element1_label="F8" element1_name="Leitungsschutzschalter (LS)" terminal1="{56935b8a-1ea1-5077-ba02-bf262faf7428}" terminalname1="1" element2="{f64e397a-ba3a-5573-bd19-c770e1a625b9}" element2_label="F11" element2_name="Leitungsschutzschalter 3-polig" terminal2="{bf05eebf-7402-5872-aab9-c26745214681}" terminalname2="3" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="-53" />
+                <segment orientation="horizontal" length="625" />
+                <segment orientation="vertical" length="53" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{b96ff7a2-eb26-5cd1-baff-919c85ccce69}" x="0" y="0" element1="{f64e397a-ba3a-5573-bd19-c770e1a625b9}" element1_label="F11" element1_name="Leitungsschutzschalter 3-polig" terminal1="{bf05eebf-7402-5872-aab9-c26745214681}" terminalname1="3" element2="{fe833e01-e76e-5c25-8005-7c7f04371e8e}" element2_label="" element2_name="Potential L2 (Ende)" terminal2="{9402f85a-d611-5256-8c56-fcf43d94371a}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="-53" />
+                <segment orientation="horizontal" length="240" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{21744e69-5e26-5d82-b5c2-6feb8e1fa1cb}" x="0" y="0" element1="{fc382879-bcd8-584b-9eef-7d525d67a4ad}" element1_label="" element1_name="Potential L3 (Anfang)" terminal1="{b8fe6771-dac1-590a-9275-c3114b0f0fb9}" terminalname1="1" element2="{65742799-257d-5b29-9690-e95fa6e8838e}" element2_label="F15" element2_name="Leitungsschutzschalter (LS)" terminal2="{56935b8a-1ea1-5077-ba02-bf262faf7428}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="horizontal" length="245" />
+                <segment orientation="vertical" length="41" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{8a38e20f-b154-5ac9-948a-1e1f1026c640}" x="0" y="0" element1="{65742799-257d-5b29-9690-e95fa6e8838e}" element1_label="F15" element1_name="Leitungsschutzschalter (LS)" terminal1="{56935b8a-1ea1-5077-ba02-bf262faf7428}" terminalname1="1" element2="{f64e397a-ba3a-5573-bd19-c770e1a625b9}" element2_label="F11" element2_name="Leitungsschutzschalter 3-polig" terminal2="{41941877-87ae-573f-9361-8f64edd85682}" terminalname2="5" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="-41" />
+                <segment orientation="horizontal" length="445" />
+                <segment orientation="vertical" length="41" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{8a203694-80c3-510a-b840-b956a5810d03}" x="0" y="0" element1="{f64e397a-ba3a-5573-bd19-c770e1a625b9}" element1_label="F11" element1_name="Leitungsschutzschalter 3-polig" terminal1="{41941877-87ae-573f-9361-8f64edd85682}" terminalname1="5" element2="{e6847e34-e002-54a8-a74a-2e41f9676f79}" element2_label="" element2_name="Potential L3 (Ende)" terminal2="{ae61274c-051c-5e7f-b54a-cffcf22e3cdb}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="-41" />
+                <segment orientation="horizontal" length="220" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{a2ab1880-2905-56d6-8e8f-9bfd0a38c738}" x="0" y="0" element1="{9ceb7e6e-1bb5-5c5e-8e3c-a09549e89f2a}" element1_label="" element1_name="Potential N (Anfang)" terminal1="{186b0621-abd4-50bb-babb-8e44ddcc9e19}" terminalname1="1" element2="{af90367c-4236-5f22-b43d-9352f467b9cc}" element2_label="E1" element2_name="Leuchte / Lampe" terminal2="{5b6b9bb4-d7e6-5f50-a58b-79708cc40259}" terminalname2="2" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="horizontal" length="45" />
+                <segment orientation="vertical" length="-55" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{dcd3bf23-6cb5-53fc-9f47-60c9153baa5e}" x="0" y="0" element1="{af90367c-4236-5f22-b43d-9352f467b9cc}" element1_label="E1" element1_name="Leuchte / Lampe" terminal1="{5b6b9bb4-d7e6-5f50-a58b-79708cc40259}" terminalname1="2" element2="{8ca61f94-a2e5-5cd9-b9a0-204dc97cd92d}" element2_label="E2" element2_name="Leuchte / Lampe" terminal2="{5b6b9bb4-d7e6-5f50-a58b-79708cc40259}" terminalname2="2" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="55" />
+                <segment orientation="horizontal" length="100" />
+                <segment orientation="vertical" length="-55" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{feb4e3fe-fc85-580a-8547-04419d7c4192}" x="0" y="0" element1="{8ca61f94-a2e5-5cd9-b9a0-204dc97cd92d}" element1_label="E2" element1_name="Leuchte / Lampe" terminal1="{5b6b9bb4-d7e6-5f50-a58b-79708cc40259}" terminalname1="2" element2="{74a58fc1-4ab2-5f47-960a-97463b5a0196}" element2_label="E3" element2_name="Leuchte / Lampe" terminal2="{5b6b9bb4-d7e6-5f50-a58b-79708cc40259}" terminalname2="2" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="55" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="-55" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{b84a12aa-a4cf-53cb-99ae-c4023136537f}" x="0" y="0" element1="{74a58fc1-4ab2-5f47-960a-97463b5a0196}" element1_label="E3" element1_name="Leuchte / Lampe" terminal1="{5b6b9bb4-d7e6-5f50-a58b-79708cc40259}" terminalname1="2" element2="{6af9f844-ad04-5e48-bf53-1e5592df398b}" element2_label="K1" element2_name="Spule Stromstoßschalter" terminal2="{4b5861e3-693f-5729-a511-86f8c5d0f5f2}" terminalname2="2" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="55" />
+                <segment orientation="horizontal" length="150" />
+                <segment orientation="vertical" length="-55" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{06f350b6-1676-5740-8b8a-1edfff52c548}" x="0" y="0" element1="{6af9f844-ad04-5e48-bf53-1e5592df398b}" element1_label="K1" element1_name="Spule Stromstoßschalter" terminal1="{4b5861e3-693f-5729-a511-86f8c5d0f5f2}" terminalname1="2" element2="{41ff7362-43d6-50e9-9abd-d5e3d89c6349}" element2_label="E4" element2_name="Leuchte / Lampe" terminal2="{5b6b9bb4-d7e6-5f50-a58b-79708cc40259}" terminalname2="2" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="55" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="-55" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{295bec31-bb13-5798-9cbe-18e3f8a7db4a}" x="0" y="0" element1="{41ff7362-43d6-50e9-9abd-d5e3d89c6349}" element1_label="E4" element1_name="Leuchte / Lampe" terminal1="{5b6b9bb4-d7e6-5f50-a58b-79708cc40259}" terminalname1="2" element2="{7d314eaa-ca20-5708-898f-9643b7daed92}" element2_label="E5" element2_name="Leuchte / Lampe" terminal2="{5b6b9bb4-d7e6-5f50-a58b-79708cc40259}" terminalname2="2" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="55" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="-55" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{4fd8dd05-0ad5-5b17-8602-46f73b888f00}" x="0" y="0" element1="{7d314eaa-ca20-5708-898f-9643b7daed92}" element1_label="E5" element1_name="Leuchte / Lampe" terminal1="{5b6b9bb4-d7e6-5f50-a58b-79708cc40259}" terminalname1="2" element2="{88ce2be8-e1ff-5487-ac96-673cb212219e}" element2_label="XD1" element2_name="Schutzkontaktsteckdose" terminal2="{8481bb25-074e-5645-ac4a-092c6b81e709}" terminalname2="N" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="55" />
+                <segment orientation="horizontal" length="40" />
+                <segment orientation="vertical" length="-55" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{4d5ab49a-6c98-5442-96ba-63056c74908b}" x="0" y="0" element1="{88ce2be8-e1ff-5487-ac96-673cb212219e}" element1_label="XD1" element1_name="Schutzkontaktsteckdose" terminal1="{8481bb25-074e-5645-ac4a-092c6b81e709}" terminalname1="N" element2="{6d8e61dd-69cf-5fcc-8487-28698a61bc7d}" element2_label="XD2" element2_name="Schutzkontaktsteckdose" terminal2="{8481bb25-074e-5645-ac4a-092c6b81e709}" terminalname2="N" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="55" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="-55" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{e564278b-10d2-5b12-a522-d2d8950769ce}" x="0" y="0" element1="{6d8e61dd-69cf-5fcc-8487-28698a61bc7d}" element1_label="XD2" element1_name="Schutzkontaktsteckdose" terminal1="{8481bb25-074e-5645-ac4a-092c6b81e709}" terminalname1="N" element2="{117c176e-bb4a-5788-bb0b-a2cc7c3ccefe}" element2_label="XD3" element2_name="Schutzkontaktsteckdose" terminal2="{8481bb25-074e-5645-ac4a-092c6b81e709}" terminalname2="N" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="55" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="-55" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{fc239195-b4b5-5005-b574-50249c099b05}" x="0" y="0" element1="{117c176e-bb4a-5788-bb0b-a2cc7c3ccefe}" element1_label="XD3" element1_name="Schutzkontaktsteckdose" terminal1="{8481bb25-074e-5645-ac4a-092c6b81e709}" terminalname1="N" element2="{98335328-3f9d-54aa-8042-d35fd7f2d199}" element2_label="E6" element2_name="Drehstromverbraucher Herd" terminal2="{2d6fd041-79c3-5418-bd24-b0d2628fb446}" terminalname2="N" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="55" />
+                <segment orientation="horizontal" length="75" />
+                <segment orientation="vertical" length="-55" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{830c5681-7804-59ed-aaa5-af7ca3c5d6b7}" x="0" y="0" element1="{98335328-3f9d-54aa-8042-d35fd7f2d199}" element1_label="E6" element1_name="Drehstromverbraucher Herd" terminal1="{2d6fd041-79c3-5418-bd24-b0d2628fb446}" terminalname1="N" element2="{8e8c0f78-bb63-5a53-a837-9e8624e67bec}" element2_label="" element2_name="Potential N (Ende)" terminal2="{70ddd467-1219-523f-8efd-d873ff0d91e2}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="55" />
+                <segment orientation="horizontal" length="250" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{113d68cb-5b7a-5ae1-b9c8-84028805cc8c}" x="0" y="0" element1="{d79e74a5-945f-5ba6-9379-8dbcf1ba133e}" element1_label="" element1_name="Potential PE (Anfang)" terminal1="{c87c96bf-9c73-5a42-b526-b7a934cb271f}" terminalname1="1" element2="{88ce2be8-e1ff-5487-ac96-673cb212219e}" element2_label="XD1" element2_name="Schutzkontaktsteckdose" terminal2="{47727886-ea19-5b5d-a2ee-b1a7e6b439c0}" terminalname2="PE" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="horizontal" length="505" />
+                <segment orientation="vertical" length="-70" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{fbcf93c5-3a80-5400-91ab-fd8515b4cb1a}" x="0" y="0" element1="{88ce2be8-e1ff-5487-ac96-673cb212219e}" element1_label="XD1" element1_name="Schutzkontaktsteckdose" terminal1="{47727886-ea19-5b5d-a2ee-b1a7e6b439c0}" terminalname1="PE" element2="{6d8e61dd-69cf-5fcc-8487-28698a61bc7d}" element2_label="XD2" element2_name="Schutzkontaktsteckdose" terminal2="{47727886-ea19-5b5d-a2ee-b1a7e6b439c0}" terminalname2="PE" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="70" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="-70" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{a637cffb-cb13-528b-bc71-9a0bd06c5eed}" x="0" y="0" element1="{6d8e61dd-69cf-5fcc-8487-28698a61bc7d}" element1_label="XD2" element1_name="Schutzkontaktsteckdose" terminal1="{47727886-ea19-5b5d-a2ee-b1a7e6b439c0}" terminalname1="PE" element2="{117c176e-bb4a-5788-bb0b-a2cc7c3ccefe}" element2_label="XD3" element2_name="Schutzkontaktsteckdose" terminal2="{47727886-ea19-5b5d-a2ee-b1a7e6b439c0}" terminalname2="PE" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="70" />
+                <segment orientation="horizontal" length="50" />
+                <segment orientation="vertical" length="-70" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{e766fd16-afd4-5ca9-baf4-b338a616fb2a}" x="0" y="0" element1="{117c176e-bb4a-5788-bb0b-a2cc7c3ccefe}" element1_label="XD3" element1_name="Schutzkontaktsteckdose" terminal1="{47727886-ea19-5b5d-a2ee-b1a7e6b439c0}" terminalname1="PE" element2="{98335328-3f9d-54aa-8042-d35fd7f2d199}" element2_label="E6" element2_name="Drehstromverbraucher Herd" terminal2="{f6b0c926-98df-53eb-95d8-6a35bb711b3d}" terminalname2="PE" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="70" />
+                <segment orientation="horizontal" length="75" />
+                <segment orientation="vertical" length="-70" />
+                <sequentialNumbers />
+            </conductor>
+            <conductor uuid="{9456ffb5-e217-56fe-b778-93b761606824}" x="0" y="0" element1="{98335328-3f9d-54aa-8042-d35fd7f2d199}" element1_label="E6" element1_name="Drehstromverbraucher Herd" terminal1="{f6b0c926-98df-53eb-95d8-6a35bb711b3d}" terminalname1="PE" element2="{33516eab-a6b1-5613-b058-9e69eb038596}" element2_label="" element2_name="Potential PE (Ende)" terminal2="{50c7e7a6-dba7-5b79-a671-d2a73adb313a}" terminalname2="1" freezeLabel="false" type="multi" num="" displaytext="0" color="#000000" bicolor="false" color2="#000000" dash-size="1" style="line-style: normal" condsize="1" numsize="7" text_color="#000000" onetextperfolio="0" vertirotatetext="270" horizrotatetext="0" formula="" cable="" bus="" function="" tension_protocol="" conductor_color="" conductor_section="">
+                <segment orientation="vertical" length="70" />
+                <segment orientation="horizontal" length="230" />
+                <sequentialNumbers />
+            </conductor>
+        </conductors>
+        <inputs>
+            <input uuid="{ea130bf4-4f83-57cc-965b-7592fa3908bd}" x="91.729" y="618" text="Licht Wohnzimmer&lt;br/&gt;(Wechselschaltung)" rotation="0" font="Arial,5,-1,5,50,0,0,0,0,0,Regular" />
+            <input uuid="{b5df6e67-6793-5e66-aa21-91451c2acf1c}" x="177.186" y="618" text="Licht Flur (Kreuzschaltung)" rotation="0" font="Arial,5.5,-1,5,50,0,0,0,0,0,Regular" />
+            <input uuid="{dd75495e-ac1e-5040-9395-25672d0de38e}" x="400" y="535" text="1–2 → Pfad 9" rotation="0" font="Arial,5,-1,5,50,0,0,0,0,0,Regular" />
+            <input uuid="{79f343e2-fe02-5258-b476-dbe0f227f70e}" x="329.288" y="618" text="Licht Treppe (Stromstoßschaltung)" rotation="0" font="Arial,6.5,-1,5,50,0,0,0,0,0,Regular" />
+            <input uuid="{954b9dc6-8b4f-5334-816f-173671cf308c}" x="524.701" y="618" text="Steckdosen Küche Arbeitsplatte links" rotation="0" font="Arial,6.5,-1,5,50,0,0,0,0,0,Regular" />
+            <input uuid="{d97422dc-4a64-548e-9cc2-2a4496be8692}" x="691.132" y="618" text="Herd / Kochfeld" rotation="0" font="Arial,6.5,-1,5,50,0,0,0,0,0,Regular" />
+        </inputs>
+        <images />
+        <shapes>
+            <shape uuid="{8a8936d3-fb5b-5bf6-a53e-8d33205d1adb}" type="Line" is_movable="1" closed="1" z="5" x1="78" y1="619" x2="172" y2="619">
+                <pen style="SolidLine" color="#000000" widthF="0.5" />
+                <brush style="NoBrush" color="#000000" />
+            </shape>
+            <shape uuid="{91f6a824-228f-5809-8713-b720aa06776f}" type="Line" is_movable="1" closed="1" z="5" x1="178" y1="619" x2="272" y2="619">
+                <pen style="SolidLine" color="#000000" widthF="0.5" />
+                <brush style="NoBrush" color="#000000" />
+            </shape>
+            <shape uuid="{2f989b6f-8f29-5862-826f-94f51d8577da}" type="Line" is_movable="1" closed="1" z="5" x1="278" y1="619" x2="522" y2="619">
+                <pen style="SolidLine" color="#000000" widthF="0.5" />
+                <brush style="NoBrush" color="#000000" />
+            </shape>
+            <shape uuid="{c3f8d42b-a50b-5e65-bf09-4ed5d42b7326}" type="Line" is_movable="1" closed="1" z="5" x1="528" y1="619" x2="672" y2="619">
+                <pen style="SolidLine" color="#000000" widthF="0.5" />
+                <brush style="NoBrush" color="#000000" />
+            </shape>
+            <shape uuid="{8b35a81a-4e3f-5d72-aa36-72d69a5ec2ed}" type="Line" is_movable="1" closed="1" z="5" x1="678" y1="619" x2="772" y2="619">
+                <pen style="SolidLine" color="#000000" widthF="0.5" />
+                <brush style="NoBrush" color="#000000" />
+            </shape>
+        </shapes>
+    </diagram>
+    <collection>
+        <category name="import">
+            <names>
+                <name lang="de">Importierte Elemente</name>
+                <name lang="en">Imported elements</name>
+            </names>
+            <category name="elektroplan_din_en_60617">
+                <names>
+                    <name lang="de">Elektroplan (DIN EN 60617)</name>
+                    <name lang="en">Elektroplan (EN 60617)</name>
+                </names>
+                <element name="drehstrom_Herd_60.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="60" height="60" hotspot_x="30" hotspot_y="30">
+                        <uuid uuid="{346d976a-f68d-59c7-b0f6-52f8ce7ae3d5}" />
+                        <names>
+                            <name lang="de">Drehstromverbraucher Herd</name>
+                            <name lang="en">Drehstromverbraucher Herd</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <rect x="-30" y="-15" width="60" height="30" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <text x="-10.115" y="3.723" text="Herd" rotation="0" font="Arial,7,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <line x1="-20" y1="-30" x2="-20" y2="-15" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <text x="-18" y="-21" text="L1" rotation="0" font="Arial,5,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <line x1="0" y1="-30" x2="0" y2="-15" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <text x="2" y="-21" text="L2" rotation="0" font="Arial,5,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <line x1="20" y1="-30" x2="20" y2="-15" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <text x="22" y="-21" text="L3" rotation="0" font="Arial,5,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <line x1="-10" y1="15" x2="-10" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="10" y1="15" x2="10" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <text x="-8" y="26" text="N" rotation="0" font="Arial,5,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <text x="12" y="26" text="PE" rotation="0" font="Arial,5,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <dynamic_text x="33" y="-30" z="10" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{7b667881-2060-5012-aae1-c6e49e7a235f}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold">
+                                <text />
+                                <info_name>label</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="33" y="-17" z="11" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{56cfa587-d071-5633-88e1-7d910770bc56}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>comment</info_name>
+                            </dynamic_text>
+                            <terminal uuid="{40e28ff6-2624-594a-be0b-6864985844af}" name="L1" x="-20" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{0f96eb3f-9d7e-5122-a411-ac7b02301d6c}" name="L2" x="0" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{ae7c474d-337b-5d63-a7cc-2ac630732df6}" name="L3" x="20" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{2d6fd041-79c3-5418-bd24-b0d2628fb446}" name="N" x="-10" y="30" orientation="s" type="Generic" />
+                            <terminal uuid="{f6b0c926-98df-53eb-95d8-6a35bb711b3d}" name="PE" x="10" y="30" orientation="s" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="kreuzschalter.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="50" height="60" hotspot_x="20" hotspot_y="30">
+                        <uuid uuid="{8418f0c4-d65d-5b8d-b197-3f45479d8662}" />
+                        <names>
+                            <name lang="de">Kreuzschalter</name>
+                            <name lang="en">Kreuzschalter</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="-30" x2="0" y2="-14" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="20" y1="-30" x2="20" y2="-14" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="14" x2="0" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="20" y1="14" x2="20" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <ellipse x="-2" y="-14" width="4" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" />
+                            <ellipse x="18" y="-14" width="4" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" />
+                            <ellipse x="-2" y="10" width="4" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" />
+                            <ellipse x="18" y="10" width="4" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" />
+                            <line x1="0" y1="-10" x2="0" y2="10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="20" y1="-10" x2="20" y2="10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="1.5" y1="-10.5" x2="18.5" y2="10.5" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="18.5" y1="-10.5" x2="1.5" y2="10.5" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="-4" y1="0" x2="-16" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="-16" y1="-5" x2="-16" y2="5" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <dynamic_text x="26" y="-26" z="10" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{b16b9df6-e990-5079-872c-fcc3e2de267c}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold">
+                                <text />
+                                <info_name>label</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="26" y="-13" z="11" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{413277c0-4266-5a57-857d-cc18d2650876}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>comment</info_name>
+                            </dynamic_text>
+                            <terminal uuid="{abfbad65-3db3-527e-9930-7eb701c62cf0}" name="a" x="0" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{da0359a1-dc24-57bd-abf4-127502703a8a}" name="b" x="20" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{598320d2-7751-500a-b6bd-842ced1af69f}" name="c" x="0" y="30" orientation="s" type="Generic" />
+                            <terminal uuid="{2bbb89f1-2a87-5c4d-8774-41e1254c7d91}" name="d" x="20" y="30" orientation="s" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="leuchte.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="20" height="60" hotspot_x="10" hotspot_y="30">
+                        <uuid uuid="{4197ae6f-413f-59d7-a631-e5dddb999578}" />
+                        <names>
+                            <name lang="de">Leuchte / Lampe</name>
+                            <name lang="en">Leuchte / Lampe</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="-30" x2="0" y2="-10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <ellipse x="-10" y="-10" width="20" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" />
+                            <line x1="-7" y1="-7" x2="7" y2="7" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="-7" y1="7" x2="7" y2="-7" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="10" x2="0" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <dynamic_text x="13" y="-26" z="10" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{7ceb482d-604d-587c-b607-13af5ef51598}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold">
+                                <text />
+                                <info_name>label</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="13" y="6" z="11" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{4d78b3d9-65a7-52ce-b48b-e9a92362228d}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>comment</info_name>
+                            </dynamic_text>
+                            <terminal uuid="{3b43add4-1e22-5498-9cf3-4ce13bf599a4}" name="1" x="0" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{5b6b9bb4-d7e6-5f50-a58b-79708cc40259}" name="2" x="0" y="30" orientation="s" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="ls.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="20" height="60" hotspot_x="10" hotspot_y="30">
+                        <uuid uuid="{89f097f3-f8b0-536f-83b8-4adf71785855}" />
+                        <names>
+                            <name lang="de">Leitungsschutzschalter (LS)</name>
+                            <name lang="en">Leitungsschutzschalter (LS)</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="-30" x2="0" y2="-10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="10" x2="0" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="10" x2="-8" y2="-13" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="-3" y1="-13" x2="3" y2="-7" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="3" y1="-13" x2="-3" y2="-7" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <dynamic_text x="8" y="-26" z="10" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{61bfe4b6-10cc-5a92-91be-105acb978d50}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold">
+                                <text />
+                                <info_name>label</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="8" y="-13" z="11" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{f07f25da-ee8d-5a23-b007-2459bc161ff6}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>comment</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="8" y="-1" z="12" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{545532b7-a380-564d-ae4d-629ceee5cffb}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>function</info_name>
+                            </dynamic_text>
+                            <terminal uuid="{56935b8a-1ea1-5077-ba02-bf262faf7428}" name="1" x="0" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{d02ea1de-6db8-5a94-a737-e71d4a03feff}" name="2" x="0" y="30" orientation="s" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="ls3.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="60" height="60" hotspot_x="10" hotspot_y="30">
+                        <uuid uuid="{fa588d4c-3ee5-59c6-907d-527f91d9d550}" />
+                        <names>
+                            <name lang="de">Leitungsschutzschalter 3-polig</name>
+                            <name lang="en">Leitungsschutzschalter 3-polig</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="-30" x2="0" y2="-10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="10" x2="0" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="10" x2="-8" y2="-13" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="-3" y1="-13" x2="3" y2="-7" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="3" y1="-13" x2="-3" y2="-7" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="20" y1="-30" x2="20" y2="-10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="20" y1="10" x2="20" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="20" y1="10" x2="12" y2="-13" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="17" y1="-13" x2="23" y2="-7" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="23" y1="-13" x2="17" y2="-7" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="40" y1="-30" x2="40" y2="-10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="40" y1="10" x2="40" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="40" y1="10" x2="32" y2="-13" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="37" y1="-13" x2="43" y2="-7" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="43" y1="-13" x2="37" y2="-7" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="-4" y1="-1" x2="36" y2="-1" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <dynamic_text x="48" y="-26" z="10" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{47c88949-73b9-59b8-ad5b-4f366227f1bf}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold">
+                                <text />
+                                <info_name>label</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="48" y="-13" z="11" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{a7422cbf-ebd2-55a4-9e5f-aa2f7869e3b4}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>comment</info_name>
+                            </dynamic_text>
+                            <terminal uuid="{a308ba1f-5fc7-55f7-b69c-1a0b92d6aef0}" name="1" x="0" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{0d030ccb-c2ec-574f-9ece-ebc4c929f46c}" name="2" x="0" y="30" orientation="s" type="Generic" />
+                            <terminal uuid="{bf05eebf-7402-5872-aab9-c26745214681}" name="3" x="20" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{1e1f135b-03f4-5a30-aa41-9633183c01c5}" name="4" x="20" y="30" orientation="s" type="Generic" />
+                            <terminal uuid="{41941877-87ae-573f-9361-8f64edd85682}" name="5" x="40" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{058a4c64-f33d-5779-a077-c5e73c6f6892}" name="6" x="40" y="30" orientation="s" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="schiene_anfang_L1.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="20" height="20" hotspot_x="20" hotspot_y="10">
+                        <uuid uuid="{1e53ceac-a34b-5b93-a801-5ee4d1a9108d}" />
+                        <names>
+                            <name lang="de">Potential L1 (Anfang)</name>
+                            <name lang="en">Potential L1 (Anfang)</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <text x="-15.865" y="4" text="L1" rotation="0" font="Arial,8,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <line x1="-2" y1="0" x2="0" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <terminal uuid="{50d30ba6-95ff-53b5-90b7-489762585108}" name="1" x="0" y="0" orientation="e" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="schiene_anfang_L2.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="20" height="20" hotspot_x="20" hotspot_y="10">
+                        <uuid uuid="{1139f819-fde6-5a4b-8aed-ed28beb39615}" />
+                        <names>
+                            <name lang="de">Potential L2 (Anfang)</name>
+                            <name lang="en">Potential L2 (Anfang)</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <text x="-15.865" y="4" text="L2" rotation="0" font="Arial,8,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <line x1="-2" y1="0" x2="0" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <terminal uuid="{2310368c-4df2-523a-a5d3-f1795276ebb6}" name="1" x="0" y="0" orientation="e" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="schiene_anfang_L3.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="20" height="20" hotspot_x="20" hotspot_y="10">
+                        <uuid uuid="{5f1d2eeb-3962-59de-91c0-eac2a3ff3ecb}" />
+                        <names>
+                            <name lang="de">Potential L3 (Anfang)</name>
+                            <name lang="en">Potential L3 (Anfang)</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <text x="-15.865" y="4" text="L3" rotation="0" font="Arial,8,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <line x1="-2" y1="0" x2="0" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <terminal uuid="{b8fe6771-dac1-590a-9275-c3114b0f0fb9}" name="1" x="0" y="0" orientation="e" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="schiene_anfang_N.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="20" height="20" hotspot_x="20" hotspot_y="10">
+                        <uuid uuid="{a0964e93-3bf2-566d-93ba-53a2377513a6}" />
+                        <names>
+                            <name lang="de">Potential N (Anfang)</name>
+                            <name lang="en">Potential N (Anfang)</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <text x="-11.703" y="4" text="N" rotation="0" font="Arial,8,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <line x1="-2" y1="0" x2="0" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <terminal uuid="{186b0621-abd4-50bb-babb-8e44ddcc9e19}" name="1" x="0" y="0" orientation="e" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="schiene_anfang_PE.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="20" height="20" hotspot_x="20" hotspot_y="10">
+                        <uuid uuid="{3514ca3a-0b9c-5acf-923d-704de2586eb8}" />
+                        <names>
+                            <name lang="de">Potential PE (Anfang)</name>
+                            <name lang="en">Potential PE (Anfang)</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <text x="-18.229" y="4" text="PE" rotation="0" font="Arial,8,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <line x1="-2" y1="0" x2="0" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <terminal uuid="{c87c96bf-9c73-5a42-b526-b7a934cb271f}" name="1" x="0" y="0" orientation="e" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="schiene_ende_L1.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="20" height="20" hotspot_x="0" hotspot_y="10">
+                        <uuid uuid="{3bb86a5c-4437-5af9-a797-bf61280da977}" />
+                        <names>
+                            <name lang="de">Potential L1 (Ende)</name>
+                            <name lang="en">Potential L1 (Ende)</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="0" x2="2" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <text x="5" y="4" text="L1" rotation="0" font="Arial,8,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <terminal uuid="{3e96c68f-7c6e-520d-9497-c1bd00a1f081}" name="1" x="0" y="0" orientation="w" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="schiene_ende_L2.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="20" height="20" hotspot_x="0" hotspot_y="10">
+                        <uuid uuid="{97f6b248-8859-5581-a310-9afda815c3a6}" />
+                        <names>
+                            <name lang="de">Potential L2 (Ende)</name>
+                            <name lang="en">Potential L2 (Ende)</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="0" x2="2" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <text x="5" y="4" text="L2" rotation="0" font="Arial,8,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <terminal uuid="{9402f85a-d611-5256-8c56-fcf43d94371a}" name="1" x="0" y="0" orientation="w" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="schiene_ende_L3.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="20" height="20" hotspot_x="0" hotspot_y="10">
+                        <uuid uuid="{e45c3aea-cb57-5085-a361-bc79b0a6ab27}" />
+                        <names>
+                            <name lang="de">Potential L3 (Ende)</name>
+                            <name lang="en">Potential L3 (Ende)</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="0" x2="2" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <text x="5" y="4" text="L3" rotation="0" font="Arial,8,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <terminal uuid="{ae61274c-051c-5e7f-b54a-cffcf22e3cdb}" name="1" x="0" y="0" orientation="w" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="schiene_ende_N.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="20" height="20" hotspot_x="0" hotspot_y="10">
+                        <uuid uuid="{33815045-72ab-5ac1-a526-5c2ec8cf3520}" />
+                        <names>
+                            <name lang="de">Potential N (Ende)</name>
+                            <name lang="en">Potential N (Ende)</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="0" x2="2" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <text x="5" y="4" text="N" rotation="0" font="Arial,8,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <terminal uuid="{70ddd467-1219-523f-8efd-d873ff0d91e2}" name="1" x="0" y="0" orientation="w" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="schiene_ende_PE.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="20" height="20" hotspot_x="0" hotspot_y="10">
+                        <uuid uuid="{91020369-2dd7-5276-aa7c-57ec9c201082}" />
+                        <names>
+                            <name lang="de">Potential PE (Ende)</name>
+                            <name lang="en">Potential PE (Ende)</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="0" x2="2" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <text x="5" y="4" text="PE" rotation="0" font="Arial,8,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <terminal uuid="{50c7e7a6-dba7-5b79-a671-d2a73adb313a}" name="1" x="0" y="0" orientation="w" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="schliesser_druck__.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="20" height="60" hotspot_x="20" hotspot_y="30">
+                        <uuid uuid="{283b901e-7576-5c42-93df-1d9813b44b87}" />
+                        <names>
+                            <name lang="de">Taster (Schließer)</name>
+                            <name lang="en">Taster (Schließer)</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="-30" x2="0" y2="-10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="10" x2="0" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="10" x2="-8" y2="-13" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="-4" y1="-1" x2="-20" y2="-1" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="-20" y1="-6" x2="-20" y2="4" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="-20" y1="-6" x2="-17" y2="-6" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="-20" y1="4" x2="-17" y2="4" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <dynamic_text x="8" y="-26" z="10" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{aba6c63d-4fc1-52f9-a348-7b3a39dcb7a5}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold">
+                                <text />
+                                <info_name>label</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="8" y="-13" z="11" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{d9a3a677-4622-5f5c-90c6-d13965178db7}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>comment</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="8" y="-1" z="12" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{7e93543e-6cba-58b8-a701-256d2a409948}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>function</info_name>
+                            </dynamic_text>
+                            <terminal uuid="{4281e1e8-2901-5918-a194-2bf7a7f81696}" name="1" x="0" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{e6b37f28-b792-51cc-86eb-f7c58f47eb9a}" name="2" x="0" y="30" orientation="s" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="schliesser_keine_1_2.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="20" height="60" hotspot_x="10" hotspot_y="30">
+                        <uuid uuid="{8ad264ae-8e56-513a-ae90-83dd31039bb4}" />
+                        <names>
+                            <name lang="de">Schließer</name>
+                            <name lang="en">Schließer</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="-30" x2="0" y2="-10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="10" x2="0" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="10" x2="-8" y2="-13" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <text x="3" y="-22" text="1" rotation="0" font="Arial,5,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <text x="3" y="27" text="2" rotation="0" font="Arial,5,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <dynamic_text x="8" y="-26" z="10" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{d2ea53d8-15ff-559e-b6c9-5b475db2ae4e}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold">
+                                <text />
+                                <info_name>label</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="8" y="-13" z="11" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{e38ac41f-39f0-5480-a268-133b2a712053}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>comment</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="8" y="-1" z="12" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{da3d81c6-1f8a-554d-9cd4-69900a3e476d}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>function</info_name>
+                            </dynamic_text>
+                            <terminal uuid="{1f5cd5fc-71db-5b9a-b85f-02aff14248ac}" name="1" x="0" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{8703ca0b-8edf-52d4-86e2-fb9b1b7b054a}" name="2" x="0" y="30" orientation="s" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="spule_sst.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="50" height="60" hotspot_x="30" hotspot_y="30">
+                        <uuid uuid="{64382b08-8e16-5ef2-b703-e6b5d8c934cd}" />
+                        <names>
+                            <name lang="de">Spule Stromstoßschalter</name>
+                            <name lang="en">Spule Stromstoßschalter</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="-30" x2="0" y2="-10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <rect x="-15" y="-10" width="30" height="20" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="10" x2="0" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <text x="3" y="-22" text="A1" rotation="0" font="Arial,5,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <text x="3" y="27" text="A2" rotation="0" font="Arial,5,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <rect x="-25" y="-10" width="10" height="20" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <polygon x1="-25" y1="6" x2="-23" y2="6" x3="-17" y3="-6" x4="-15" y4="-6" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" />
+                            <dynamic_text x="18" y="-26" z="10" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{c5b291ee-8ff0-52a0-b5e1-e6a2d88e775f}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold">
+                                <text />
+                                <info_name>label</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="18" y="-13" z="11" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{fe5433c5-8999-5f7e-ae6f-a25cc27482ee}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>comment</info_name>
+                            </dynamic_text>
+                            <terminal uuid="{5e6f51a0-2fbc-5994-8e6f-48812902824f}" name="1" x="0" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{4b5861e3-693f-5729-a511-86f8c5d0f5f2}" name="2" x="0" y="30" orientation="s" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="steckdose.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="50" height="60" hotspot_x="20" hotspot_y="30">
+                        <uuid uuid="{a0fc1a4e-bf63-5598-a35a-633951395396}" />
+                        <names>
+                            <name lang="de">Schutzkontaktsteckdose</name>
+                            <name lang="en">Schutzkontaktsteckdose</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="-30" x2="0" y2="-12" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="-10" y1="-12" x2="10" y2="-12" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <arc x="-10" y="-12" width="20" height="20" start="0" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" />
+                            <line x1="-10" y1="-2" x2="-10" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="10" y1="-2" x2="10" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <text x="-17" y="24" text="N" rotation="0" font="Arial,5,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <text x="13" y="24" text="PE" rotation="0" font="Arial,5,-1,5,50,0,0,0,0,0,Regular" color="#000000" />
+                            <dynamic_text x="4" y="-38" z="10" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{379313c3-dbcc-54cc-85bd-81e1bde1b581}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold">
+                                <text />
+                                <info_name>label</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="4" y="-27" z="11" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{fd6ee15e-8517-5c59-8c56-11c8ef7057d9}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>comment</info_name>
+                            </dynamic_text>
+                            <terminal uuid="{8b442244-90b2-5113-a039-0c7b945505d7}" name="L" x="0" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{8481bb25-074e-5645-ac4a-092c6b81e709}" name="N" x="-10" y="30" orientation="s" type="Generic" />
+                            <terminal uuid="{47727886-ea19-5b5d-a2ee-b1a7e6b439c0}" name="PE" x="10" y="30" orientation="s" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="wechsler_hand____01.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="40" height="60" hotspot_x="20" hotspot_y="30">
+                        <uuid uuid="{344b51c3-2e7d-56e0-810e-db5d53dfa29a}" />
+                        <names>
+                            <name lang="de">Wechselschalter</name>
+                            <name lang="en">Wechselschalter</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="10" x2="0" y2="30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="-30" x2="0" y2="-10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="20" y1="-30" x2="20" y2="-10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="20" y1="-10" x2="5" y2="-10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="10" x2="8" y2="-13" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="4" y1="-1" x2="-20" y2="-1" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="-20" y1="-6" x2="-20" y2="4" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <dynamic_text x="26" y="-26" z="10" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{bc3e7955-6312-553e-aca1-6c5d00ead669}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold">
+                                <text />
+                                <info_name>label</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="26" y="-13" z="11" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{18e80c3f-1106-5eb8-8baa-bb0b08f2a225}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>comment</info_name>
+                            </dynamic_text>
+                            <terminal uuid="{d6e09fc5-db73-5b1e-b486-45f49af30f19}" name="c" x="0" y="30" orientation="s" type="Generic" />
+                            <terminal uuid="{ee6b8956-6e0c-503b-b2f5-991c2400c9c5}" name="nc" x="20" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{22b0dc1e-89b2-56ae-aa2b-178285cb038b}" name="no" x="0" y="-30" orientation="n" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+                <element name="wechsler_hand____11.elmt">
+                    <definition version="0.100.0" type="element" link_type="simple" width="40" height="60" hotspot_x="20" hotspot_y="30">
+                        <uuid uuid="{65b1ed7c-1ad0-5662-9478-213c082b593d}" />
+                        <names>
+                            <name lang="de">Wechselschalter</name>
+                            <name lang="en">Wechselschalter</name>
+                        </names>
+                        <informations>Symbolsatz nach DIN EN 60617 (Skill elektroplan)</informations>
+                        <description>
+                            <line x1="0" y1="-10" x2="0" y2="-30" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="30" x2="0" y2="10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="20" y1="30" x2="20" y2="10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="20" y1="10" x2="5" y2="10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="0" y1="-10" x2="8" y2="13" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="4" y1="1" x2="-20" y2="1" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <line x1="-20" y1="-4" x2="-20" y2="6" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                            <dynamic_text x="8" y="-26" z="10" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{8f2060d3-c7be-561e-8aa6-93f2838037e5}" font="Arial,7,-1,5,75,0,0,0,0,0,Bold">
+                                <text />
+                                <info_name>label</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="8" y="-13" z="11" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{fa5621a5-e3d0-551e-b75e-69025e79ea9e}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>comment</info_name>
+                            </dynamic_text>
+                            <dynamic_text x="8" y="-1" z="12" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{ca675d2b-e205-5558-a86f-7162344aacab}" font="Arial,6,-1,5,50,0,0,0,0,0,Regular">
+                                <text />
+                                <info_name>function</info_name>
+                            </dynamic_text>
+                            <terminal uuid="{3e94bc22-87c2-5871-a8f8-5a6f768bee75}" name="c" x="0" y="-30" orientation="n" type="Generic" />
+                            <terminal uuid="{4cef73f5-1fd3-5f72-9295-f1f00e44cf01}" name="nc" x="20" y="30" orientation="s" type="Generic" />
+                            <terminal uuid="{5b9f818e-286c-573f-a0e0-d72a1cf1e04a}" name="no" x="0" y="30" orientation="s" type="Generic" />
+                        </description>
+                    </definition>
+                </element>
+            </category>
+        </category>
+    </collection>
+</project>

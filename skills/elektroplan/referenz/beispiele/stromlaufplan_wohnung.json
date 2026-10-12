@@ -1,0 +1,24 @@
+{
+  "plan": "stromlaufplan",
+  "format": "A4 quer",
+  "dateiname": "Stromlaufplan Beleuchtung Beispiel",
+  "titel": "Stromlaufplan Beleuchtung und Steckdosen",
+  "anlage": "UV Wohnung 1. OG · Flur, Wohnzimmer, Küche",
+  "projekt": {"kunde": "Familie Muster", "objekt": "Musterstraße 12, 12345 Musterstadt",
+              "auftrag": "2026-014", "datum": "08.10.2026", "bearbeiter": "M. Mustermann", "revision": "A"},
+  "stromkreise": [
+    {"typ": "wechselschaltung", "bezeichnung": "Licht Wohnzimmer (Wechselschaltung)", "phase": "L2",
+     "ls": {"bmk": "F8", "bez": "B16"},
+     "schalter": [{"ort": "Tür Flur"}, {"ort": "Tür Balkon"}], "leuchten": [{"text": "Decke"}]},
+    {"typ": "kreuzschaltung", "bezeichnung": "Licht Flur (Kreuzschaltung)", "phase": "L1",
+     "ls": {"bmk": "F7", "bez": "B10"}, "kreuzschalter": 1,
+     "schalter": [{"ort": "Eingang"}, {"ort": "Bad"}, {"ort": "Küche"}], "leuchten": 2},
+    {"typ": "stromstoss", "bezeichnung": "Licht Treppe (Stromstoßschaltung)", "phase": "L3",
+     "ls": {"bmk": "F15", "bez": "B10"}, "taster": [{"ort": "EG"}, {"ort": "OG"}, {"ort": "DG"}],
+     "relais": {"bmk": "K1"}, "leuchten": 2},
+    {"typ": "steckdosen", "bezeichnung": "Steckdosen Küche Arbeitsplatte links", "phase": "L1",
+     "ls": {"bmk": "F2", "bez": "B16"}, "steckdosen": 3},
+    {"typ": "herd", "bezeichnung": "Herd / Kochfeld", "ls": {"bmk": "F11", "bez": "B16"},
+     "verbraucher": {"text": "Herd"}}
+  ]
+}

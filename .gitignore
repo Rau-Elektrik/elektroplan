@@ -1,0 +1,14 @@
+# Eigene Firmendaten gehören nie ins Repository
+firma.json
+firma/
+logo.png
+*.xltx
+elektroplan-persoenlich.zip
+
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.qet.bak

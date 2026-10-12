@@ -1,0 +1,22 @@
+{
+  "plan": "stromlaufplan",
+  "format": "A4 quer",
+  "dateiname": "2026-10-09 Stromlaufplan Wendeschützschaltung",
+  "titel": "Wendeschützschaltung mit Selbsthaltung",
+  "anlage": "Drehstrommotor Rechts-/Linkslauf · Schütz- und Tasterverriegelung",
+  "projekt": {"kunde": "", "objekt": "", "auftrag": "", "datum": "09.10.2026",
+              "bearbeiter": "M. Mustermann", "revision": "A"},
+  "stromkreise": [
+    {"typ": "wendeschuetz", "phase": "L1", "tasterverriegelung": true,
+     "bezeichnung": "Hauptstromkreis Motor Rechts-/Linkslauf",
+     "f1": {"bmk": "F1", "text": "3× 16 A gG"},
+     "f2": {"bmk": "F2", "text": "Überlastrelais", "einstellung": "Ir = Motornennstrom"},
+     "f3": {"bmk": "F3", "text": "B6"},
+     "k1": {"bmk": "K1", "text": "Rechtslauf"},
+     "k2": {"bmk": "K2", "text": "Linkslauf"},
+     "s0": {"bmk": "S0", "text": "Aus"},
+     "s1": {"bmk": "S1", "text": "Rechts"},
+     "s2": {"bmk": "S2", "text": "Links"},
+     "motor": {"bmk": "M1", "text": "400 V"}}
+  ]
+}
