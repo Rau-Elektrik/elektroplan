@@ -6,7 +6,8 @@ Aufruf:
   python elektroplan.py STROMKREISLISTE.xlsx ...   (Verteilerplan aus der Excel-Vorlage)
 
 PLAN.json enthält "plan": "verteilerplan" | "stromlaufplan" | "installationsplan" | "wandansicht"
-  ("kuechenplan" = Wandansicht der Küche mit Möbeln, Elektropunkten und Höhen).
+  ("kuechenplan" = Wandansicht der Küche mit Möbeln, Elektropunkten und Höhen) | "deckenspiegel"
+  (Leuchten nach DIN EN 12464-1 berechnen und setzen, Blatt 2 = Lichtberechnung).
 Verteilung (mit "schutzorgane"): --darstellung einpolig | allpolig | beide,
   --stromkreisliste füllt zusätzlich die Excel-Vorlage „Verteilerdokumentation Stromkreisliste“ aus.
 Format siehe referenz/plan_format.md.
@@ -26,7 +27,8 @@ from ep.pruefung import pruefe  # noqa: E402
 from ep.qet_writer import schreibe_qet  # noqa: E402
 
 STANDARDFORMAT = {"verteilerplan": "A3 quer", "stromlaufplan": "A4 quer",
-                  "installationsplan": "A3 quer", "wandansicht": "A3 quer", "kuechenplan": "A3 quer"}
+                  "installationsplan": "A3 quer", "wandansicht": "A3 quer", "kuechenplan": "A3 quer",
+                  "deckenspiegel": "A3 quer"}
 
 
 def lade(pfad: Path) -> dict:
@@ -63,9 +65,11 @@ def baue(daten: dict, fmt_name: str | None = None, darstellung: str | None = Non
         from ep import installationsplan as m
     elif art in ("wandansicht", "kuechenplan", "küchenplan"):
         from ep import wandansicht as m
+    elif art in ("deckenspiegel", "lichtplanung", "lichtplan"):
+        from ep import deckenspiegel as m
     else:
         raise SystemExit(f'Unbekannte Planart {art!r} – erwartet "verteilerplan", '
-                         f'"stromlaufplan", "installationsplan" oder "wandansicht"/"kuechenplan"')
+                         f'"stromlaufplan", "installationsplan", "wandansicht"/"kuechenplan" oder "deckenspiegel"')
     return m.baue(daten, fmt)
 
 
@@ -109,6 +113,13 @@ def main(argv=None):
     from ep.normpruefung import pruefe as normpruefung
     for w in normpruefung(daten):
         print(f"HINWEIS (Norm): {w}")
+    from ep.deckenspiegel import hinweise as lichthinweise
+    for w in lichthinweise(daten):
+        print(f"HINWEIS (Licht): {w}")
+    if daten.get("_leuchten_export"):
+        exp = ziel / f"{name} Leuchten.json"
+        exp.write_text(json.dumps(daten["_leuchten_export"], ensure_ascii=False, indent=1), encoding="utf-8")
+        print(f"Leuchten:     {exp}  (zum Übernehmen in den Installationsplan)")
     if daten.get("schutzorgane") and (a.stromkreisliste or daten.get("stromkreisliste"))             and a.eingabe.suffix.lower() not in (".xlsx", ".xlsm", ".xltx"):
         from ep.stromkreisliste import schreibe_stromkreisliste
         xlsx, hinw = schreibe_stromkreisliste(daten, ziel / f"{name} Stromkreisliste.xlsx")

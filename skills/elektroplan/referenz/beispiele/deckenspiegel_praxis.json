@@ -1,0 +1,49 @@
+{
+  "plan": "deckenspiegel",
+  "titel": "Deckenspiegel Praxis (Beispiel)",
+  "dateiname": "2026-10-12 Deckenspiegel Beispiel Praxis",
+  "projekt": {
+    "kunde": "Muster Praxis",
+    "objekt": "Musterstraße 12, 12345 Musterstadt",
+    "auftrag": "2026-015",
+    "datum": "12.10.2026",
+    "bearbeiter": "M. Mustermann",
+    "revision": "A"
+  },
+  "licht": {"deckenhoehe": 2.60, "reflexion": "hell", "wartungsfaktor": 0.8},
+  "grundriss": {
+    "wanddicke": 0.115,
+    "deckenhoehe": 2.60,
+    "raeume": [
+      {"name": "Empfang", "x": 0, "y": 0, "b": 4.2, "t": 3.6, "wand": {"n": 0.3, "w": 0.3}},
+      {"name": "Warteraum", "x": 4.315, "y": 0, "b": 4.0, "t": 3.6, "wand": {"n": 0.3, "o": 0.3}},
+      {"name": "Flur", "x": 0, "y": 3.715, "b": 8.315, "t": 1.4, "wand": {"w": 0.3, "o": 0.3}},
+      {"name": "Behandlung", "x": 0, "y": 5.23, "b": 4.2, "t": 4.0, "wand": {"s": 0.3, "w": 0.3}},
+      {"name": "Büro", "x": 4.315, "y": 5.23, "b": 2.6, "t": 4.0, "wand": {"s": 0.3}},
+      {"name": "WC", "x": 7.03, "y": 5.23, "b": 1.285, "t": 2.0, "wand": {"o": 0.3}},
+      {"name": "Lager", "x": 7.03, "y": 7.345, "b": 1.285, "t": 1.885, "wand": {"o": 0.3, "s": 0.3}}
+    ],
+    "tueren": [
+      {"raum": "Empfang", "seite": "s", "pos": 1.6, "breite": 1.01, "anschlag": "anfang"},
+      {"raum": "Warteraum", "seite": "s", "pos": 1.0, "breite": 0.885, "anschlag": "ende"},
+      {"raum": "Behandlung", "seite": "n", "pos": 3.0, "breite": 0.885, "anschlag": "ende"},
+      {"raum": "Büro", "seite": "n", "pos": 0.8, "breite": 0.885, "anschlag": "anfang"},
+      {"raum": "WC", "seite": "n", "pos": 0.2, "breite": 0.76, "anschlag": "anfang"}
+    ],
+    "fenster": [
+      {"raum": "Empfang", "seite": "n", "pos": 1.2, "breite": 1.8},
+      {"raum": "Warteraum", "seite": "n", "pos": 1.1, "breite": 1.8},
+      {"raum": "Behandlung", "seite": "s", "pos": 1.2, "breite": 1.8},
+      {"raum": "Büro", "seite": "s", "pos": 0.6, "breite": 1.4}
+    ]
+  },
+  "lichtraeume": [
+    {"raum": "Empfang", "stromkreis": "F3"},
+    {"raum": "Warteraum", "stromkreis": "F3"},
+    {"raum": "Flur", "nutzung_licht": "praxis_flur", "stromkreis": "F4"},
+    {"raum": "Behandlung", "nutzung_licht": "untersuchung", "stromkreis": "F5"},
+    {"raum": "Büro", "stromkreis": "F6"},
+    {"raum": "WC", "stromkreis": "F4"},
+    {"raum": "Lager", "stromkreis": "F4"}
+  ]
+}

@@ -1,0 +1,827 @@
+{
+ "_info": "Wartungswerte für die Lichtberechnung im Deckenspiegel. Arbeitsstätten: DIN EN 12464-1:2021-11 (Abschnitt 7.3, Tabellen 9–53), Werte abgeglichen am 12.10.2026 (DIN-Normen-Handbuch Elektrotechniker-Handwerk, 13. Aufl. 2025). Nur Zahlenwerte und Fundstellen, keine Normtexte. em = Ēm erforderlich (Mindestwert), em_mod = Ēm modifiziert (übliche Kontextmodifikatoren, 5.3.3), uo = Gleichmäßigkeit, ra = Farbwiedergabe, rugl = UGR-Grenzwert, emz/ewand/edecke = zylindrisch/Wand/Decke (Raumhelligkeit), ebene = Höhe der Bewertungsebene über OKFF in m (0 = Boden). Wohnungen: keine Norm – Richtwerte aus der Praxis, als solche gekennzeichnet. In Arbeitsstätten zusätzlich ASR A3.4 beachten.",
+ "geprueft": true,
+ "nutzungen": {
+  "flur": {
+   "ref": "9.1",
+   "tabelle": "Verkehrszonen in Gebäuden",
+   "bereich": "Korridore und Verkehrsflächen",
+   "em": 100,
+   "em_mod": 150,
+   "uo": 0.4,
+   "ra": 40,
+   "rugl": 28,
+   "emz": 50,
+   "ewand": 50,
+   "edecke": 30,
+   "ebene": 0.0
+  },
+  "treppe": {
+   "ref": "9.2",
+   "tabelle": "Verkehrszonen in Gebäuden",
+   "bereich": "Treppen",
+   "em": 100,
+   "em_mod": 150,
+   "uo": 0.4,
+   "ra": 40,
+   "rugl": 25,
+   "emz": 50,
+   "ewand": 50,
+   "edecke": 30,
+   "ebene": 0.0
+  },
+  "kantine": {
+   "ref": "10.1",
+   "tabelle": "Pausen-, Sanitär- und Erste-Hilfe-Räume",
+   "bereich": "Kantine und Pausenbereiche",
+   "em": 200,
+   "em_mod": 500,
+   "uo": 0.4,
+   "ra": 80,
+   "rugl": 22,
+   "emz": 75,
+   "ewand": 75,
+   "edecke": 50,
+   "ebene": 0.75
+  },
+  "pausenraum": {
+   "ref": "10.2",
+   "tabelle": "Pausen-, Sanitär- und Erste-Hilfe-Räume",
+   "bereich": "Pausenräume",
+   "em": 100,
+   "em_mod": 200,
+   "uo": 0.4,
+   "ra": 80,
+   "rugl": 22,
+   "emz": 50,
+   "ewand": 50,
+   "edecke": 30,
+   "ebene": 0.75
+  },
+  "sport": {
+   "ref": "10.3",
+   "tabelle": "Pausen-, Sanitär- und Erste-Hilfe-Räume",
+   "bereich": "Räume für sportliche Aktivitäten",
+   "em": 300,
+   "em_mod": 500,
+   "uo": 0.4,
+   "ra": 80,
+   "rugl": 22,
+   "emz": 100,
+   "ewand": 100,
+   "edecke": 75,
+   "ebene": 0.0
+  },
+  "sanitaer": {
+   "ref": "10.4",
+   "tabelle": "Pausen-, Sanitär- und Erste-Hilfe-Räume",
+   "bereich": "Garderobe, Waschräume, Bad, Umkleide, Dusche, Toilette",
+   "em": 200,
+   "em_mod": 300,
+   "uo": 0.4,
+   "ra": 80,
+   "rugl": 25,
+   "emz": 75,
+   "ewand": 75,
+   "edecke": 50,
+   "ebene": 0.0,
+   "hinweis": "gilt in jeder geschlossenen Toilettenkabine; Spiegel (10.5): 200 lx vertikal in Kopfhöhe"
+  },
+  "erste_hilfe": {
+   "ref": "10.7",
+   "tabelle": "Pausen-, Sanitär- und Erste-Hilfe-Räume",
+   "bereich": "Räume für ärztliche Behandlungen",
+   "em": 500,
+   "em_mod": 1000,
+   "uo": 0.6,
+   "ra": 90,
+   "rugl": 19,
+   "emz": 150,
+   "ewand": 150,
+   "edecke": 100,
+   "ebene": 0.75,
+   "tcp": [
+    4000,
+    5000
+   ]
+  },
+  "lager": {
+   "ref": "12.1",
+   "tabelle": "Lagerräume, Kühlhäuser",
+   "bereich": "Lagerräume",
+   "em": 100,
+   "em_mod": 150,
+   "uo": 0.4,
+   "ra": 80,
+   "rugl": 25,
+   "emz": 50,
+   "ewand": 50,
+   "edecke": 30,
+   "ebene": 0.0,
+   "hinweis": "200 lx, wenn dauerhaft besetzt"
+  },
+  "vorratskammer": {
+   "ref": "12.3",
+   "tabelle": "Lagerräume, Kühlhäuser",
+   "bereich": "Vorratskammer",
+   "em": 200,
+   "em_mod": 300,
+   "uo": 0.4,
+   "ra": 80,
+   "rugl": 25,
+   "ebene": 0.0
+  },
+  "ablage": {
+   "ref": "34.1",
+   "tabelle": "Büros",
+   "bereich": "Ablegen, Kopieren",
+   "em": 300,
+   "em_mod": 500,
+   "uo": 0.4,
+   "ra": 80,
+   "rugl": 19,
+   "emz": 100,
+   "ewand": 100,
+   "edecke": 75,
+   "ebene": 0.75
+  },
+  "buero": {
+   "ref": "34.2",
+   "tabelle": "Büros",
+   "bereich": "Schreiben, Tippen, Lesen, Datenverarbeitung",
+   "em": 500,
+   "em_mod": 1000,
+   "uo": 0.6,
+   "ra": 80,
+   "rugl": 19,
+   "emz": 150,
+   "ewand": 150,
+   "edecke": 100,
+   "ebene": 0.75,
+   "hinweis": "Bildschirmarbeit 5.9, Beleuchtung steuerbar"
+  },
+  "besprechung": {
+   "ref": "34.5.1",
+   "tabelle": "Büros",
+   "bereich": "Konferenz- und Sitzungsräume",
+   "em": 500,
+   "em_mod": 1000,
+   "uo": 0.6,
+   "ra": 80,
+   "rugl": 19,
+   "emz": 150,
+   "ewand": 150,
+   "edecke": 100,
+   "ebene": 0.75
+  },
+  "empfang": {
+   "ref": "34.6",
+   "tabelle": "Büros",
+   "bereich": "Empfangstheke",
+   "em": 300,
+   "em_mod": 750,
+   "uo": 0.6,
+   "ra": 80,
+   "rugl": 22,
+   "emz": 100,
+   "ewand": 100,
+   "edecke": 75,
+   "ebene": 0.75,
+   "hinweis": "mit regelmäßiger Arbeitsplatztätigkeit wie Büro (34.2) beleuchten"
+  },
+  "archiv": {
+   "ref": "34.7",
+   "tabelle": "Büros",
+   "bereich": "Archivieren",
+   "em": 200,
+   "em_mod": 300,
+   "uo": 0.4,
+   "ra": 80,
+   "rugl": 25,
+   "emz": 75,
+   "ewand": 75,
+   "edecke": 50,
+   "ebene": 0.75
+  },
+  "eingangshalle": {
+   "ref": "36.1",
+   "tabelle": "Öffentliche Bereiche – Allgemeine Bereiche",
+   "bereich": "Eingangshallen",
+   "em": 100,
+   "em_mod": 200,
+   "uo": 0.4,
+   "ra": 80,
+   "rugl": 22,
+   "emz": 50,
+   "ewand": 50,
+   "edecke": 30,
+   "ebene": 0.0
+  },
+  "garderobe": {
+   "ref": "36.2",
+   "tabelle": "Öffentliche Bereiche – Allgemeine Bereiche",
+   "bereich": "Garderoben",
+   "em": 200,
+   "em_mod": 300,
+   "uo": 0.4,
+   "ra": 80,
+   "rugl": 25,
+   "emz": 75,
+   "ewand": 75,
+   "edecke": 50,
+   "ebene": 0.0
+  },
+  "warteraum": {
+   "ref": "45.1",
+   "tabelle": "Gesundheitseinrichtungen – Räume zur allgemeinen Nutzung",
+   "bereich": "Warteräume",
+   "em": 200,
+   "em_mod": 300,
+   "uo": 0.4,
+   "ra": 80,
+   "rugl": 22,
+   "emz": 75,
+   "ewand": 75,
+   "edecke": 30,
+   "ebene": 0.75
+  },
+  "praxis_flur": {
+   "ref": "45.2",
+   "tabelle": "Gesundheitseinrichtungen – Räume zur allgemeinen Nutzung",
+   "bereich": "Korridore tagsüber",
+   "em": 100,
+   "em_mod": 200,
+   "uo": 0.4,
+   "ra": 80,
+   "rugl": 22,
+   "emz": 50,
+   "ewand": 50,
+   "edecke": 30,
+   "ebene": 0.0,
+   "hinweis": "nachts 50 lx (45.4)"
+  },
+  "praxis_flur_untersuchung": {
+   "ref": "45.5",
+   "tabelle": "Gesundheitseinrichtungen – Räume zur allgemeinen Nutzung",
+   "bereich": "Korridore mit Mehrzwecknutzung",
+   "em": 200,
+   "em_mod": 300,
+   "uo": 0.6,
+   "ra": 80,
+   "rugl": 22,
+   "emz": 75,
+   "ewand": 75,
+   "edecke": 50,
+   "ebene": 0.75
+  },
+  "tagesraum": {
+   "ref": "45.6",
+   "tabelle": "Gesundheitseinrichtungen – Räume zur allgemeinen Nutzung",
+   "bereich": "Tagesraum",
+   "em": 300,
+   "em_mod": 500,
+   "uo": 0.6,
+   "ra": 80,
+   "rugl": 22,
+   "emz": 75,
+   "ewand": 75,
+   "edecke": 50,
+   "ebene": 0.75
+  },
+  "personal_buero": {
+   "ref": "46.1",
+   "tabelle": "Gesundheitseinrichtungen – Personalräume",
+   "bereich": "Büro der Mitarbeiter",
+   "em": 500,
+   "em_mod": 1000,
+   "uo": 0.6,
+   "ra": 80,
+   "rugl": 19,
+   "emz": 150,
+   "ewand": 150,
+   "edecke": 100,
+   "ebene": 0.75
+  },
+  "mitarbeiterraum": {
+   "ref": "46.2",
+   "tabelle": "Gesundheitseinrichtungen – Personalräume",
+   "bereich": "Mitarbeiterräume",
+   "em": 300,
+   "em_mod": 750,
+   "uo": 0.6,
+   "ra": 80,
+   "rugl": 19,
+   "emz": 100,
+   "ewand": 100,
+   "edecke": 50,
+   "ebene": 0.75
+  },
+  "untersuchung": {
+   "ref": "48.1",
+   "tabelle": "Gesundheitseinrichtungen – Untersuchungsräume (allgemein)",
+   "bereich": "Allgemeinbeleuchtung",
+   "em": 500,
+   "em_mod": 750,
+   "uo": 0.6,
+   "ra": 90,
+   "rugl": 19,
+   "emz": 150,
+   "ewand": 150,
+   "edecke": 100,
+   "ebene": 0.75,
+   "tcp": [
+    4000,
+    5000
+   ]
+  },
+  "untersuchung_platz": {
+   "ref": "48.2",
+   "tabelle": "Gesundheitseinrichtungen – Untersuchungsräume (allgemein)",
+   "bereich": "Untersuchung und Behandlung",
+   "em": 1000,
+   "em_mod": 1500,
+   "uo": 0.7,
+   "ra": 90,
+   "rugl": 19,
+   "emz": 150,
+   "ewand": 150,
+   "edecke": 100,
+   "ebene": 0.75,
+   "tcp": [
+    4000,
+    5000
+   ],
+   "hinweis": "Bereich der Sehaufgabe, meist mit Untersuchungsleuchte"
+  },
+  "dialyse": {
+   "ref": "53.1",
+   "tabelle": "Gesundheitseinrichtungen – Behandlungsräume (allgemein)",
+   "bereich": "Dialyse",
+   "em": 500,
+   "em_mod": 750,
+   "uo": 0.6,
+   "ra": 80,
+   "rugl": 19,
+   "emz": 150,
+   "ewand": 150,
+   "edecke": 100,
+   "ebene": 0.75
+  },
+  "dermatologie": {
+   "ref": "53.2",
+   "tabelle": "Gesundheitseinrichtungen – Behandlungsräume (allgemein)",
+   "bereich": "Dermatologie",
+   "em": 500,
+   "em_mod": 750,
+   "uo": 0.6,
+   "ra": 90,
+   "rugl": 19,
+   "emz": 150,
+   "ewand": 150,
+   "edecke": 100,
+   "ebene": 0.75
+  },
+  "endoskopie": {
+   "ref": "53.3",
+   "tabelle": "Gesundheitseinrichtungen – Behandlungsräume (allgemein)",
+   "bereich": "Endoskopie",
+   "em": 300,
+   "em_mod": 500,
+   "uo": 0.6,
+   "ra": 80,
+   "rugl": 19,
+   "emz": 100,
+   "ewand": 100,
+   "edecke": 75,
+   "ebene": 0.75
+  },
+  "verbandsraum": {
+   "ref": "53.4",
+   "tabelle": "Gesundheitseinrichtungen – Behandlungsräume (allgemein)",
+   "bereich": "Verbandsräume",
+   "em": 500,
+   "em_mod": 750,
+   "uo": 0.6,
+   "ra": 80,
+   "rugl": 19,
+   "emz": 150,
+   "ewand": 150,
+   "edecke": 100,
+   "ebene": 0.75
+  },
+  "med_baeder": {
+   "ref": "53.5",
+   "tabelle": "Gesundheitseinrichtungen – Behandlungsräume (allgemein)",
+   "bereich": "Medizinische Bäder",
+   "em": 300,
+   "em_mod": 500,
+   "uo": 0.6,
+   "ra": 80,
+   "rugl": 19,
+   "emz": 100,
+   "ewand": 100,
+   "edecke": 75,
+   "ebene": 0.75
+  },
+  "massage": {
+   "ref": "53.6",
+   "tabelle": "Gesundheitseinrichtungen – Behandlungsräume (allgemein)",
+   "bereich": "Massage und Radiotherapie",
+   "em": 300,
+   "em_mod": 500,
+   "uo": 0.6,
+   "ra": 80,
+   "rugl": 19,
+   "emz": 100,
+   "ewand": 100,
+   "edecke": 75,
+   "ebene": 0.75
+  },
+  "wohnen": {
+   "ref": "Praxis",
+   "bereich": "Wohnzimmer",
+   "em": 150,
+   "uo": 0.4,
+   "ra": 80,
+   "ebene": 0.75,
+   "wohnung": true
+  },
+  "essen": {
+   "ref": "Praxis",
+   "bereich": "Essplatz",
+   "em": 200,
+   "uo": 0.4,
+   "ra": 80,
+   "ebene": 0.75,
+   "wohnung": true
+  },
+  "kueche": {
+   "ref": "Praxis",
+   "bereich": "Küche (Grundbeleuchtung)",
+   "em": 200,
+   "uo": 0.4,
+   "ra": 80,
+   "ebene": 0.85,
+   "wohnung": true,
+   "hinweis": "Arbeitsfläche zusätzlich Unterbauleuchten (ca. 500 lx), z. B. PLL LED (Kernsortiment S. 158)"
+  },
+  "schlafen": {
+   "ref": "Praxis",
+   "bereich": "Schlafzimmer",
+   "em": 100,
+   "uo": 0.4,
+   "ra": 80,
+   "ebene": 0.75,
+   "wohnung": true
+  },
+  "kind": {
+   "ref": "Praxis",
+   "bereich": "Kinderzimmer",
+   "em": 150,
+   "uo": 0.4,
+   "ra": 80,
+   "ebene": 0.75,
+   "wohnung": true
+  },
+  "arbeiten": {
+   "ref": "Praxis",
+   "bereich": "Arbeitszimmer",
+   "em": 500,
+   "uo": 0.6,
+   "ra": 80,
+   "ebene": 0.75,
+   "wohnung": true
+  },
+  "bad": {
+   "ref": "Praxis",
+   "bereich": "Bad",
+   "em": 200,
+   "uo": 0.4,
+   "ra": 80,
+   "ebene": 0.0,
+   "wohnung": true,
+   "ip": 44,
+   "hinweis": "Spiegelleuchte zusätzlich (vgl. 10.5: 200 lx vertikal), z. B. Elsa Vario Flex IP44 (S. 155)"
+  },
+  "wc": {
+   "ref": "Praxis",
+   "bereich": "WC (Wohnung)",
+   "em": 100,
+   "uo": 0.4,
+   "ra": 80,
+   "ebene": 0.0,
+   "wohnung": true
+  },
+  "flur_wohnung": {
+   "ref": "Praxis",
+   "bereich": "Flur, Diele (Wohnung)",
+   "em": 100,
+   "uo": 0.4,
+   "ra": 80,
+   "ebene": 0.0,
+   "wohnung": true
+  },
+  "hausarbeitsraum": {
+   "ref": "Praxis",
+   "bereich": "Hausarbeitsraum",
+   "em": 300,
+   "uo": 0.4,
+   "ra": 80,
+   "ebene": 0.85,
+   "wohnung": true
+  },
+  "keller": {
+   "ref": "Praxis",
+   "bereich": "Keller, Abstellraum",
+   "em": 100,
+   "uo": 0.4,
+   "ra": 80,
+   "ebene": 0.0,
+   "wohnung": true
+  },
+  "garage": {
+   "ref": "Praxis",
+   "bereich": "Garage",
+   "em": 100,
+   "uo": 0.4,
+   "ra": 80,
+   "ebene": 0.0,
+   "wohnung": true
+  }
+ },
+ "namen": [
+  [
+   "warte",
+   "warteraum"
+  ],
+  [
+   "empfang",
+   "empfang"
+  ],
+  [
+   "rezeption",
+   "empfang"
+  ],
+  [
+   "anmeldung",
+   "empfang"
+  ],
+  [
+   "tresen",
+   "empfang"
+  ],
+  [
+   "büro",
+   "buero"
+  ],
+  [
+   "buero",
+   "buero"
+  ],
+  [
+   "besprech",
+   "besprechung"
+  ],
+  [
+   "teeküche",
+   "pausenraum"
+  ],
+  [
+   "teekueche",
+   "pausenraum"
+  ],
+  [
+   "mitarbeiterküche",
+   "pausenraum"
+  ],
+  [
+   "kammerl",
+   "pausenraum"
+  ],
+  [
+   "mitarbeiter",
+   "mitarbeiterraum"
+  ],
+  [
+   "pause",
+   "pausenraum"
+  ],
+  [
+   "sozial",
+   "pausenraum"
+  ],
+  [
+   "kantine",
+   "kantine"
+  ],
+  [
+   "umkleide",
+   "sanitaer"
+  ],
+  [
+   "dusche",
+   "sanitaer"
+  ],
+  [
+   "wc",
+   "sanitaer"
+  ],
+  [
+   "toilette",
+   "sanitaer"
+  ],
+  [
+   "garderobe",
+   "garderobe"
+  ],
+  [
+   "eingang",
+   "eingangshalle"
+  ],
+  [
+   "foyer",
+   "eingangshalle"
+  ],
+  [
+   "treppe",
+   "treppe"
+  ],
+  [
+   "flur",
+   "flur"
+  ],
+  [
+   "gang",
+   "flur"
+  ],
+  [
+   "diele",
+   "flur"
+  ],
+  [
+   "lager",
+   "lager"
+  ],
+  [
+   "archiv",
+   "archiv"
+  ],
+  [
+   "technik",
+   "lager"
+  ],
+  [
+   "abstell",
+   "lager"
+  ],
+  [
+   "untersuchung",
+   "untersuchung"
+  ],
+  [
+   "behandlung",
+   "untersuchung"
+  ],
+  [
+   "massage",
+   "massage"
+  ],
+  [
+   "physio",
+   "massage"
+  ],
+  [
+   "labor",
+   "untersuchung"
+  ],
+  [
+   "verband",
+   "verbandsraum"
+  ],
+  [
+   "wohn",
+   "wohnen"
+  ],
+  [
+   "ess",
+   "essen"
+  ],
+  [
+   "küche",
+   "kueche"
+  ],
+  [
+   "kueche",
+   "kueche"
+  ],
+  [
+   "schlaf",
+   "schlafen"
+  ],
+  [
+   "eltern",
+   "schlafen"
+  ],
+  [
+   "kind",
+   "kind"
+  ],
+  [
+   "arbeit",
+   "arbeiten"
+  ],
+  [
+   "bad",
+   "bad"
+  ],
+  [
+   "hwr",
+   "hausarbeitsraum"
+  ],
+  [
+   "hauswirtschaft",
+   "hausarbeitsraum"
+  ],
+  [
+   "keller",
+   "keller"
+  ],
+  [
+   "garage",
+   "garage"
+  ]
+ ],
+ "wohnung_namen": {
+  "flur": "flur_wohnung",
+  "sanitaer": "wc",
+  "lager": "keller",
+  "eingangshalle": "flur_wohnung",
+  "garderobe": "flur_wohnung",
+  "pausenraum": "kueche"
+ },
+ "annahme_namen": [
+  "behandlung",
+  "labor"
+ ],
+ "raumwirkungsgrad": {
+  "_info": "Näherungswerte des Raumwirkungsgrads ηR für direkt strahlende LED-Leuchten (Lichtstromangabe = Leuchtenlichtstrom, also ηLB = 1) über dem Raumindex k = 2·A / (h·U). Typischer Verlauf nach dem Wirkungsgradverfahren (LiTG), konservativ gerundet – kein Ersatz für Herstellertabellen oder DIALux. Direkt/indirekt × 0,85.",
+  "k": [
+   0.6,
+   0.8,
+   1.0,
+   1.25,
+   1.5,
+   2.0,
+   2.5,
+   3.0,
+   4.0,
+   5.0
+  ],
+  "hell": [
+   0.5,
+   0.6,
+   0.67,
+   0.74,
+   0.79,
+   0.86,
+   0.91,
+   0.94,
+   0.98,
+   1.01
+  ],
+  "mittel": [
+   0.42,
+   0.51,
+   0.58,
+   0.65,
+   0.7,
+   0.77,
+   0.82,
+   0.86,
+   0.9,
+   0.93
+  ],
+  "dunkel": [
+   0.36,
+   0.45,
+   0.51,
+   0.58,
+   0.63,
+   0.7,
+   0.75,
+   0.79,
+   0.84,
+   0.87
+  ],
+  "reflexion": {
+   "hell": "Decke 0,7 / Wand 0,5 / Boden 0,2",
+   "mittel": "Decke 0,5 / Wand 0,3 / Boden 0,1",
+   "dunkel": "Decke 0,3 / Wand 0,3 / Boden 0,1"
+  },
+  "faktor_verteilung": {
+   "direkt": 1.0,
+   "direkt_indirekt": 0.85
+  }
+ },
+ "wartungsfaktor": 0.8
+}

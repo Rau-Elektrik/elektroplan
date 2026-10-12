@@ -1,0 +1,783 @@
+{
+ "_info": "Leuchtenkatalog für die Lichtberechnung im Deckenspiegel. Mitgeliefert: Auswahl aus dem LICHTZENTRALE Kernsortiment 2026 (Lichtgroßhandel, Katalog öffentlich im Katalogportal OXOMI, abgerufen 12.10.2026) als Beispiel – Seitenangabe je Leuchte. Für den eigenen Großhandel Einträge ersetzen oder ergänzen (gleiche Felder) bzw. projektbezogen unter \"licht.katalog\" in der Plan-JSON. lm/W = Leuchtenlichtstrom/Systemleistung, ra = CRI-Mindestwert, ugr = UGR-Angabe (null = nicht angegeben, nur bei UGR-Grenze ≥ 25 zulässig), ip = Schutzart raumseitig, montage: einbau/anbau/pendel/einbau_anbau, art_nr = Standardausführung, art_nr_dali = DALI-Variante (\"dali\": true), dimmung = Angabe lt. Katalog. Werte vor der Bestellung mit dem Datenblatt abgleichen.",
+ "lieferant": "LICHTZENTRALE Lichtgroßhandel GmbH",
+ "stand": "Kernsortiment 2026, abgerufen 12.10.2026",
+ "leuchten": [
+  {
+   "id": "auslass",
+   "name": "Deckenauslass, Leuchte bauseits",
+   "typ": "Leuchte nach Kundenwahl",
+   "bauform": "auslass",
+   "montage": "anbau",
+   "lm": null,
+   "w": null,
+   "ra": 80,
+   "ugr": null,
+   "ip": 20,
+   "tcp": [
+    2700,
+    3000,
+    4000
+   ],
+   "verteilung": "direkt",
+   "flaeche_je_auslass": 18,
+   "hinweis": "Mindest-Lichtstrom je Leuchte wird berechnet; Ra ≥ 80, im Bad IP44 beachten"
+  },
+  {
+   "id": "lz_panel_comfort_625",
+   "name": "Panel Comfort 625, 4000 K",
+   "typ": "PL CMFT 625",
+   "bauform": "panel",
+   "montage": "einbau_anbau",
+   "b": 0.62,
+   "t": 0.62,
+   "lm": 3640,
+   "w": 28,
+   "ra": 80,
+   "ugr": 19,
+   "ip": 20,
+   "tcp": [
+    3000,
+    4000,
+    6500
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.4,
+   "min_raum": 2.0,
+   "art_nr": "9509110",
+   "art_nr_dali": "9509109",
+   "seite": 66,
+   "hinweis": "Power Select bis 4320 lm/33 W; Einbaurahmen 9381606 oder Aufbau-Set 9391142",
+   "dimmung": "Standard nicht dimmbar; DALI-Variante 9509109"
+  },
+  {
+   "id": "lz_panel_comfort_625_ra90",
+   "name": "Panel Comfort 625 CRI>90, 4000 K",
+   "typ": "PL CMFT 625 CRI90",
+   "bauform": "panel",
+   "montage": "einbau_anbau",
+   "b": 0.62,
+   "t": 0.62,
+   "lm": 3600,
+   "w": 29.5,
+   "ra": 90,
+   "ugr": 19,
+   "ip": 20,
+   "tcp": [
+    3000,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.4,
+   "min_raum": 2.0,
+   "art_nr": "320780",
+   "art_nr_dali": "320781",
+   "seite": 67,
+   "hinweis": "DALI-Version 4200 lm/36 W; Einbaurahmen 9381606 oder Aufbau-Set 9391142",
+   "dimmung": "Standard nicht dimmbar; DALI-Variante 320781"
+  },
+  {
+   "id": "lz_panel_comfort_1200",
+   "name": "Panel Comfort 1200×300, 4000 K",
+   "typ": "PL CMFT 1200",
+   "bauform": "panel",
+   "montage": "einbau_anbau",
+   "b": 1.195,
+   "t": 0.295,
+   "lm": 3640,
+   "w": 28,
+   "ra": 80,
+   "ugr": 19,
+   "ip": 20,
+   "tcp": [
+    3000,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.4,
+   "min_raum": 2.4,
+   "art_nr": "9509072",
+   "art_nr_dali": "9509071",
+   "seite": 66,
+   "dimmung": "Standard nicht dimmbar; DALI-Variante 9509071"
+  },
+  {
+   "id": "lz_rlp_tw",
+   "name": "RLP TW 625 Tunable White",
+   "typ": "RLP-30B TW",
+   "bauform": "panel",
+   "montage": "einbau_anbau",
+   "b": 0.62,
+   "t": 0.62,
+   "lm": 4300,
+   "w": 36,
+   "ra": 80,
+   "ugr": 19,
+   "ip": 20,
+   "tcp": [
+    2700,
+    3000,
+    4000,
+    5000,
+    6500
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.4,
+   "min_raum": 2.0,
+   "art_nr": "158721",
+   "seite": 50,
+   "hinweis": "Netzteil DALI DT8 9348634 separat; Anbaurahmen 9348627",
+   "dimmung": "dimmbar + Farbtemperatur über Netzteil DALI DT8 9348634 (auch mit 2 Tastern), Casambi-Modul 9553061 für App"
+  },
+  {
+   "id": "lz_dla_q625",
+   "name": "DLA G3 Anbauleuchte 625×625",
+   "typ": "DLA-Q625-35U",
+   "bauform": "panel",
+   "montage": "anbau",
+   "b": 0.625,
+   "t": 0.625,
+   "lm": 4550,
+   "w": 35,
+   "ra": 80,
+   "ugr": 19,
+   "ip": 20,
+   "tcp": [
+    3000,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.4,
+   "min_raum": 2.0,
+   "art_nr": "461382",
+   "art_nr_dali": "461385",
+   "seite": 72,
+   "hinweis": "Lichtstrom in 4 Stufen 2600–4550 lm",
+   "dimmung": "Standard in Stufen schaltbar; DALI2/TouchDIM-Variante 461385"
+  },
+  {
+   "id": "lz_decor_p_1136",
+   "name": "Decor P LED 1136 mm, 4000 K",
+   "typ": "Decor P LED",
+   "bauform": "linear",
+   "montage": "anbau",
+   "laenge": 1.136,
+   "lm": 5090,
+   "w": 31.2,
+   "ra": 80,
+   "ugr": 16,
+   "ip": 40,
+   "tcp": [
+    3000,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.4,
+   "min_raum": 2.0,
+   "art_nr": "471886",
+   "seite": 94,
+   "hinweis": "Anbau oder Pendel mit Zubehör, DALI",
+   "dimmung": "DALI dimmbar"
+  },
+  {
+   "id": "lz_opd_1200",
+   "name": "OPD G2 1200 Anbau/Pendel, 4000 K",
+   "typ": "OPD-1200-26DU",
+   "bauform": "linear",
+   "montage": "anbau",
+   "laenge": 1.2,
+   "lm": 3650,
+   "w": 26,
+   "ra": 80,
+   "ugr": 19,
+   "ip": 20,
+   "tcp": [
+    3000,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.4,
+   "min_raum": 2.0,
+   "art_nr": "822789",
+   "seite": 76,
+   "hinweis": "DALI2/TouchDIM, Y-Seilabhängung 471637",
+   "dimmung": "DALI2 & TouchDIM dimmbar"
+  },
+  {
+   "id": "lz_luceos_slim_1190",
+   "name": "Luceos Slim Pendel direkt/indirekt 1190 mm",
+   "typ": "Luceos D/H1-L CDP 4000-840",
+   "bauform": "linear",
+   "montage": "pendel",
+   "laenge": 1.19,
+   "lm": 4000,
+   "w": 26,
+   "ra": 80,
+   "ugr": 19,
+   "ip": 20,
+   "tcp": [
+    3000,
+    4000
+   ],
+   "verteilung": "direkt_indirekt",
+   "abstand_faktor": 1.5,
+   "min_raum": 2.0,
+   "seite": 83,
+   "nur_auf_wunsch": true,
+   "hinweis": "45 % direkt / 55 % indirekt, Kopfstücke und Abhängung separat – Art.-Nr. lt. Katalog S. 83",
+   "dimmung": "DALI dimmbar"
+  },
+  {
+   "id": "lz_cdl_125r",
+   "name": "Downlight CDL-125RM, 1350 lm",
+   "typ": "CDL-125RM",
+   "bauform": "downlight",
+   "montage": "einbau",
+   "d": 0.147,
+   "ausschnitt": 0.125,
+   "lm": 1350,
+   "w": 11,
+   "ra": 83,
+   "ugr": 19,
+   "ip": 20,
+   "tcp": [
+    3000,
+    3500,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.2,
+   "min_raum": 0.8,
+   "art_nr": "288756",
+   "seite": 162,
+   "hinweis": "Lichtfarbe per Schiebeschalter",
+   "art_nr_dali": "288758",
+   "art_nr_stufen": "217408",
+   "dimmung": "Standard schaltbar; DALI-Variante 288758; Phasenan-/abschnitt und 1–10 V lt. Katalog S. 162"
+  },
+  {
+   "id": "lz_cdl_175r",
+   "name": "Downlight CDL-175RM, 2200 lm",
+   "typ": "CDL-175RM",
+   "bauform": "downlight",
+   "montage": "einbau",
+   "d": 0.208,
+   "ausschnitt": 0.175,
+   "lm": 2200,
+   "w": 17,
+   "ra": 83,
+   "ugr": 19,
+   "ip": 20,
+   "tcp": [
+    3000,
+    3500,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.2,
+   "min_raum": 1.2,
+   "art_nr": "288760",
+   "seite": 162,
+   "art_nr_dali": "288763",
+   "art_nr_stufen": "288761",
+   "dimmung": "Standard schaltbar; DALI-Variante 288763; Phasenan-/abschnitt lt. Katalog S. 162"
+  },
+  {
+   "id": "lz_cdl_205r",
+   "name": "Downlight CDL-205RM, 3200 lm",
+   "typ": "CDL-205RM",
+   "bauform": "downlight",
+   "montage": "einbau",
+   "d": 0.23,
+   "ausschnitt": 0.205,
+   "lm": 3200,
+   "w": 25,
+   "ra": 83,
+   "ugr": 19,
+   "ip": 20,
+   "tcp": [
+    3000,
+    3500,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.2,
+   "min_raum": 1.5,
+   "art_nr": "288765",
+   "seite": 162,
+   "art_nr_dali": "288768",
+   "art_nr_stufen": "288766",
+   "dimmung": "Standard schaltbar; DALI-Variante 288768; Phasenan-/abschnitt lt. Katalog S. 162"
+  },
+  {
+   "id": "lz_cdl_125f",
+   "name": "Downlight CDL-125FM IP44 opal, 1350 lm",
+   "typ": "CDL-125FM",
+   "bauform": "downlight",
+   "montage": "einbau",
+   "d": 0.147,
+   "ausschnitt": 0.125,
+   "lm": 1350,
+   "w": 11,
+   "ra": 83,
+   "ugr": null,
+   "ip": 44,
+   "tcp": [
+    3000,
+    3500,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.3,
+   "min_raum": 0.8,
+   "art_nr": "288770",
+   "seite": 163,
+   "art_nr_dali": "288772",
+   "art_nr_stufen": "217409",
+   "dimmung": "Standard schaltbar; DALI-Variante 288772; Phasenan-/abschnitt und 1–10 V lt. Katalog S. 163"
+  },
+  {
+   "id": "lz_cdl_175f",
+   "name": "Downlight CDL-175FM IP44 opal, 2200 lm",
+   "typ": "CDL-175FM",
+   "bauform": "downlight",
+   "montage": "einbau",
+   "d": 0.208,
+   "ausschnitt": 0.175,
+   "lm": 2200,
+   "w": 17,
+   "ra": 83,
+   "ugr": null,
+   "ip": 44,
+   "tcp": [
+    3000,
+    3500,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.3,
+   "min_raum": 1.2,
+   "art_nr": "288774",
+   "seite": 163,
+   "art_nr_dali": "288777",
+   "art_nr_stufen": "288775",
+   "dimmung": "Standard schaltbar; DALI-Variante 288777; Phasenan-/abschnitt lt. Katalog S. 163"
+  },
+  {
+   "id": "lz_dlr_125",
+   "name": "Downlight DLR 125 SC CRI>90, 1690 lm",
+   "typ": "DLR 125 SC",
+   "bauform": "downlight",
+   "montage": "einbau",
+   "d": 0.142,
+   "ausschnitt": 0.125,
+   "lm": 1690,
+   "w": 12,
+   "ra": 90,
+   "ugr": null,
+   "ip": 44,
+   "tcp": [
+    3000,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.3,
+   "min_raum": 0.8,
+   "art_nr": "334715",
+   "seite": 164,
+   "hinweis": "IP54 raumseitig; Betriebsgerät separat bestellen (Katalog S. 164)",
+   "dimmung": "je nach Betriebsgerät (Katalog S. 164)"
+  },
+  {
+   "id": "lz_dlr_175",
+   "name": "Downlight DLR 175 SC CRI>90, 3110 lm",
+   "typ": "DLR 175 SC",
+   "bauform": "downlight",
+   "montage": "einbau",
+   "d": 0.21,
+   "ausschnitt": 0.175,
+   "lm": 3110,
+   "w": 25,
+   "ra": 90,
+   "ugr": 19,
+   "ip": 44,
+   "tcp": [
+    3000,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.3,
+   "min_raum": 1.5,
+   "art_nr": "334717",
+   "seite": 164,
+   "hinweis": "IP54 raumseitig, UGR<19 abhängig von der Bestromung; Betriebsgerät separat",
+   "dimmung": "je nach Betriebsgerät (Katalog S. 164)"
+  },
+  {
+   "id": "lz_dlg_150",
+   "name": "Downlight DLG-150, 3400 lm",
+   "typ": "DLG-150",
+   "bauform": "downlight",
+   "montage": "einbau",
+   "d": 0.168,
+   "ausschnitt": 0.15,
+   "lm": 3400,
+   "w": 24,
+   "ra": 80,
+   "ugr": 19,
+   "ip": 44,
+   "tcp": [
+    3000,
+    3500,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.2,
+   "min_raum": 1.5,
+   "art_nr": "461404",
+   "seite": 165,
+   "hinweis": "IP54 raumseitig; Netzteil DLG-NT 350-700U separat",
+   "dimmung": "je nach Netzteil: DLG-NT 350-700U nicht dimmbar, DLG-NT …DU DALI-2/TouchDim"
+  },
+  {
+   "id": "lz_toledo_270",
+   "name": "Toledo Flat+ Round Ø 270 opal, 3150 lm",
+   "typ": "Toledo Flat+ Round 901808",
+   "bauform": "downlight",
+   "montage": "einbau",
+   "d": 0.27,
+   "ausschnitt": 0.257,
+   "lm": 3150,
+   "w": 22,
+   "ra": 80,
+   "ugr": null,
+   "ip": 44,
+   "tcp": [
+    3000,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.4,
+   "min_raum": 1.5,
+   "art_nr": "9536113",
+   "seite": 172,
+   "hinweis": "superflach (Einbautiefe 40 mm), IP54 raumseitig",
+   "dimmung": "schaltbar; DALI-Varianten lt. Katalog S. 172"
+  },
+  {
+   "id": "lz_alr_p300",
+   "name": "ALR-P300 Wand-/Deckenleuchte IP65",
+   "typ": "ALR-P300",
+   "bauform": "anbau",
+   "montage": "anbau",
+   "d": 0.3,
+   "lm": 2300,
+   "w": 18,
+   "ra": 80,
+   "ugr": null,
+   "ip": 65,
+   "tcp": [
+    3000,
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.5,
+   "min_raum": 0.8,
+   "art_nr": "524202",
+   "seite": 135,
+   "hinweis": "Stufen 1300/2300/3000 lm, DALI-Modul 523897",
+   "dimmung": "Stufen per Schiebeschalter; DALI mit Steckmodul 523897"
+  },
+  {
+   "id": "lz_wt120c_1200",
+   "name": "Feuchtraumwannenleuchte WT120C G3 1,2 m IP66",
+   "typ": "WT120C G3 L1200",
+   "bauform": "linear",
+   "montage": "anbau",
+   "laenge": 1.215,
+   "lm": 4600,
+   "w": 28.5,
+   "ra": 80,
+   "ugr": null,
+   "ip": 66,
+   "tcp": [
+    4000
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.5,
+   "min_raum": 1.5,
+   "art_nr": "542561",
+   "seite": 224,
+   "hinweis": "Lichtstrom einstellbar 2700–4600 lm",
+   "dimmung": "nicht dimmbar (Lichtstrom einstellbar)"
+  },
+  {
+   "id": "lz_2315_1200",
+   "name": "Feuchtraumleuchte 2315 G4 1,2 m IP65",
+   "typ": "2315 G4 1200",
+   "bauform": "linear",
+   "montage": "anbau",
+   "laenge": 1.233,
+   "lm": 3800,
+   "w": 33,
+   "ra": 80,
+   "ugr": null,
+   "ip": 65,
+   "tcp": [
+    4000,
+    6500
+   ],
+   "verteilung": "direkt",
+   "abstand_faktor": 1.5,
+   "min_raum": 1.5,
+   "art_nr": "436557",
+   "seite": 228,
+   "hinweis": "Stufe 2600 lm/22 W möglich",
+   "dimmung": "nicht dimmbar (Lichtstrom einstellbar)"
+  },
+  {
+   "id": "lz_pll_9",
+   "name": "Unterbauleuchte PLL LED 9MC 549 mm",
+   "typ": "PLL LED 9MC",
+   "bauform": "wand",
+   "auto": false,
+   "laenge": 0.549,
+   "lm": 900,
+   "w": 9,
+   "ra": 80,
+   "ip": 20,
+   "tcp": [
+    3000,
+    4000
+   ],
+   "art_nr": "057388",
+   "seite": 158,
+   "hinweis": "Küche unter Oberschrank; Anschlusskabel PLL AG 055293"
+  },
+  {
+   "id": "lz_elsa_600",
+   "name": "Spiegelleuchte Elsa Vario Flex 600 IP44",
+   "typ": "ELSA VARIO FLEX 600",
+   "bauform": "wand",
+   "auto": false,
+   "laenge": 0.6,
+   "lm": 1200,
+   "w": 12,
+   "ra": 90,
+   "ip": 44,
+   "tcp": [
+    3000,
+    3500,
+    4000
+   ],
+   "art_nr": "312491",
+   "seite": 155
+  }
+ ],
+ "empfehlung": {
+  "_info": "Reihenfolge der Leuchtenwahl je Nutzung (erste passende = Empfehlung, weitere = Alternativen). Schlüssel = Nutzung aus licht_din12464.json, sonst 'standard'.",
+  "untersuchung": [
+   "lz_panel_comfort_625_ra90",
+   "lz_dlr_175",
+   "lz_dlr_125"
+  ],
+  "untersuchung_platz": [
+   "lz_panel_comfort_625_ra90",
+   "lz_dlr_175"
+  ],
+  "erste_hilfe": [
+   "lz_panel_comfort_625_ra90",
+   "lz_dlr_175",
+   "lz_dlr_125"
+  ],
+  "dermatologie": [
+   "lz_panel_comfort_625_ra90",
+   "lz_dlr_175",
+   "lz_dlr_125"
+  ],
+  "massage": [
+   "lz_rlp_tw",
+   "lz_panel_comfort_625",
+   "lz_cdl_175r",
+   "lz_dlg_150"
+  ],
+  "med_baeder": [
+   "lz_dlr_125",
+   "lz_cdl_175f",
+   "lz_alr_p300"
+  ],
+  "verbandsraum": [
+   "lz_panel_comfort_625",
+   "lz_dlg_150",
+   "lz_cdl_205r"
+  ],
+  "buero": [
+   "lz_panel_comfort_625",
+   "lz_panel_comfort_1200",
+   "lz_decor_p_1136",
+   "lz_dla_q625"
+  ],
+  "personal_buero": [
+   "lz_panel_comfort_625",
+   "lz_panel_comfort_1200",
+   "lz_decor_p_1136",
+   "lz_dla_q625"
+  ],
+  "besprechung": [
+   "lz_panel_comfort_625",
+   "lz_decor_p_1136",
+   "lz_dlg_150"
+  ],
+  "empfang": [
+   "lz_cdl_175r",
+   "lz_dlg_150",
+   "lz_panel_comfort_625",
+   "lz_cdl_205r"
+  ],
+  "warteraum": [
+   "lz_cdl_175r",
+   "lz_cdl_125r",
+   "lz_dlg_150"
+  ],
+  "tagesraum": [
+   "lz_cdl_175r",
+   "lz_dlg_150",
+   "lz_panel_comfort_625"
+  ],
+  "mitarbeiterraum": [
+   "lz_cdl_175r",
+   "lz_cdl_125r",
+   "lz_dla_q625"
+  ],
+  "pausenraum": [
+   "lz_cdl_175r",
+   "lz_cdl_125r",
+   "lz_dla_q625"
+  ],
+  "kantine": [
+   "lz_cdl_175r",
+   "lz_dlg_150",
+   "lz_panel_comfort_625"
+  ],
+  "flur": [
+   "lz_cdl_125r",
+   "lz_cdl_175r",
+   "lz_toledo_270",
+   "lz_alr_p300"
+  ],
+  "praxis_flur": [
+   "lz_cdl_125r",
+   "lz_cdl_175r",
+   "lz_toledo_270"
+  ],
+  "praxis_flur_untersuchung": [
+   "lz_cdl_175r",
+   "lz_dlg_150"
+  ],
+  "treppe": [
+   "lz_cdl_125r",
+   "lz_alr_p300"
+  ],
+  "eingangshalle": [
+   "lz_cdl_125r",
+   "lz_cdl_175r",
+   "lz_toledo_270"
+  ],
+  "garderobe": [
+   "lz_cdl_125r",
+   "lz_cdl_175r"
+  ],
+  "sanitaer": [
+   "lz_cdl_125f",
+   "lz_cdl_175f",
+   "lz_dlr_125",
+   "lz_alr_p300"
+  ],
+  "lager": [
+   "lz_wt120c_1200",
+   "lz_2315_1200",
+   "lz_alr_p300"
+  ],
+  "vorratskammer": [
+   "lz_alr_p300",
+   "lz_wt120c_1200"
+  ],
+  "archiv": [
+   "lz_wt120c_1200",
+   "lz_panel_comfort_625",
+   "lz_alr_p300"
+  ],
+  "ablage": [
+   "lz_panel_comfort_625",
+   "lz_cdl_175r"
+  ],
+  "sport": [
+   "lz_panel_comfort_625",
+   "lz_wt120c_1200"
+  ],
+  "keller": [
+   "lz_wt120c_1200",
+   "lz_alr_p300",
+   "lz_2315_1200"
+  ],
+  "garage": [
+   "lz_wt120c_1200",
+   "lz_2315_1200",
+   "lz_alr_p300"
+  ],
+  "bad": [
+   "lz_cdl_125f",
+   "lz_dlr_125",
+   "lz_alr_p300"
+  ],
+  "wc": [
+   "lz_cdl_125f",
+   "auslass"
+  ],
+  "flur_wohnung": [
+   "lz_cdl_125r",
+   "lz_toledo_270",
+   "auslass"
+  ],
+  "hausarbeitsraum": [
+   "lz_cdl_175r",
+   "lz_alr_p300",
+   "lz_wt120c_1200"
+  ],
+  "standard": [
+   "lz_cdl_175r",
+   "lz_cdl_125r",
+   "lz_toledo_270",
+   "lz_panel_comfort_625",
+   "lz_alr_p300"
+  ],
+  "wohnen": [
+   "auslass",
+   "lz_cdl_125r",
+   "lz_toledo_270"
+  ],
+  "essen": [
+   "auslass",
+   "lz_cdl_125r"
+  ],
+  "schlafen": [
+   "auslass",
+   "lz_cdl_125r"
+  ],
+  "kind": [
+   "auslass",
+   "lz_cdl_175r",
+   "lz_toledo_270"
+  ],
+  "arbeiten": [
+   "auslass",
+   "lz_panel_comfort_625",
+   "lz_cdl_175r"
+  ],
+  "kueche": [
+   "lz_cdl_125r",
+   "lz_toledo_270",
+   "auslass"
+  ]
+ }
+}

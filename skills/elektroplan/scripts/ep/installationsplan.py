@@ -37,12 +37,13 @@ LINIENARTEN = {
     "stromschiene": {"breite": 2.0, "farbe": "#000000", "stil": "DashDotLine"},
     "kontur": {"breite": 1.0, "farbe": "#6E6E6E", "stil": "DashLine"},
     "langfeld": {"breite": 2.5, "farbe": "#000000", "stil": "SolidLine"},
+    "umriss": {"breite": 0.8, "farbe": "#000000", "stil": "SolidLine"},
 }
 LINIENNAMEN = {"lichtschiene": "Lichtschiene / Stromschiene", "ledprofil": "LED-Profil",
                "kanal": "Brüstungskanal", "leitung": "Leitungsweg",
                "lichtlinie": "LED-Lichtlinie (Einbauprofil)", "voute": "LED-Lichtvoute (indirekt)",
                "stromschiene": "Stromschiene", "kontur": "Deckensegel / Deckenversprung",
-               "langfeld": "Linearleuchte"}
+               "langfeld": "Linearleuchte", "umriss": "Leuchtenumriss"}
 LINIEN_STUECK = {"langfeld"}       # Linienelemente, die in der Legende als Stückzahl zählen
 ENDSTRICH_M = 0.12                 # halbe Länge der Endstriche einer Linearleuchte
 WAND_GERAETE = {"steckdose", "schalter", "tv", "daten", "telefon", "fernmelde", "geraet",
@@ -83,6 +84,7 @@ class Raum:
         self.offen = {str(x).lower()[:1].replace("e", "o") for x in (d.get("offen") or [])}
         self.zeige_flaeche = d.get("flaeche", True)
         self.textpos = d.get("textpos")
+        self.zusatz = _n(d.get("zusatztext"))      # z. B. Ergebnis der Lichtberechnung
 
     def aussen(self):
         w = self.wand
@@ -275,7 +277,8 @@ def _raumnamen(bl: Blatt, g: Grundriss, raeume: list[Raum]):
         eigene = r.zeige_flaeche
         flaeche = eigene if isinstance(eigene, (int, float)) and not isinstance(eigene, bool) \
             else r.b * r.t
-        txt = r.name + (f"\n{_de(flaeche, 1)} m²" if eigene is not False else "")
+        txt = r.name + (f"\n{_de(flaeche, 1)} m²" if eigene is not False else "") + \
+            (f"\n{r.zusatz}" if r.zusatz else "")
         if r.textpos:
             kandidaten = [(r.x + _zahl(r.textpos[0]), r.y + _zahl(r.textpos[1]))]
         else:
@@ -513,7 +516,8 @@ def baue(daten: dict, fmt: Format, basis: Path | None = None) -> Projekt:
             x, y, ori = _an_wand(raum, x, y, _n(d.get("wand")) or None)
         px, py = g.p(x, y)
         _texte_seitlich(bl.setze(sym, px, py, ori, **_beschriftung(d)))
-        eintrag = zaehlung.setdefault(sym.key, [sym, sym.name, 0])
+        leg = _n(d.get("legende"))       # eigener Legendentext (z. B. Leuchtentyp im Deckenspiegel)
+        eintrag = zaehlung.setdefault((sym.key, leg), [sym, leg or sym.name, 0])
         eintrag[2] += 1
 
     # Dusche/Wanne (für die Bereiche nach VDE 0100-701): Umriss gestrichelt, Name in der Mitte
@@ -557,6 +561,8 @@ def baue(daten: dict, fmt: Format, basis: Path | None = None) -> Projekt:
                 bl.linie(*g.p(xa - qx, ya - qy), *g.p(xa + qx, ya + qy),
                          breite=stil["breite"] * 0.6, farbe=stil["farbe"])
         laenge = sum(math.dist(a, b) for a, b in zip(pts, pts[1:]))
+        if d.get("legende") is False:
+            continue
         name = _n(d.get("name")) or LINIENNAMEN.get(art, art)
         e = linien_leg.setdefault((name, tuple(sorted(stil.items()))),
                                   [stil, name, 0.0, 0 if stueck else None])
@@ -569,7 +575,8 @@ def baue(daten: dict, fmt: Format, basis: Path | None = None) -> Projekt:
                     farbe=stil.get("farbe", "#000000"))
     for d in daten.get("texte", []):
         bl.text(*g.p(_zahl(d.get("x")), _zahl(d.get("y"))), _n(d.get("text")),
-                float(d.get("groesse", 8)), fett=bool(d.get("fett", True)), h="mitte", v="mitte",
+                float(d.get("groesse", 8)), fett=bool(d.get("fett", True)), h=_n(d.get("h")) or "mitte",
+                v=_n(d.get("v")) or "mitte",
                 farbe=_n(d.get("farbe")) or FARBE_RAUMTEXT)
 
     # Legende rechts
@@ -579,7 +586,7 @@ def baue(daten: dict, fmt: Format, basis: Path | None = None) -> Projekt:
     def sortierung(e):
         key = e[0].key
         gruppe = next((i for i, r in enumerate(reihenfolge) if key.startswith(r)), 99)
-        return (gruppe, key)
+        return (gruppe, key, e[1])
     y_ende = _legende(bl, lx, fy + rand, LEGENDE_B, sorted(zaehlung.values(), key=sortierung),
                       massstab, list(linien_leg.values()))
     _massstabsbalken(bl, lx, max(y_ende + 40, fy + fh - 70), k, massstab)
@@ -589,6 +596,6 @@ def baue(daten: dict, fmt: Format, basis: Path | None = None) -> Projekt:
                   bearbeiter=_n(proj.get("bearbeiter")) or _firma.bearbeiter(),
                   indexrev=_n(proj.get("revision")) or "A",
                   anlage=_n(daten.get("anlage")) or f"Maßstab 1:{massstab}",
-                  plantyp="Installationsplan · Symbole nach DIN EN 60617-11")
+                  plantyp=_n(daten.get("plantyp")) or "Installationsplan · Symbole nach DIN EN 60617-11")
     bl.felder = felder
     return Projekt(titel, [bl])

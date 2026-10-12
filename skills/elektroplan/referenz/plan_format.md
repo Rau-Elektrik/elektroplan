@@ -301,3 +301,65 @@ der Arbeitsfläche weniger als 2 (★★/★★★: 3) je angefangene 1,20 m, St
 allgemeine Steckdose hinter einem Möbel, Küchenausstattung nach DIN 18015-2 Tab. 2 (Herd, Geschirrspüler,
 Mikrowelle/Dampfgarer, Kühlgerät, Dunstabzug, IuK, Steckdosenzahl), „Praxis“: Steckdose direkt über Spüle/Kochfeld.
 Beispiel: `referenz/beispiele/kuechenplan.json`.
+
+---
+
+## 5. Deckenspiegel mit Lichtberechnung
+
+`"plan": "deckenspiegel"` – gleicher Grundriss wie der Installationsplan (Abschnitt 3: `raeume` oder Architektenplan als
+`bild`). Je Raum wird der Wartungswert Ēm nach **DIN EN 12464-1:2021-11** ermittelt (Wohnungen: Praxiswert, keine Norm),
+die passende Leuchte aus `referenz/leuchten_katalog.json` (LICHTZENTRALE Kernsortiment 2026) gewählt, die Anzahl mit dem
+Wirkungsgradverfahren berechnet und die Leuchten im Raster gesetzt. Blatt 1 = Deckenspiegel, Blatt 2 = Lichtberechnung
+(Anforderung, k, Leuchte mit Art.-Nr., n, Ē, W/m², Abstand, Alternativen, Leuchtenliste). Zusätzlich entsteht
+`<Name> Leuchten.json` mit den gesetzten Leuchten zum Übernehmen in den Installationsplan.
+
+```json
+{
+  "plan": "deckenspiegel",
+  "titel": "Deckenspiegel Praxis EG",
+  "licht": {"deckenhoehe": 2.60, "reflexion": "hell", "wartungsfaktor": 0.8,
+            "stufe": "erforderlich", "max_ueber": 1.6, "wohnung": false, "beschriftung": true},
+  "grundriss": { "...": "wie Installationsplan" },
+  "lichtraeume": [
+    {"raum": "Büro", "stromkreis": "F6"},
+    {"name": "Behandlung 1", "nutzung_licht": "massage", "polygon": [[3.5, 1.7], [6.8, 1.7], [6.8, 3.9], [4.2, 7.4]],
+     "stromkreis": "F3"},
+    {"raum": "Bad", "decke": "massiv", "ip": 44},
+    {"raum": "Empfang", "leuchte": "lz_dlg_150", "anzahl": 4}
+  ],
+  "geraete": [], "linien": [], "texte": []
+}
+```
+
+- **`lichtraeume`** (optional): ohne Angabe werden alle `grundriss.raeume` mit Namen berechnet. Je Raum entweder
+  `raum` (Name aus `grundriss.raeume`), `polygon` (Eckpunkte in Plankoordinaten, für schräge Räume auf einem
+  Architektenplan – Werte mit `grundriss_raster.py` ablesen) oder `x`/`y`/`b`/`t`.
+- **`nutzung_licht`**: Schlüssel aus `referenz/licht_din12464.json`, z. B. `buero` (34.2, 500 lx), `empfang` (34.6, 300),
+  `warteraum` (45.1, 200), `praxis_flur` (45.2, 100), `flur` (9.1, 100), `sanitaer` (10.4, 200), `pausenraum` (10.2, 100),
+  `kantine` (10.1, 200), `mitarbeiterraum` (46.2, 300), `untersuchung` (48.1, 500, Ra 90, 4000–5000 K),
+  `massage` (53.6, 300 – auch Physiotherapie), `lager` (12.1, 100), `archiv`, `besprechung`, `garderobe` …;
+  Wohnung (`"licht": {"wohnung": true}`): `wohnen`, `essen`, `kueche`, `schlafen`, `kind`, `arbeiten`, `bad`, `wc`,
+  `flur_wohnung`, `hausarbeitsraum`, `keller`, `garage`. Ohne Angabe wird die Nutzung aus dem Raumnamen erkannt;
+  „Behandlung“ wird als Untersuchung (48.1) angenommen und als `Annahme` gemeldet.
+- Je Raum optional: `deckenhoehe` (Lichtpunkthöhe, bei abgehängter Decke deren UK), `nutzebene` (Standard aus der Norm:
+  0,75 m bzw. 0 m bei Fluren/Sanitär), `reflexion` (`hell` 0,7/0,5/0,2 · `mittel` · `dunkel`), `stufe` (`modifiziert`
+  = höherer Normwert), `ziel_lx`, `decke` (`massiv` → keine Einbauleuchten), `ip` (Mindestschutzart), `leuchte`
+  (Katalog-ID erzwingen), `auswahl` (eigene Reihenfolge von Katalog-IDs), `anzahl`, `winkel` (Rasterdrehung in Grad,
+  sonst längste Wand), `pendel: true` (Pendelleuchten zulassen), `dali: true` (DALI-dimmbare Variante mit deren
+  Art.-Nr.; auch global unter `licht`), `stromkreis`, `textpos`. Die Leuchtenliste nennt je Leuchte die Dimm-Möglichkeit
+  lt. Katalog (`dimmung`).
+- **Leuchtenwahl**: Reihenfolge je Nutzung aus `leuchten_katalog.json › empfehlung`; geeignet ist eine Leuchte, wenn
+  Ra, UGR (ohne Angabe nur bei UGR-Grenze ≥ 25), IP, Lichtfarbe, Montage und Raumgröße passen. Gewählt wird die erste,
+  die Ēm erreicht, den Abstand einhält (≤ `abstand_faktor` × Höhe über Nutzebene) und höchstens `max_ueber` × Ēm bringt;
+  sonst die mit der kleinsten Leistung. Zwei weitere passende Leuchten stehen als Alternativen auf Blatt 2.
+- **`auslass`** (Deckenauslass, Leuchte bauseits): für Wohnräume/Betondecken – statt einer Leuchte wird der
+  Mindest-Lichtstrom je Leuchte berechnet (1 Auslass je ca. 18 m² bzw. je 3,5 m Raumlänge).
+- Rechteckige Räume: gleichmäßiges Raster mit der kleinsten passenden Leuchtenzahl; schräge/verwinkelte Räume:
+  gleichmäßige Flächenteilung (k-Means), Punkte auf 5 cm gerundet. Eine Leuchte kommt an den Punkt mit dem größten
+  Wandabstand.
+- Eigene oder projektbezogene Leuchten: `"licht": {"katalog": [{"id": "...", "name": "...", "bauform":
+  "panel|downlight|linear|anbau|auslass", "montage": "einbau|anbau|pendel|einbau_anbau", "lm", "w", "ra", "ugr", "ip",
+  "tcp": [...], "b"/"t" bzw. "d" bzw. "laenge", "abstand_faktor", "art_nr"}], "empfehlung": {"buero": ["..."]}}`.
+- Ausgabe `HINWEIS (Licht)`: Ergebnis je Raum, Annahmen, Abstand zu groß (Uo prüfen), Normhinweise (z. B. Spiegel,
+  Nachtbeleuchtung Flur). Überschlag – Uo und UGR werden nicht berechnet; Nachweis mit Herstellerdaten (DIALux/Relux).
+Beispiel: `referenz/beispiele/deckenspiegel_praxis.json`.

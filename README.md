@@ -18,6 +18,7 @@ Du beschreibst den Plan in normaler Sprache, Claude erstellt ihn.
 | **Stromlaufplan der Verteilung** (allpolig) | „Stromlaufplan für die UV Wohnung OG“ | Dieselben Daten, am besten mit Phase je Stromkreis |
 | **Stromlaufplan Installationsschaltungen** | „Kreuzschaltung im Flur mit 3 Schaltern, 2 Leuchten an F7 B10“ | Schaltungsart, LS, Phase, Anzahl Schalter/Leuchten |
 | **Installationsplan** (Grundriss mit Symbolen) | „Installationsplan Küche 3,5 × 3,2 m, Tür unten rechts …“ oder Architekten-PDF mit Maßstab | Raummaße oder Grundriss, Geräte mit Stromkreis und Höhe |
+| **Deckenspiegel mit Lichtberechnung** | „Deckenspiegel mit Lichtberechnung für die Praxis, Decke abgehängt 2,60 m“ oder „Welche Leuchten brauche ich im Büro 4 × 3 m?“ | Grundriss wie beim Installationsplan, je Raum die Nutzung (Büro, Warteraum, Behandlung, WC …), Deckenhöhe, Decke abgehängt oder massiv |
 | **Küchenplan** (Wandansicht mit Höhen) | „Küchenplan für Familie Muster, hier ist der Plan vom Küchenstudio“ oder „Wand A 3,40 m: US 60, GSP, Spüle 80 unterm Fenster …“ | Je Wand Breite, Fenster/Türen, Möbel von links nach rechts; Elektropunkte mit Abstand von links, Höhe, Stromkreis – oder Claude schlägt sie nach DIN 18015-2 vor |
 
 Schaltungen im Stromlaufplan: Aus-, Serien-, Wechsel-, Kreuzschaltung, Stromstoßschaltung, Treppenlicht, Dimmer, Bewegungsmelder, Steckdosen, Herd/Drehstrom, Wendeschützschaltung und freie Strompfade.
@@ -30,6 +31,12 @@ Der **Küchenplan** zeigt jede Wand von vorn: Unter-, Ober- und Hochschränke mi
 
 ![Küchenplan – Wandansicht mit Höhen](docs/kuechenplan.png)
 
+Der **Deckenspiegel** rechnet je Raum aus, wie viel Licht verlangt ist – in Arbeitsstätten (Praxis, Büro, Empfang, Warteraum, Flur, WC, Lager …) der Wartungswert nach DIN EN 12464-1, in Wohnungen Praxiswerte. Dann wählt er passende Leuchten aus einem Großhandelskatalog (mitgeliefert: Auswahl aus dem LICHTZENTRALE Kernsortiment 2026 mit Art.-Nr., Lumen, Watt, Ra, UGR, IP und Dimmung; eigene Leuchten lassen sich ergänzen), rechnet die Anzahl nach dem Wirkungsgradverfahren und setzt die Leuchten gleichmäßig in den Grundriss – auch in schrägen Räumen. Blatt 2 zeigt je Raum Anforderung, erreichte Beleuchtungsstärke, W/m², Leuchtenabstand und zwei Alternativen, dazu die Leuchtenliste für die Bestellung (auf Wunsch DALI-Varianten). In Wohnräumen mit Betondecke gibt es statt einer Leuchte einen Deckenauslass mit dem Mindest-Lichtstrom für die Kundenleuchte. Es ist ein Überschlag – für einen förmlichen Nachweis braucht es eine Lichtberechnung mit Herstellerdaten (DIALux/Relux).
+
+| Deckenspiegel | Lichtberechnung |
+|---|---|
+| ![](docs/deckenspiegel.png) | ![](docs/lichtberechnung.png) |
+
 Alle Beispiele als PDF, .qet und Excel liegen im Ordner [`beispiele/`](beispiele/), alle Symbole im [Symbolkatalog](beispiele/Symbolkatalog.pdf).
 
 Dazu prüft der Skill (nur als Hinweis, die Entscheidung bleibt bei dir):
@@ -37,6 +44,7 @@ Dazu prüft der Skill (nur als Hinweis, die Entscheidung bleibt bei dir):
 - **Verteilung**: fehlender 30-mA-FI (Steckdosen und Beleuchtung), LS zu groß für den Querschnitt, Polzahl zur Leitung, Stromkreise je FI (DIN 18015-1: höchstens 2 je 2-poligem, 6 je 4-poligem FI), Herd 20 A, Durchlauferhitzer, Ladeeinrichtung, Zuleitung 63 A, Spannungsfall > 3 %, Stromkreise zur Wohnfläche (DIN 18015-2 Tabelle 1).
 - **Installationsplan**: Ausstattung je Raum nach DIN 18015-2 (oder ★★/★★★ nach RAL-RG 678), Schaltstelle an jedem Raumzugang, Installationszonen und Schalterhöhe nach DIN 18015-3 (Schlossseite der Tür), barrierefrei nach DIN 18040-2, Rauchwarnmelder nach DIN 14676-1, Bereiche im Bad nach VDE 0100-701.
 - **Küchenplan**: 2 Steckdosen je 1,20 m Arbeitsfläche, Anschlüsse für Herd, Geschirrspüler, Mikrowelle, Kühlgerät, Dunstabzug und Daten, Steckdosen hinter Möbeln oder direkt über Spüle/Kochfeld.
+- **Deckenspiegel**: Beleuchtungsstärke je Raum gegen DIN EN 12464-1, Farbwiedergabe, UGR, Lichtfarbe, Schutzart, Leuchtenabstand (Gleichmäßigkeit), Zusatzhinweise wie Spiegelbeleuchtung oder Nachtlicht im Flur.
 
 ## Installation
 
@@ -128,7 +136,7 @@ commands/einrichten.md   Befehl /elektroplan:einrichten
 skills/elektroplan/      der eigentliche Skill
   SKILL.md               Anleitung für Claude
   scripts/               Python: Einrichtung, Planerzeugung, Symbole, Schriftfeld, Excel
-  referenz/              JSON-Format, Fachliches, DIN-18015-Tabelle, Musterpläne
+  referenz/              JSON-Format, Fachliches, DIN-18015-Tabelle, DIN-EN-12464-1-Werte, Leuchtenkatalog, Musterpläne
 beispiele/               Beispielpläne der fiktiven „Muster Elektrotechnik GmbH“
 install.ps1, install.sh  Installationsskripte
 ```
