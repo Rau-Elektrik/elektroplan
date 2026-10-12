@@ -47,7 +47,7 @@ Voraussetzungen: [Claude Code](https://claude.com/claude-code), **Python 3.9+**.
 In Claude Code eingeben:
 
 ```
-/plugin marketplace add julayyt/elektroplan
+/plugin marketplace add Rau-Elektrik/elektroplan
 /plugin install elektroplan@elektroplan
 ```
 
@@ -64,13 +64,13 @@ Updates holst du mit `/plugin marketplace update elektroplan` – deine Firmenda
 **Windows** (PowerShell):
 
 ```powershell
-irm https://raw.githubusercontent.com/julayyt/elektroplan/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/Rau-Elektrik/elektroplan/main/install.ps1 | iex
 ```
 
 **macOS / Linux**:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/julayyt/elektroplan/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Rau-Elektrik/elektroplan/main/install.sh | bash
 ```
 
 Das Skript lädt den Skill herunter, kopiert ihn nach `~/.claude/skills/elektroplan`, installiert die Python-Pakete und startet direkt die Einrichtung im Terminal.
@@ -137,7 +137,7 @@ install.ps1, install.sh  Installationsskripte
 
 - Der Skill ist ein Werkzeug für **Elektrofachkräfte**. Die Normhinweise ersetzen keine Bemessung, Prüfung oder Dokumentation nach VDE. Die Ausstattungstabelle ist mit DIN 18015-2:2021-10 und RAL-RG 678:2023-02 abgeglichen; der Skill enthält nur Zahlenwerte und Fundstellen, keinen Normtext – maßgeblich ist die Norm selbst. Mehrfachsteckdosen zählen standardmäßig als ein Auslass (`"zaehlweise": "einsatz"` zählt jede Steckdose).
 - Die Symbole sind eigene Zeichnungen nach DIN EN 60617, eingebettet in jede .qet-Datei.
-- Fehler gefunden oder ein Symbol fehlt? Gern ein [Issue](https://github.com/julayyt/elektroplan/issues) oder einen Pull Request.
+- Fehler gefunden oder ein Symbol fehlt? Gern ein [Issue](https://github.com/Rau-Elektrik/elektroplan/issues) oder einen Pull Request.
 
 ## Lizenz
 

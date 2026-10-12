@@ -2,12 +2,12 @@
 # Installiert den Skill "elektroplan" für Claude Code (macOS/Linux) und startet die Einrichtung.
 #
 #   Aus dem heruntergeladenen Repository:   bash install.sh
-#   Direkt aus dem Netz:                    curl -fsSL https://raw.githubusercontent.com/julayyt/elektroplan/main/install.sh | bash
+#   Direkt aus dem Netz:                    curl -fsSL https://raw.githubusercontent.com/Rau-Elektrik/elektroplan/main/install.sh | bash
 #
 # Kopiert skills/elektroplan nach ~/.claude/skills/elektroplan, installiert die Python-Pakete
 # und fragt danach Firmendaten und Logo ab (gespeichert in ~/.elektroplan).
 set -euo pipefail
-REPO="julayyt/elektroplan"
+REPO="Rau-Elektrik/elektroplan"
 ZIEL="$HOME/.claude/skills/elektroplan"
 schritt() { printf '\n\033[36m==> %s\033[0m\n' "$1"; }
 

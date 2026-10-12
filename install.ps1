@@ -1,13 +1,13 @@
 ﻿# Installiert den Skill "elektroplan" für Claude Code (Windows) und startet die Einrichtung.
 #
 #   Aus dem heruntergeladenen Repository:   powershell -ExecutionPolicy Bypass -File install.ps1
-#   Direkt aus dem Netz:                    irm https://raw.githubusercontent.com/julayyt/elektroplan/main/install.ps1 | iex
+#   Direkt aus dem Netz:                    irm https://raw.githubusercontent.com/Rau-Elektrik/elektroplan/main/install.ps1 | iex
 #
 # Kopiert skills\elektroplan nach %USERPROFILE%\.claude\skills\elektroplan, installiert die
 # Python-Pakete und fragt danach Firmendaten und Logo ab (gespeichert in %USERPROFILE%\.elektroplan).
 
 $ErrorActionPreference = "Stop"
-$Repo = "julayyt/elektroplan"
+$Repo = "Rau-Elektrik/elektroplan"
 $Ziel = Join-Path $env:USERPROFILE ".claude\skills\elektroplan"
 
 function Schritt($t) { Write-Host ""; Write-Host "==> $t" -ForegroundColor Cyan }
