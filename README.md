@@ -132,4 +132,4 @@ install.ps1, install.sh  Installationsskripte
 
 ## Lizenz
 
-[MIT](LICENSE)
+[MIT](LICENSE) · entwickelt von Julius Rau, Rau Elektrik

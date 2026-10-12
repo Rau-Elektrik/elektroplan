@@ -2,7 +2,7 @@
   "name": "elektroplan",
   "version": "1.0.0",
   "description": "Elektropläne nach DIN EN 60617 für Claude: Verteilerplan, Stromlaufplan und Installationsplan als QElectroTech-Datei (.qet) und PDF mit eigenem Firmenschriftfeld und Logo.",
-  "author": { "name": "julayyt", "url": "https://github.com/julayyt" },
+  "author": { "name": "Julius Rau · Rau Elektrik", "url": "https://github.com/julayyt" },
   "homepage": "https://github.com/julayyt/elektroplan",
   "repository": "https://github.com/julayyt/elektroplan",
   "license": "MIT",
