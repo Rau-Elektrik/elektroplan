@@ -3,14 +3,26 @@
 #   Aus dem heruntergeladenen Repository:   powershell -ExecutionPolicy Bypass -File install.ps1
 #   Direkt aus dem Netz:                    irm https://raw.githubusercontent.com/Rau-Elektrik/elektroplan/main/install.ps1 | iex
 #
-# Kopiert skills\elektroplan nach %USERPROFILE%\.claude\skills\elektroplan, installiert die
-# Python-Pakete und fragt danach Firmendaten und Logo ab (gespeichert in %USERPROFILE%\.elektroplan).
+# Kopiert skills\elektroplan nach %USERPROFILE%\.claude\skills\elektroplan und fragt dann einzeln,
+# ob fehlende Programme geladen werden sollen: Python (über winget), die Python-Pakete,
+# CADCraft (DXF/DWG, optional) und QElectroTech (optional). Danach Firmendaten und Logo
+# (gespeichert in %USERPROFILE%\.elektroplan). Ohne Zustimmung wird nichts installiert.
 
 $ErrorActionPreference = "Stop"
 $Repo = "Rau-Elektrik/elektroplan"
 $Ziel = Join-Path $env:USERPROFILE ".claude\skills\elektroplan"
 
 function Schritt($t) { Write-Host ""; Write-Host "==> $t" -ForegroundColor Cyan }
+function Frage($t) { (Read-Host "$t (j/n)") -match '^[jJyY]' }
+
+function Finde-Python {
+    foreach ($k in @("py", "python", "python3")) {
+        if (-not (Get-Command $k -ErrorAction SilentlyContinue)) { continue }
+        try { $v = (& $k --version 2>&1 | Out-String) } catch { continue }   # Store-Platzhalter liefert nichts
+        if ($v -match "Python 3\.(\d+)" -and [int]$Matches[1] -ge 9) { return $k }
+    }
+    return $null
+}
 
 # --- Quelle: lokales Repository oder Download von GitHub
 $Quelle = $null
@@ -30,16 +42,22 @@ if ($PSScriptRoot -and (Test-Path (Join-Path $PSScriptRoot "skills\elektroplan\S
 
 # --- Python suchen
 Schritt "Prüfe Python"
-$Py = $null
-foreach ($k in @("py", "python", "python3")) {
-    if (-not (Get-Command $k -ErrorAction SilentlyContinue)) { continue }
-    try { $v = (& $k --version 2>&1 | Out-String) } catch { continue }   # Store-Platzhalter liefert nichts
-    if ($v -match "Python 3\.(\d+)" -and [int]$Matches[1] -ge 9) { $Py = $k; break }
-}
+$Py = Finde-Python
 if (-not $Py) {
-    Write-Host "Python 3.9+ fehlt. Bitte von https://www.python.org/downloads/ installieren" -ForegroundColor Yellow
-    Write-Host "(Haken bei 'Add python.exe to PATH' setzen) und dieses Skript erneut starten."
-    exit 1
+    Write-Host "Python 3.9 oder neuer fehlt (wird für den Skill gebraucht)." -ForegroundColor Yellow
+    if ((Get-Command winget -ErrorAction SilentlyContinue) -and
+        (Frage "Python 3.13 jetzt mit winget installieren (python.org, ca. 30 MB)?")) {
+        winget install --id Python.Python.3.13 -e --scope user --accept-source-agreements --accept-package-agreements
+        # PATH der laufenden Sitzung auffrischen, damit das neue Python gefunden wird
+        $env:Path = [Environment]::GetEnvironmentVariable("Path", "Machine") + ";" +
+                    [Environment]::GetEnvironmentVariable("Path", "User")
+        $Py = Finde-Python
+    }
+    if (-not $Py) {
+        Write-Host "Bitte Python von https://www.python.org/downloads/ installieren" -ForegroundColor Yellow
+        Write-Host "(Haken bei 'Add python.exe to PATH' setzen) und dieses Skript erneut starten."
+        exit 1
+    }
 }
 & $Py --version
 
@@ -60,13 +78,8 @@ New-Item -ItemType Directory -Force (Split-Path $Ziel) | Out-Null
 Copy-Item $Quelle $Ziel -Recurse
 Get-ChildItem $Ziel -Recurse -Directory -Filter "__pycache__" | Remove-Item -Recurse -Force
 
-# --- Pakete
-Schritt "Installiere Python-Pakete (reportlab, PyMuPDF, Pillow, openpyxl)"
-& $Py -m pip install --user --disable-pip-version-check -q -r (Join-Path $Ziel "requirements.txt")
-if ($LASTEXITCODE -ne 0) { throw "pip install ist fehlgeschlagen." }
-
-# --- Einrichtung
-Schritt "Einrichtung: deine Firmendaten"
+# --- Einrichtung: fragt Pakete, CADCraft und QElectroTech einzeln ab, dann die Firmendaten
+Schritt "Einrichtung: Programme und deine Firmendaten"
 & $Py -X utf8 (Join-Path $Ziel "scripts\einrichtung.py")
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Einrichtung nicht abgeschlossen. Später nachholen mit:" -ForegroundColor Yellow
@@ -76,4 +89,4 @@ if ($LASTEXITCODE -ne 0) {
 
 Write-Host ""
 Write-Host "Fertig. Starte Claude Code neu und sag z. B.: 'Erstelle einen Verteilerplan für …'" -ForegroundColor Green
-Write-Host "QElectroTech (optional, zum Bearbeiten der .qet): https://qelectrotech.org/download.php"
+Write-Host "Programme später nachholen: $Py -X utf8 `"$Ziel\scripts\einrichtung.py`" installieren cadcraft qelectrotech"

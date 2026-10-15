@@ -5,6 +5,7 @@ Ein Skill für [Claude Code](https://claude.com/claude-code), der Elektropläne 
 - **PDF** zum Drucken (A3 quer, A4 quer oder A4 hoch, maßstabsgetreu bei Druck in Originalgröße)
 - **QElectroTech-Datei (.qet)** zum Weiterbearbeiten im kostenlosen [QElectroTech](https://qelectrotech.org)
 - **Excel-Stromkreisliste** (Verteilerdokumentation mit Messprotokoll und Prüfbericht) in deinem Firmendesign
+- **CAD-Zeichnung (DXF + DWG)** für Installationsplan und Deckenspiegel – mit dem Grundriss vom Architekten maßgenau übernommen, bearbeitbar im kostenlosen [CADCraft](https://github.com/storytold/cadcraft) oder jedem DWG-fähigen CAD
 
 Du beschreibst den Plan in normaler Sprache, Claude erstellt ihn.
 
@@ -37,6 +38,18 @@ Der **Deckenspiegel** rechnet je Raum aus, wie viel Licht verlangt ist – in Ar
 |---|---|
 | ![](docs/deckenspiegel.png) | ![](docs/lichtberechnung.png) |
 
+### Installationsplan als CAD-Zeichnung (DXF/DWG)
+
+Sag dazu „… auch als DWG“ oder „als CAD-Zeichnung“. Dann zeichnet der Skill Installationsplan oder Deckenspiegel zusätzlich mit [CADCraft](https://github.com/storytold/cadcraft) (Open Source, Windows/macOS/Linux):
+
+- Der **Grundriss vom Architekten** (Vektor-PDF) wird Linie für Linie im Maßstab 1:1 in Millimetern übernommen – kein unscharfes Hintergrundbild. Steckdosen und Schalter rasten automatisch bündig an die Wand ein, auch an schrägen Wänden.
+- Jedes Symbol ist ein **Block mit Attributen** (Stromkreis, Montagehöhe, Bemerkung) auf eigenen Layern (`ELT_STECKDOSEN`, `ELT_SCHALTER`, `ELT_LEUCHTEN` …). Die Legende zählt die Stückzahlen in der Zeichnung.
+- Ergebnis: **DXF und DWG** zum Weiterbearbeiten (Architekt, Bauleitung, eigenes CAD) plus **A3-PDF** mit Schriftfeld und Logo. Die Bemaßung misst echte Maße, Stile in Metern und Millimetern sind angelegt.
+
+![Installationsplan als CAD-Zeichnung](docs/cad_installationsplan.png)
+
+Gescannte Pläne oder Fotos gehen in CADCraft nicht – dafür bleibt der normale Installationsplan mit Hintergrundbild.
+
 Alle Beispiele als PDF, .qet und Excel liegen im Ordner [`beispiele/`](beispiele/), alle Symbole im [Symbolkatalog](beispiele/Symbolkatalog.pdf).
 
 Dazu prüft der Skill (nur als Hinweis, die Entscheidung bleibt bei dir):
@@ -48,7 +61,18 @@ Dazu prüft der Skill (nur als Hinweis, die Entscheidung bleibt bei dir):
 
 ## Installation
 
-Voraussetzungen: [Claude Code](https://claude.com/claude-code), **Python 3.9+**. Optional [QElectroTech](https://qelectrotech.org/download.php) zum Bearbeiten der .qet-Dateien.
+Voraussetzungen: [Claude Code](https://claude.com/claude-code) und **Python 3.9+** mit vier Paketen (reportlab, PyMuPDF, Pillow, openpyxl). Optional [CADCraft](https://github.com/storytold/cadcraft) für DXF/DWG und [QElectroTech](https://qelectrotech.org/download.php) zum Bearbeiten der .qet-Dateien.
+
+**Fehlende Programme musst du nicht selbst zusammensuchen.** Installationsskript und Einrichtung prüfen, was fehlt, und fragen bei jedem Programm einzeln, ob es geladen werden soll – ohne dein Ja wird nichts installiert:
+
+| Programm | Woher | Wie |
+|---|---|---|
+| Python (falls es fehlt) | python.org | Windows: winget; macOS: Homebrew; Linux: Paketmanager |
+| Python-Pakete | PyPI | pip in deinen Benutzerordner |
+| CADCraft (optional) | [GitHub-Releases](https://github.com/storytold/cadcraft/releases) | ohne Administratorrechte nach `~/.elektroplan/programme`, Prüfsumme (SHA256) wird kontrolliert |
+| QElectroTech (optional) | qelectrotech.org | Windows: winget; macOS/Linux: Link bzw. Paketname |
+
+Mit dem Plugin (Variante A) fragt Claude beim ersten Plan im Chat nach, sobald etwas fehlt. Nachholen geht jederzeit: `einrichtung.py installieren cadcraft` (oder `qelectrotech`, `pakete`, `alle`).
 
 ### Variante A – als Plugin in Claude Code (empfohlen)
 
@@ -81,7 +105,7 @@ irm https://raw.githubusercontent.com/Rau-Elektrik/elektroplan/main/install.ps1 
 curl -fsSL https://raw.githubusercontent.com/Rau-Elektrik/elektroplan/main/install.sh | bash
 ```
 
-Das Skript lädt den Skill herunter, kopiert ihn nach `~/.claude/skills/elektroplan`, installiert die Python-Pakete und startet direkt die Einrichtung im Terminal.
+Das Skript lädt den Skill herunter, kopiert ihn nach `~/.claude/skills/elektroplan`, bietet fehlendes Python, die Pakete, CADCraft und QElectroTech zur Installation an (jeweils mit Nachfrage) und startet dann die Einrichtung im Terminal.
 
 Wer das Repository lieber selbst herunterlädt (grüner Button **Code › Download ZIP** oder `git clone`): entpacken und `install.ps1` bzw. `install.sh` aus dem Ordner starten.
 
@@ -109,7 +133,7 @@ Die Einrichtung geht auch ohne Claude im Terminal:
 python ~/.claude/skills/elektroplan/scripts/einrichtung.py
 ```
 
-Weitere Befehle: `status`, `logo <pfad>`, `vorlage`, `test`, `paket`, `zuruecksetzen` (siehe `einrichtung.py --help`).
+Weitere Befehle: `status`, `pruefen`, `installieren <programm>`, `logo <pfad>`, `vorlage`, `test`, `paket`, `zuruecksetzen` (siehe `einrichtung.py --help`).
 
 ### claude.ai statt Claude Code
 
@@ -124,7 +148,7 @@ Das erzeugt `elektroplan-persoenlich.zip` (mit deinen Firmendaten) im Download-O
 ## So arbeitest du damit
 
 - Pläne landen im Ordner, den du nennst (oder im Ablageordner aus der Einrichtung), Name `JJJJ-MM-TT <Planart> <Bezeichnung>`. Neben PDF und .qet liegt eine `.json` mit allen Plandaten – Änderungen sagst du Claude, der ändert die JSON und erzeugt neu.
-- Hast du eine .qet in QElectroTech von Hand geändert, sag das Claude, bevor neu erzeugt wird – sonst wird sie überschrieben.
+- Hast du eine .qet in QElectroTech oder eine DXF/DWG in CADCraft von Hand geändert, sag das Claude, bevor neu erzeugt wird – sonst wird sie überschrieben.
 - Maßstäbe im Installationsplan stimmen nur bei Druck in **Originalgröße** (nicht „an Seite anpassen“).
 - Mit `--stromkreisliste` füllt Claude zusätzlich deine Excel-Verteilerdokumentation aus; umgekehrt kann eine ausgefüllte Stromkreisliste direkt als Eingabe dienen.
 
@@ -135,7 +159,7 @@ Das erzeugt `elektroplan-persoenlich.zip` (mit deinen Firmendaten) im Download-O
 commands/einrichten.md   Befehl /elektroplan:einrichten
 skills/elektroplan/      der eigentliche Skill
   SKILL.md               Anleitung für Claude
-  scripts/               Python: Einrichtung, Planerzeugung, Symbole, Schriftfeld, Excel
+  scripts/               Python: Einrichtung, Programme, Planerzeugung, Symbole, Schriftfeld, Excel, CAD
   referenz/              JSON-Format, Fachliches, DIN-18015-Tabelle, DIN-EN-12464-1-Werte, Leuchtenkatalog, Musterpläne
 beispiele/               Beispielpläne der fiktiven „Muster Elektrotechnik GmbH“
 install.ps1, install.sh  Installationsskripte

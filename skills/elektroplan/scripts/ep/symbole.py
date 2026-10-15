@@ -546,7 +546,8 @@ def _i_schalter(art="aus", **_):
     if art == "kontroll":
         teile += [L(-5, cy - 5, 5, cy + 5), L(5, cy - 5, -5, cy + 5)]
     texte = [DynText("label", 26, 6, 6.0, fett=True), DynText("comment", 26, 16, 5.0)]
-    return _inst(f"i_schalter_{art}", namen[art], [L(0, 0, 0, cy - _SR)] + teile, texte)
+    # ohne Anschlussstrich zur Wand (so sieht das Schaltersymbol im Grundriss aus)
+    return _inst(f"i_schalter_{art}", namen[art], teile, texte)
 
 
 def _i_leuchte(art="decke", **_):

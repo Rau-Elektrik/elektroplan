@@ -1,7 +1,7 @@
 {
   "name": "elektroplan",
-  "version": "1.2.0",
-  "description": "Elektropläne nach DIN EN 60617 für Claude: Verteilerplan, Stromlaufplan, Installationsplan, Küchenplan (Wandansicht mit Höhen) und Deckenspiegel mit Lichtberechnung nach DIN EN 12464-1 als QElectroTech-Datei (.qet) und PDF mit eigenem Firmenschriftfeld und Logo.",
+  "version": "1.3.0",
+  "description": "Elektropläne nach DIN EN 60617 für Claude: Verteilerplan, Stromlaufplan, Installationsplan, Küchenplan (Wandansicht mit Höhen) und Deckenspiegel mit Lichtberechnung nach DIN EN 12464-1 als QElectroTech-Datei (.qet) und PDF mit eigenem Firmenschriftfeld und Logo; Installationsplan und Deckenspiegel auch als CAD-Zeichnung (DXF/DWG) über CADCraft.",
   "author": {
     "name": "Julius Rau · Rau Elektrik",
     "url": "https://github.com/julayyt"

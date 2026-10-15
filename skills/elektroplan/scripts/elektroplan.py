@@ -10,6 +10,8 @@ PLAN.json enthält "plan": "verteilerplan" | "stromlaufplan" | "installationspla
   (Leuchten nach DIN EN 12464-1 berechnen und setzen, Blatt 2 = Lichtberechnung).
 Verteilung (mit "schutzorgane"): --darstellung einpolig | allpolig | beide,
   --stromkreisliste füllt zusätzlich die Excel-Vorlage „Verteilerdokumentation Stromkreisliste“ aus.
+Installationsplan/Deckenspiegel: --cadcraft erzeugt zusätzlich DXF + DWG + PDF über CADCraft
+  (Grundriss als maßgenaue Vektorgeometrie), --nur-cadcraft nur diese Ausgabe.
 Format siehe referenz/plan_format.md.
 """
 from __future__ import annotations
@@ -86,6 +88,10 @@ def main(argv=None):
     ap.add_argument("--darstellung", choices=["einpolig", "allpolig", "beide"],
                     help="nur Verteilung: einpoliger Übersichtsschaltplan, allpoliger "
                          "Stromlaufplan oder beide in einer Datei")
+    ap.add_argument("--cadcraft", action="store_true",
+                    help="Installationsplan/Deckenspiegel zusätzlich als CADCraft-Zeichnung "
+                         "(NAME CAD.dxf/.dwg/.pdf, Grundriss maßgenau aus Vektor-PDF oder Räumen)")
+    ap.add_argument("--nur-cadcraft", action="store_true", help="nur die CADCraft-Ausgabe")
     a = ap.parse_args(argv)
 
     from ep import firma
@@ -93,6 +99,16 @@ def main(argv=None):
         print("HINWEIS (Einrichtung): Keine Firmendaten gefunden – das Schriftfeld zeigt einen Platzhalter. "
               "Einrichten mit: python einrichtung.py")
     daten = lade(a.eingabe)
+    if a.cadcraft or a.nur_cadcraft:
+        art = str(daten.get("plan", "")).lower().strip()
+        if art not in ("installationsplan", "deckenspiegel", "lichtplanung", "lichtplan"):
+            raise SystemExit("--cadcraft gibt es nur für Installationsplan und Deckenspiegel")
+        from ep.programme import cadcraft_cli
+        if not cadcraft_cli():
+            raise SystemExit("CADCraft fehlt. Installieren mit: python einrichtung.py installieren cadcraft "
+                             "(oder von https://github.com/storytold/cadcraft/releases)")
+    if a.nur_cadcraft:
+        return cad_ausgabe(daten, a)
     projekt = baue(daten, a.format, a.darstellung)
     ziel = a.ziel or a.eingabe.parent
     ziel.mkdir(parents=True, exist_ok=True)
@@ -132,6 +148,33 @@ def main(argv=None):
         vz.mkdir(parents=True, exist_ok=True)
         for p in vorschau_png(pdf, vz):
             print(f"Vorschau:     {p}")
+    if a.cadcraft:
+        cad_ausgabe(daten, a)
+
+
+def cad_ausgabe(daten: dict, a):
+    """CADCraft-Zeichnung: Skripte, DXF, DWG, PDF (+ Vorschau-PNG)."""
+    from ep.cadplan import erzeuge
+    ziel = a.ziel or a.eingabe.parent
+    name = (a.name or daten.get("dateiname") or a.eingabe.stem)
+    if a.cadcraft and not name.endswith(" CAD"):
+        name += " CAD"           # neben der QET-PDF nicht überschreiben
+    erg = erzeuge(daten, ziel, name, basis=Path(daten.get("_basis", ".")),
+                  vorschau=None if a.keine_vorschau else (a.vorschau or ziel))
+    print(f"CADCraft DXF: {erg['dxf']}")
+    print(f"CADCraft DWG: {erg['dwg']}")
+    print(f"CADCraft PDF: {erg['pdf']}  (A3, Maßstab 1:{erg['massstab']:g})")
+    print(f"Skripte:      {erg['skripte'][0].name}, {erg['skripte'][1].name}")
+    print(f"Geräte:       {erg['geraete']}, davon {erg['eingerastet']} an der Wand eingerastet")
+    if erg.get("vorschau"):
+        print(f"Vorschau:     {erg['vorschau']}")
+    for h in erg["hinweise"]:
+        print(f"HINWEIS {h}" if h.startswith("(") else f"HINWEIS (CAD): {h}")
+    if a.nur_cadcraft:
+        from ep.normpruefung import pruefe as normpruefung
+        for w in normpruefung(daten):
+            print(f"HINWEIS (Norm): {w}")
+    return 0
 
 
 if __name__ == "__main__":

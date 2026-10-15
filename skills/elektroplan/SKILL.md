@@ -1,6 +1,6 @@
 ---
 name: elektroplan
-description: "Elektropläne nach DIN EN 60617 als QElectroTech-Datei (.qet) plus PDF mit eigenem Firmenschriftfeld und Logo – Verteilerplan einpolig und Stromlaufplan der Verteilung allpolig (Klemmleiste X1, Hauptschalter, Schienen, FI, LS, Abgangsklemmen), beides auch aus der Excel-Stromkreisliste; Stromlaufplan von Installationsschaltungen (Wechsel-, Kreuz-, Stromstoßschaltung, Wendeschütz …); Installationsplan (Grundriss mit Symbolen, Legende mit Stückzahlen); Küchenplan/Wandansicht (Frontansicht je Wand mit Küchenmöbeln, Dosen, Höhen über OKFF, Installationszonen, Punkteliste); Deckenspiegel mit Lichtberechnung (Wartungswert nach DIN EN 12464-1 je Raum, Leuchten aus einem Großhandelskatalog wählen, Anzahl nach Wirkungsgradverfahren, im Raster setzen, Berechnungsblatt mit Alternativen und Leuchtenliste). Normhinweise nach DIN 18015-1/-2/-3, RAL-RG 678, DIN 18040-2, DIN 14676-1. Verwenden bei Schaltplan, Verteilerplan, Stromlaufplan, Übersichtsschaltplan, Installationsplan, Elektroplan, Küchenplan, Küchenansicht, Wandansicht, Höhenplan, Deckenspiegel, Lichtplanung, Lichtberechnung, Beleuchtungsplanung, Leuchtenauswahl, Lux, Verteilerdokumentation, Stromkreisliste, QElectroTech – und zum Einrichten oder Ändern der Firmendaten/des Logos für diese Pläne."
+description: "Elektropläne nach DIN EN 60617 als QElectroTech-Datei (.qet) plus PDF mit eigenem Firmenschriftfeld und Logo – Verteilerplan einpolig und Stromlaufplan der Verteilung allpolig (Klemmleiste X1, Hauptschalter, Schienen, FI, LS, Abgangsklemmen), beides auch aus der Excel-Stromkreisliste; Stromlaufplan von Installationsschaltungen (Wechsel-, Kreuz-, Stromstoßschaltung, Wendeschütz …); Installationsplan (Grundriss mit Symbolen, Legende mit Stückzahlen); Küchenplan/Wandansicht (Frontansicht je Wand mit Küchenmöbeln, Dosen, Höhen über OKFF, Installationszonen, Punkteliste); Deckenspiegel mit Lichtberechnung (Wartungswert nach DIN EN 12464-1 je Raum, Leuchten aus einem Großhandelskatalog wählen, Anzahl nach Wirkungsgradverfahren, im Raster setzen, Berechnungsblatt mit Alternativen und Leuchtenliste). Installationsplan und Deckenspiegel auch als CADCraft-Zeichnung (DXF + DWG + A3-PDF, Architektengrundriss maßgenau aus dem Vektor-PDF, Symbole als Blöcke mit Attributen). Normhinweise nach DIN 18015-1/-2/-3, RAL-RG 678, DIN 18040-2, DIN 14676-1. Verwenden bei Schaltplan, Verteilerplan, Stromlaufplan, Übersichtsschaltplan, Installationsplan, Elektroplan, Küchenplan, Küchenansicht, Wandansicht, Höhenplan, Deckenspiegel, Lichtplanung, Lichtberechnung, Beleuchtungsplanung, Leuchtenauswahl, Lux, Verteilerdokumentation, Stromkreisliste, QElectroTech, CADCraft, CAD, DXF, DWG – und zum Einrichten oder Ändern der Firmendaten/des Logos für diese Pläne."
 ---
 
 # Elektroplan (Verteilerplan · Stromlaufplan · Installationsplan · Küchenplan · Deckenspiegel)
@@ -9,6 +9,7 @@ Erzeugt aus einer JSON-Beschreibung (oder der Excel-Stromkreisliste):
 - **`.qet`**: Projekt für QElectroTech (ab 0.100), voll bearbeitbar. Symbole eingebettet unter „Importierte Elemente › Elektroplan (DIN EN 60617)“, Schriftfeld als eingebettete Vorlage `elektroplan_a3q` / `_a4q` / `_a4h`.
 - **`.pdf`**: druckfertig, 1 px = 0,25 mm (Maßstäbe stimmen bei Druck in Originalgröße), Schriftfeld mit Logo und Firmendaten des Nutzers.
 - **Vorschau-PNG** je Blatt zur Sichtkontrolle.
+- Installationsplan und Deckenspiegel zusätzlich als **CADCraft-Zeichnung (DXF + DWG + A3-PDF)** mit maßgenauem Architektengrundriss – Schalter `--cadcraft` / `--nur-cadcraft` (Schritt 3). Braucht das freie CAD-Programm CADCraft.
 
 `<SKILL>` = Ordner dieses Skills (wird beim Laden als Basisverzeichnis angezeigt). Python-Aufruf: Windows `python -X utf8`, macOS/Linux `python3`. Pakete: reportlab, PyMuPDF, Pillow, openpyxl (`<SKILL>/requirements.txt`).
 
@@ -20,7 +21,14 @@ Die Firmendaten gehören dem Nutzer und liegen **nicht** im Skill, sondern in `~
 python -X utf8 <SKILL>/scripts/einrichtung.py status
 ```
 
-- `pakete_fehlen` nicht leer → dem Nutzer den Befehl `python -m pip install -r <SKILL>/requirements.txt` vorschlagen und nach Bestätigung ausführen.
+- **Programme** (`status` meldet `pakete_fehlen`, `cadcraft`, `qelectrotech`; ausführlich: `einrichtung.py pruefen`). Fehlt etwas, das für die Aufgabe gebraucht wird, **den Nutzer zuerst fragen** – mit Name, Quelle und Größe – und erst nach seinem Ja installieren:
+  | Programm | wofür | Nachfrage, dann |
+  |---|---|---|
+  | Python-Pakete (`pakete_fehlen`) | immer nötig | `einrichtung.py installieren pakete --ja` (pip, Benutzerordner) |
+  | CADCraft (`cadcraft` = null) | nur für `--cadcraft` (DXF/DWG) | „CADCraft (Open Source, ca. 60 MB) von github.com/storytold/cadcraft laden?“ → `einrichtung.py installieren cadcraft --ja` (ohne Adminrechte nach `~/.elektroplan/programme`, SHA256 geprüft) |
+  | QElectroTech (`qelectrotech` = null) | nur zum Bearbeiten der `.qet` | Windows: `einrichtung.py installieren qelectrotech --ja` (winget, evtl. Windows-Nachfrage); macOS/Linux: Download-Seite bzw. Paketmanager nennen |
+
+  `--ja` nur, wenn der Nutzer im Chat zugestimmt hat; sonst fragt das Skript selbst im Terminal nach. Optionale Programme nicht ungefragt nachinstallieren und nicht erneut anbieten, wenn der Nutzer abgelehnt hat. `cadcraft_zu_alt` gesetzt → vorhandene Version ist älter als 0.5.0, Neuinstallation anbieten.
 - `"eingerichtet": false` → **Einrichtungs-Assistent** durchführen, bevor ein Plan gezeichnet wird:
   1. Kurz begrüßen und erklären: Die Angaben erscheinen im Schriftfeld jedes Plans und in der Excel-Stromkreisliste; sie bleiben lokal auf diesem Rechner.
   2. Abfragen (gesammelt in einer Nachricht, nicht einzeln): **Firmenname** (Pflicht), Inhaber/Ansprechpartner, Qualifikation (z. B. Elektrotechnikermeister), Straße, PLZ + Ort, Telefon, E-Mail, Webseite. Optional: Eintrag Installateurverzeichnis (Netzbetreiber + Nr.), Handwerkskammer-Betriebsnummer, Kürzel für „Erstellt von“, Akzentfarbe (Hex), Standard-Ablageordner für Pläne.
@@ -60,6 +68,14 @@ Optionen: `--format "A3 quer" | "A4 quer" | "A4 hoch"`, `--name`, `--keine-vorsc
 `--stromkreisliste` (nur Verteilung: füllt die eigene Excel-Vorlage aus der Einrichtung mit Anlage- und Stromkreisdaten → `<Name> Stromkreisliste.xlsx`).
 Allpolig: BMK mit Minus (-F1, -X1). Phasen ohne Angabe werden reihum verteilt und als `HINWEIS (Annahme)` gemeldet – Zuordnung bestätigen lassen.
 
+**CADCraft (DXF/DWG/PDF)** – für Installationsplan und Deckenspiegel, vor allem mit Architektenplan. Vorher `cadcraft` in `einrichtung.py status` prüfen (Schritt 0).
+```
+python -X utf8 <SKILL>/scripts/elektroplan.py PLAN.json --cadcraft --vorschau "<Temp-Ordner>"
+python -X utf8 <SKILL>/scripts/elektroplan.py PLAN.json --nur-cadcraft --vorschau "<Temp-Ordner>"
+```
+`--cadcraft` = QET/PDF wie bisher **plus** `<Name> CAD.dxf/.dwg/.pdf`; `--nur-cadcraft` nur die CAD-Ausgabe. Der Architektengrundriss (Vektor-PDF, `"grundriss": {"pdf": …, "massstab": 50}`) wird maßgenau in mm übernommen statt als Rasterbild; Wandgeräte rasten wandbündig auf Massivwände ein (auch schräge). Ablauf: Skript `(1 Modell).scr` (Grundriss, Blöcke `EP_*` mit Attributen SK/HOEHE/BEM, Layer `ELT_*`, Leitungen, Zählung) → Attributtexte waagrecht und überdeckungsfrei neben die Symbole → Skript `(2 Layout).scr` (Layout „A3 Plan“, Ansichtsfenster im Maßstab, Legende mit Stückzahlen, Schriftfeld) → DXF, DWG, PDF. Beide `.scr` liegen neben dem Plan und laufen auch von Hand (`cadcraft-cli run --script-file "<…(1 Modell).scr>" --save X.dxf`). Das Logo steht im PDF als Originalgrafik, in DXF/DWG steht dort der Firmenname (CADCraft kann keine Bilder). Beim Deckenspiegel enthält die CAD-Ausgabe nur den Plan; das Berechnungsblatt kommt aus der QET-PDF (`--cadcraft` erzeugt beides). Format: `plan_format.md` Abschnitt 3 c. Bestehende JSON mit `"bild": "….pdf"` funktionieren unverändert; Rasterbilder (PNG/JPG, Scans) gehen in CADCraft nicht.
+Koordinaten für einen neuen Architektenplan: `grundriss_raster.py PLAN.pdf --massstab 50` **ohne** `--ausschnitt` → Meter ab linker oberer Seitenecke = Koordinaten für `"pdf"`. Nur den Grundriss als DXF: `python -X utf8 <SKILL>/scripts/ep/grundriss_dxf.py PLAN.pdf 50 AUSGABE`. Symbolbibliothek (alle Blöcke mit Namen) als DXF/DWG/PDF: `python -X utf8 <SKILL>/scripts/ep/cad_symbole.py "<Ordner>"`.
+
 ## 4. Prüfen
 
 Vorschau-PNG ansehen (unter Windows kurzen Vorschauordner wählen, z. B. `%TEMP%\ep_vorschau` – Pfade über 260 Zeichen scheitern). Die Ausgabe meldet:
@@ -90,13 +106,15 @@ Ablage: der Ordner, den der Nutzer nennt, sonst `ablage` aus der Einrichtung (`<
   ```
   Dieselben Werte (`massstab`, `dpi`, `ausschnitt`) in `grundriss` der JSON übernehmen. Die Koordinaten aus dem Raster (Meter, Ursprung oben links) gelten direkt für `geraete`; ohne Räume `wand` je Gerät angeben.
 - Mehrere Pläne für denselben Kunden: je Plan eine JSON und eine PDF; bei Bedarf die PDFs zu einer Mappe zusammenfügen.
+- **CADCraft** (getestet mit 0.5.0 und 0.7.0): Befehlsantworten kommen über stderr; ein ungültiger Befehl bricht das ganze Skript ab. Umlaute nur mit TTF-Stil (`PLAN` = arial.ttf, `PLAN_FETT` = arialbd.ttf). Attribute drehen beim Einfügen mit dem Block – der Generator setzt sie danach in der DXF waagrecht; in CADCraft nicht `attsync` auf die Blöcke anwenden, sonst springen die Texte zurück. PDF-Export nur über das Layout, Text wird dabei zu Kurven (PDF ca. 3 MB). Eine vom Nutzer in CADCraft bearbeitete DXF/DWG nicht überschreiben – neue Revision erzeugen. Bemaßung: Stile `EP_M` (Meter, 3,19) und `EP_MM` (mm) mit DIMSCALE = Maßstab, Layer `ELT_MASSE`; in der DXF beim Öffnen aktiv, in der DWG einmal `EP_M` wählen. CADCraft-Pfad: `ELEKTROPLAN_CADCRAFT` (Umgebungsvariable) → PATH → Programme-Ordner → `~/.elektroplan/programme`.
 - Symbole fehlen? Neue Symbolfabrik in `scripts/ep/symbole.py` ergänzen (gleicher Stil: Raster 10 px, Anschlüsse `1` oben bei y=-30 und `2` unten bei y=+30) und mit einem Testblatt prüfen. Übersicht aller Symbole: `scripts/symbolkatalog.py`.
 
 ## Dateien
 
 | Datei | Zweck |
 |---|---|
-| `scripts/einrichtung.py` | Einrichtung: Firmendaten, Logo, Excel-Vorlage, Testblatt, Status |
+| `scripts/einrichtung.py` | Einrichtung: Firmendaten, Logo, Excel-Vorlage, Testblatt, Status, Programme prüfen/installieren |
+| `scripts/ep/programme.py` | Python-Pakete, CADCraft, QElectroTech finden und nach Rückfrage installieren (CADCraft aus GitHub-Releases mit SHA256-Prüfung) |
 | `scripts/elektroplan.py` | Einstieg: JSON/Excel → .qet + .pdf + Vorschau |
 | `scripts/grundriss_raster.py` | Meterraster über Architektenplan zum Ablesen von Positionen |
 | `scripts/symbolkatalog.py` | Katalogblatt aller Symbole |
@@ -106,6 +124,9 @@ Ablage: der Ordner, den der Nutzer nennt, sonst `ablage` aus der Einrichtung (`<
 | `scripts/ep/verteiler_allpolig.py` | Stromlaufplan der Verteilung, allpolig |
 | `scripts/ep/stromlaufplan.py` | Schaltungsbausteine Stromlaufplan |
 | `scripts/ep/installationsplan.py` | Grundriss, Wandautomatik, Legende, Maßstabsbalken |
+| `scripts/ep/cadplan.py` | CADCraft-Ausgabe Installationsplan/Deckenspiegel: Skript 1 (Modell) + Attribut-Platzierung + Skript 2 (Layout A3, Legende, Schriftfeld) → DXF/DWG/PDF |
+| `scripts/ep/grundriss_dxf.py` | Vektor-PDF des Architekten → CADCraft-Befehle 1:1 in mm, Wandflächen/-kanten für das Einrasten (auch als Skript) |
+| `scripts/ep/cad_symbole.py` | Installationssymbole als CADCraft-Blöcke `EP_*` mit Attributen SK/HOEHE/BEM, Layer `ELT_*`; als Skript: Symbolbibliothek |
 | `scripts/ep/wandansicht.py` | Küchenplan/Wandansicht: Möbel, Dosen maßstäblich, steigende Bemaßung, Zonen, Punkteliste, Küchen-Normhinweise |
 | `scripts/ep/deckenspiegel.py` | Deckenspiegel + Lichtberechnung: Nutzung → Ēm, Wirkungsgradverfahren, Leuchtenwahl, Raster/k-Means-Anordnung, Berechnungsblatt, Leuchtenliste |
 | `referenz/licht_din12464.json` | Ēm/Uo/Ra/UGR je Nutzung nach DIN EN 12464-1:2021-11 (nur Zahlenwerte und Tabellen-Nr.), Wohnungs-Praxiswerte, Raumwirkungsgrad-Näherung |
@@ -115,7 +136,7 @@ Ablage: der Ordner, den der Nutzer nennt, sonst `ablage` aus der Einrichtung (`<
 | `scripts/ep/symbole.py` | Symbolsatz DIN EN 60617 (QElectroTech-Elementformat) |
 | `scripts/ep/qet_writer.py`, `pdf_writer.py` | Ausgabe .qet / PDF aus demselben Modell |
 | `scripts/ep/schriftfeld.py` | Schriftfeld mit Firmendaten und Logo |
-| `referenz/plan_format.md` | JSON-Format aller Planarten (Abschnitt 4: Küchenplan/Wandansicht) |
+| `referenz/plan_format.md` | JSON-Format aller Planarten (Abschnitt 3 c: CADCraft, Abschnitt 4: Küchenplan/Wandansicht) |
 | `referenz/fachliches.md` | Normen, Kennbuchstaben, Konventionen |
 | `referenz/ausstattung_din18015.md` / `.json` | Ausstattung nach DIN 18015-2:2021-10 + RAL-RG 678 ★★/★★★ (abgeglichen) |
 | `referenz/beispiele/*.json` | Musterpläne |

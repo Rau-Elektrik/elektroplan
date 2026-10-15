@@ -5,7 +5,10 @@ Die Daten landen im Konfigurationsordner ~/.elektroplan (oder ELEKTROPLAN_HOME),
 Aufruf:
   python einrichtung.py                       interaktiv im Terminal (fragt alles ab)
   python einrichtung.py status                was ist eingerichtet, was fehlt (für Claude)
-  python einrichtung.py pruefen               Python-Pakete und QElectroTech prüfen
+  python einrichtung.py pruefen               Python-Pakete, CADCraft und QElectroTech prüfen
+  python einrichtung.py installieren cadcraft [qelectrotech pakete | alle] [--ja]
+                                              fehlende Programme laden/installieren – fragt vorher
+                                              nach (--ja nur, wenn der Nutzer schon zugestimmt hat)
   python einrichtung.py setzen --name "…" [--inhaber "…" --strasse "…" --ort "…" --telefon "…"
                          --mail "…" --web "…" --titel "…" --installateurverzeichnis "…"
                          --hwk-nr "…" --bearbeiter "…" --akzentfarbe "#1F5FAD" --ablage "…"]
@@ -20,9 +23,7 @@ Aufruf:
 from __future__ import annotations
 
 import argparse
-import importlib
 import json
-import platform
 import shutil
 import sys
 from pathlib import Path
@@ -31,36 +32,13 @@ HIER = Path(__file__).resolve().parent
 sys.path.insert(0, str(HIER))
 
 from ep import firma  # noqa: E402
+from ep import programme  # noqa: E402
+from ep.programme import fehlende_pakete, qelectrotech_pfad  # noqa: E402
 
-PAKETE = {"reportlab": "reportlab", "fitz": "PyMuPDF", "PIL": "Pillow", "openpyxl": "openpyxl"}
 LOGO_ENDUNGEN = {".png", ".jpg", ".jpeg", ".webp", ".bmp", ".gif", ".tif", ".tiff", ".pdf"}
 
 
 # ----------------------------------------------------------------------------- Prüfen
-def fehlende_pakete() -> list[str]:
-    fehlt = []
-    for modul, paket in PAKETE.items():
-        try:
-            importlib.import_module(modul)
-        except ImportError:
-            fehlt.append(paket)
-    return fehlt
-
-
-def qelectrotech_pfad() -> Path | None:
-    kandidaten = []
-    if platform.system() == "Windows":
-        for basis in (Path("C:/Program Files"), Path("C:/Program Files (x86)")):
-            kandidaten += [basis / "QElectroTech" / "bin" / "qelectrotech.exe",
-                           basis / "QElectroTech" / "qelectrotech.exe"]
-    elif platform.system() == "Darwin":
-        kandidaten.append(Path("/Applications/QElectroTech.app"))
-    gefunden = shutil.which("qelectrotech")
-    if gefunden:
-        kandidaten.insert(0, Path(gefunden))
-    return next((k for k in kandidaten if k.exists()), None)
-
-
 def cmd_pruefen(_a=None) -> int:
     ok = True
     v = sys.version_info
@@ -73,8 +51,16 @@ def cmd_pruefen(_a=None) -> int:
         print(f"               Installieren: {Path(sys.executable).name} -m pip install {' '.join(fehlt)}")
     else:
         print("Pakete:        ok (reportlab, PyMuPDF, Pillow, openpyxl)")
+    cad = programme.cadcraft_cli()
+    if cad:
+        v = ".".join(map(str, programme.cadcraft_version(cad)))
+        print(f"CADCraft:      {cad}  (Version {v})")
+    else:
+        alt = programme.cadcraft_irgendeine()
+        print("CADCraft:      " + (f"zu alt ({alt}) – mindestens 0.5.0" if alt else "nicht gefunden")
+              + " (optional – für DXF/DWG mit --cadcraft; „einrichtung.py installieren cadcraft“)")
     q = qelectrotech_pfad()
-    print(f"QElectroTech:  {q if q else 'nicht gefunden (optional – nur zum Bearbeiten der .qet nötig, qelectrotech.org)'}")
+    print(f"QElectroTech:  {q if q else 'nicht gefunden (optional – nur zum Bearbeiten der .qet; „einrichtung.py installieren qelectrotech“)'}")
     print(f"Konfiguration: {firma.konfig_ordner()}")
     return 0 if ok else 1
 
@@ -92,14 +78,46 @@ def status() -> dict:
         "empfohlen_fehlt": [k for k in empfohlen if not d.get(k)] if firma.eingerichtet() else empfohlen,
         "logo": str(firma.logo_pfad()) if firma.logo_pfad() else None,
         "excel_vorlage": str(firma.stromkreisliste_vorlage()) if firma.stromkreisliste_vorlage() else None,
-        "pakete_fehlen": fehlende_pakete(),
-        "qelectrotech": str(qelectrotech_pfad()) if qelectrotech_pfad() else None,
+        **programme.uebersicht(),
     }
 
 
 def cmd_status(_a=None) -> int:
     print(json.dumps(status(), ensure_ascii=False, indent=2))
     return 0
+
+
+# ----------------------------------------------------------------------------- Programme
+def cmd_installieren(a) -> int:
+    namen = list(programme.INSTALLIERER) if "alle" in a.namen else a.namen
+    fehler = 0
+    for n in namen:
+        try:
+            programme.INSTALLIERER[n](ja=a.ja)
+        except programme.Abbruch as e:
+            print(f"{n}: {e}")
+            fehler += 1
+        except OSError as e:                      # Netzwerk, Rechte
+            print(f"{n}: fehlgeschlagen – {e}")
+            fehler += 1
+    return 1 if fehler else 0
+
+
+def programme_anbieten() -> None:
+    """Interaktiv: fehlende optionale Programme einzeln anbieten (jeweils mit Rückfrage)."""
+    for name, fehlt, wozu in [
+        ("cadcraft", not programme.cadcraft_cli(), "DXF/DWG-Zeichnungen für Installationsplan und Deckenspiegel"),
+        ("qelectrotech", not qelectrotech_pfad(), "die erzeugten .qet-Pläne selbst bearbeiten"),
+    ]:
+        if not fehlt:
+            continue
+        print(f"\nOptional: {name} – {wozu}.")
+        try:
+            programme.INSTALLIERER[name]()
+        except programme.Abbruch as e:
+            print(f"  {e} Später nachholen: python einrichtung.py installieren {name}")
+        except OSError as e:
+            print(f"  fehlgeschlagen – {e}")
 
 
 # ----------------------------------------------------------------------------- Logo
@@ -230,8 +248,14 @@ def cmd_interaktiv(_a=None) -> int:
     print(f" Gespeichert wird in {firma.konfig_ordner()} (nicht im Skill-Ordner).")
     print(" Leer lassen = Feld weglassen bzw. bisherigen Wert behalten.\n")
     if cmd_pruefen() != 0:
-        print("\nBitte zuerst die fehlenden Pakete installieren (Befehl oben) und dann erneut starten.")
-        return 1
+        if sys.version_info < (3, 9):
+            return 1
+        try:
+            programme.installiere_pakete()
+        except programme.Abbruch as e:
+            print(f"\n{e} Ohne die Pakete läuft der Skill nicht.")
+            return 1
+    programme_anbieten()
     print()
     d = firma.lade() if firma.konfig_datei().exists() else {}
     for feld, (text, pflicht, beispiel) in firma.FELDER.items():
@@ -323,12 +347,15 @@ def main(argv=None) -> int:
     t.add_argument("--ziel", type=Path)
     pk = sub.add_parser("paket")
     pk.add_argument("--ziel", type=Path)
+    ins = sub.add_parser("installieren", help="fehlende Programme laden (fragt nach)")
+    ins.add_argument("namen", nargs="+", choices=[*programme.INSTALLIERER, "alle"])
+    ins.add_argument("--ja", action="store_true", help="ohne Rückfrage (nur nach Zustimmung im Chat)")
     z = sub.add_parser("zuruecksetzen")
     z.add_argument("--ja", action="store_true")
     a = ap.parse_args(argv)
     befehle = {"status": cmd_status, "pruefen": cmd_pruefen, "setzen": cmd_setzen, "logo": cmd_logo,
                "vorlage": cmd_vorlage, "test": cmd_test, "paket": cmd_paket,
-               "zuruecksetzen": cmd_zuruecksetzen}
+               "zuruecksetzen": cmd_zuruecksetzen, "installieren": cmd_installieren}
     return befehle.get(a.befehl, cmd_interaktiv)(a)
 
 

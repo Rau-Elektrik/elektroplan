@@ -225,6 +225,23 @@ Koordinaten in **Metern**, Ursprung oben links, x nach rechts, y nach unten.
 Felder je Gerät: `x`, `y` (Meter; mit `raum` relativ zur Rauminnenecke), `raum`, `wand` (n/o/s/w; ohne Angabe wird die nächste Wand des Raums gewählt; `"frei"` = keine Automatik), `stromkreis` (Beschriftung, z. B. F3), `hoehe` (Montagehöhe in m), `bemerkung`.
 Wandgeräte werden auf die Wandinnenseite gesetzt und zeigen in den Raum. Die Legende rechts zählt alle Geräte.
 
+### c) CADCraft-Ausgabe (DXF/DWG/PDF, `--cadcraft` / `--nur-cadcraft`)
+
+Gleiche JSON wie oben, Installationsplan und Deckenspiegel. Zusätzlich bzw. anders:
+
+```json
+"grundriss": {"pdf": "Grundriss EG.pdf", "massstab": 50, "seite": 1,
+              "versatz": [0, 0], "fangradius": 0.4},
+"ausschnitt_m": [3.5, 2.8, 18.8, 14.6]
+```
+
+- `pdf`: Architektenplan als **Vektor-PDF** – wird 1:1 in mm übernommen (Wände grau gefüllt auf `ARCH_WAND`, Linien `ARCH`/`ARCH_DICK`, rote Skizzen `ARCH_ROT`, Texte `ARCH_TEXT`). Koordinaten = Meter ab der **linken oberen Seitenecke** (wie `grundriss_raster.py` ohne `--ausschnitt`; mit `versatz` liegt der Planursprung dort).
+- Eine bestehende JSON mit `"bild": "….pdf"` + `dpi`/`ausschnitt`/`versatz` funktioniert unverändert: dieselbe PDF wird als Vektor gelesen, Ausschnitt und Versatz rechnet der Generator um. Rasterbilder (PNG/JPG) gehen in CADCraft nicht – dann Räume aus dem Aufmaß.
+- Wandgeräte rasten auf die nächste **Massivwand-Oberfläche** (Kante einer grauen Wandfläche) im `fangradius` (Standard 0,40 m) ein, mit `wand` als Richtungshinweis; auch schräge Wände. Leichtbau-/Glaswände (nur Linien) erkennt er nicht – dort bleibt die Lage aus der JSON, gemeldet als `HINWEIS (Lage)`.
+- `ausschnitt_m` (optional, Planmeter x0 y0 x1 y1): Bildausschnitt im Ansichtsfenster; ohne Angabe Wände + Geräte. `massstab` weglassen = größter passender Maßstab.
+- `drehung` je Gerät (Grad, im Uhrzeigersinn) überschreibt die Ausrichtung.
+- Ergebnis: Blöcke `EP_*` mit Attributen `SK` (Stromkreis/BMK), `HOEHE` (h=…), `BEM` (Bemerkung), Layer `ELT_STECKDOSEN`, `ELT_SCHALTER`, `ELT_LEUCHTEN`, `ELT_GERAETE`, `ELT_DATEN`, `ELT_MELDER`, `ELT_VERTEILER`, `ELT_DOSEN`, `ELT_SCHWACHSTROM`, `ELT_LINIEN`, `ELT_RAUM`, im Layout `A3 Plan` `ELT_LEGENDE`, `ELT_SCHRIFTFELD`, `ELT_RAHMEN`, `ELT_LOGO`, `ELT_ANSICHTSFENSTER` (nicht plotten). Eigener `legende`-Text je Gerät (Deckenspiegel) ergibt einen eigenen Block `EP_…_<TEXT>`.
+
 ---
 
 ## 4. Wandansicht / Küchenplan (Frontansicht mit Höhen)
