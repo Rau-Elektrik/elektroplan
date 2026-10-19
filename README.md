@@ -50,6 +50,34 @@ Sag dazu „… auch als DWG“ oder „als CAD-Zeichnung“. Dann zeichnet der 
 
 Gescannte Pläne oder Fotos gehen in CADCraft nicht – dafür bleibt der normale Installationsplan mit Hintergrundbild.
 
+So sieht der Plan in CADCraft aus – links der Modellbereich mit Layern und Eigenschaften, rechts das Layout „A3 Plan“ mit Legende und Schriftfeld:
+
+| Modellbereich (1:1 in mm) | Layout A3 zum Drucken |
+|---|---|
+| ![CADCraft mit dem Installationsplan im Modellbereich](docs/cadcraft_modell.png) | ![CADCraft mit dem Layout A3 Plan](docs/cadcraft_layout.png) |
+
+Jedes Symbol trägt Stromkreis und Montagehöhe als Attribute, waagrecht und überdeckungsfrei daneben:
+
+![Symbole mit Stromkreis und Montagehöhe in CADCraft](docs/cadcraft_symbole.png)
+
+### Selbst weiterzeichnen
+
+Für Änderungen von Hand gibt es eine **Symbol-Palette**: alle 33 Symbole als Blöcke im Planmaßstab, jedes Wandsymbol in vier Richtungen, Beschriftung schon waagrecht ([`beispiele/Symbol-Palette Elektro 1zu50.dxf`](beispiele/)).
+
+1. Palette und Plan in CADCraft öffnen (zwei Reiter).
+2. In der Palette **Strg+Umschalt+C**, den Einfügepunkt des passenden Symbols anklicken, Symbol wählen, Enter.
+3. Im Plan **Strg+V** und den Punkt auf die Wand setzen (Objektfang „Nächster“).
+4. Stromkreis und Höhe per Doppelklick auf das Symbol ändern.
+
+![Symbol-Palette Elektro 1:50](docs/cadcraft_palette.png)
+
+Andere Maßstäbe und eine leere Startzeichnung (Layer, Stile, alle Blöcke – auf Wunsch gleich mit dem Architektengrundriss) erzeugt Claude, oder du selbst:
+
+```bash
+python ~/.claude/skills/elektroplan/scripts/ep/cad_vorlage.py palette "Symbol-Palette 1zu100.dxf" --massstab 100
+python ~/.claude/skills/elektroplan/scripts/ep/cad_vorlage.py vorlage "Neuer Plan.dxf" --grundriss Architekt.pdf --massstab 50
+```
+
 Alle Beispiele als PDF, .qet und Excel liegen im Ordner [`beispiele/`](beispiele/), alle Symbole im [Symbolkatalog](beispiele/Symbolkatalog.pdf).
 
 Dazu prüft der Skill (nur als Hinweis, die Entscheidung bleibt bei dir):
